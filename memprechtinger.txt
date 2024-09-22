@@ -1,2 +1,2 @@
-name: Magdalena Emprechtinger
-e-mails: pa23l003@technikum-wien.at
+Magdalena Emprechtinger
+pa23l003@technikum-wien.at
