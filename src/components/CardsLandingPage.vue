@@ -1,9 +1,10 @@
-<script setup>
-import { BCard, BButton } from "bootstrap-vue-3"; // Importing necessary components
-</script>
-
 <script>
+import {BButton, BCard} from "bootstrap-vue-3";
+
 export default {
+  name: "CardsLandingPage",
+  components: {BButton, BCard}
+
   data() {
     return {
       items: [
@@ -31,7 +32,7 @@ export default {
       ]
     };
   }
-};
+}
 </script>
 
 <template>
@@ -45,7 +46,7 @@ export default {
         img-top
         tag="article"
         style="max-width: 20rem; margin: 10px;"
-        class="mb-2"
+        class="mb-3"
     >
       <b-card-text>
         {{ item.text }}
@@ -53,6 +54,7 @@ export default {
       <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
     </b-card>
   </div>
+
 </template>
 
 <style scoped>
