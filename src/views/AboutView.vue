@@ -3,9 +3,9 @@ import About from '../components/About.vue';
 </script>
 
 <template>
-  <main>
+<main>
     <About />
-  </main>
+</main>
 </template>
 
 
