@@ -14,11 +14,7 @@ export default {
 </script>
 
 <template>
-  <b-row>
-    <b-col lg="10">
       <CardsLandingPage></CardsLandingPage>
-    </b-col>
-  </b-row>
 </template>
 
 <style scoped>
