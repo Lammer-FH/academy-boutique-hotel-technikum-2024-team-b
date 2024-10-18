@@ -1,20 +1,18 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
-import CardsLandingPage from "@/components/CardsLandingPage.vue";
-import {BContainer} from "bootstrap-vue-3";
+import Cards from "@/components/Cards.vue";
 
 export default {
   name: "LandingpageView",
   components: {
-    BContainer,
     Navbar,
-    CardsLandingPage
+    Cards
   }
 }
 </script>
 
 <template>
-      <CardsLandingPage></CardsLandingPage>
+  <Cards></Cards>
 </template>
 
 <style scoped>
