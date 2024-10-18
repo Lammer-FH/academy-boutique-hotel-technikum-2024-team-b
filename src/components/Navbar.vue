@@ -14,7 +14,7 @@ export default {
 </script>
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top">
-      <b-navbar-brand href="#" tag="h1" class="mr-12">Hotel Technikum</b-navbar-brand>
+      <b-navbar-brand href="#" >Hotel Technikum</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <b-nav-item href="#" v-if="!isLogedIn">Login</b-nav-item>
         <b-nav-item href="#" v-if="isLogedIn">Logout</b-nav-item>
