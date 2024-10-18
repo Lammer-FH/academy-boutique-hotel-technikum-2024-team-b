@@ -9,6 +9,6 @@ import Navbar from "@/components/Navbar.vue";
 
 <style scoped>
 #router{
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 </style>
