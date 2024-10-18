@@ -3,7 +3,7 @@ import {BButton, BCard} from "bootstrap-vue-3";
 
 export default {
   name: "CardsLandingPage",
-  components: {BButton, BCard}
+  components: {BButton, BCard},
 
   data() {
     return {
@@ -45,7 +45,6 @@ export default {
         :img-alt="item.imageAlternativeText"
         img-top
         tag="article"
-        style="max-width: 20rem; margin: 10px;"
         class="mb-3"
     >
       <b-card-text>

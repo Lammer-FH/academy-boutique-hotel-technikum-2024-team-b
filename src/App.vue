@@ -1,13 +1,13 @@
 <script setup>
-import {RouterLink, RouterView} from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import CardLandingPage from "@/components/CardLandingPage.vue";
-import NavBar from "@/components/NavBar.vue";
+import LandingpageView from "@/views/LandingpageView.vue";
+import {BContainer} from "bootstrap-vue-3";
+import Navbar from "@/components/Navbar.vue";
+import CardsLandingPage from "@/components/CardsLandingPage.vue";
 </script>
 
 <template>
-      <NavBar></NavBar>
-      <card-landing-page></card-landing-page>
+ <Navbar></Navbar>
+  <landingpage-view></landingpage-view>
 </template>
 
 <style scoped>

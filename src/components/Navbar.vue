@@ -3,38 +3,34 @@ import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarTogg
 
 export default {
   name: "navigation",
-  components: {BCollapse, BNavbar, BDropdownItem, BNavbarToggle, BNavbarNav, BNavbarBrand}
+  components: {BCollapse, BNavbar, BDropdownItem, BNavbarToggle, BNavbarNav, BNavbarBrand},
+
+  data() {
+    return {
+      isLogedIn: false
+    }
+  }
 }
 </script>
+<template>
+  <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top">
+      <b-navbar-brand href="#" tag="h1" class="mr-12">Hotel Technikum</b-navbar-brand>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item href="#" v-if="!isLogedIn">Login</b-nav-item>
+        <b-nav-item href="#" v-if="isLogedIn">Logout</b-nav-item>
+      </b-navbar-nav>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-lg-auto p-lg-auto">
+          <b-nav-item href="#">Unsere Zimmer</b-nav-item>
+          <b-nav-item href="#">Anreise & Kontakt</b-nav-item>
+          <b-nav-item href="#">Über Uns</b-nav-item>
+          <b-nav-item href="#"> Impressum</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+  </b-navbar>
+</template>
 
-  <template>
-    <div>
-      <b-navbar toggleable="lg" type="Light" class="navbar">
-        <b-navbar-brand href="#" class="navbar-brand">Technikum Hotel</b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="ml-auto">
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">ES</b-dropdown-item>
-            <b-dropdown-item href="#">RU</b-dropdown-item>
-            <b-dropdown-item href="#">FA</b-dropdown-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-  </template>
+<style scoped>
+</style>
 
-  <style scoped>
-    .navbar {
-      background-color: antiquewhite;
-      width: 100%;
-    }
-
-    .navbar-brand {
-      color: black;
-    }
-
-    #nav-collapse {
-      color: black;
-    }
-  </style>
