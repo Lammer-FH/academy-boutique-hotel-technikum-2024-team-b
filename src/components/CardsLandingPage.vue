@@ -36,30 +36,27 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex flex-wrap">
-    <b-card
-        v-for="(item, index) in items"
-        :key="index"
-        :title="item.title"
-        :img-src="item.imageSrc"
-        :img-alt="item.imageAlternativeText"
-        img-top
-        tag="article"
-        class="mb-3"
-    >
-      <b-card-text>
-        {{ item.text }}
-      </b-card-text>
-      <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
-    </b-card>
-  </div>
-
+  <b-container fluid class>
+    <b-row class="justify-content-center">
+      <b-col lg="6" md="8" sm="12">
+        <b-card
+            v-for="(item, index) in items"
+            :key="index"
+            :title="item.title"
+            :img-src="item.imageSrc"
+            :img-alt="item.imageAlternativeText"
+            img-top
+            tag="article"
+            class="m-3"
+        >
+          <b-card-text>
+            {{ item.text }}
+          </b-card-text>
+          <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
+        </b-card>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
-
 <style scoped>
-.d-flex {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
 </style>
