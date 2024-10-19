@@ -11,21 +11,21 @@ export default {
         {
           title: "Boutique-Hotel Technikum",
           text: "Entdecken Sie das Boutique-Hotel Technikum, wo moderner Komfort auf zeitlose Eleganz trifft. Entspannen Sie in stilvollen Zimmern und gemütlichem Ambiente.",
-          imageSrc: "/images/hotel_outside.webp",
+          imageSrc: "/images/About/hotel_outside.webp",
           imageAlternativeText: "Picture of Hotel",
           hrefButton: "#"
         },
         {
           title: "Unsere Zimmer",
           text: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
-          imageSrc: "/images/2.jpeg",
+          imageSrc: "/images/Rooms/2.jpeg",
           imageAlternativeText: "Picture of a Room",
           hrefButton: "#"
         },
         {
           title: "So finden Sie uns",
           text: "Die Anreise zum Boutique-Hotel Technikum ist einfach. Genießen Sie eine zentrale Lage mit hervorragenden Verkehrsanbindungen für eine stressfreie Ankunft",
-          imageSrc: "/images/location_hotel.png",
+          imageSrc: "/images/GettingThere/location_hotel.png",
           imageAlternativeText: "Picture of the Way",
           hrefButton: "#"
         }

@@ -1,11 +1,12 @@
 <script>
 import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle} from "bootstrap-vue-3";
-import HomeIcon from "@/components/icons/HomeIcon.vue";
-import UserIcon from "@/components/icons/UserIcon.vue";
+import IconUser from "@/components/icons/IconUser.vue";
+import IconHome from "@/components/icons/IconHome.vue";
+
 
 export default {
   name: "navigation",
-  components: {UserIcon, HomeIcon, BCollapse, BNavbar, BDropdownItem, BNavbarToggle, BNavbarNav, BNavbarBrand},
+  components: {IconUser, IconHome, BCollapse, BNavbar, BDropdownItem, BNavbarToggle, BNavbarNav, BNavbarBrand},
 
   data() {
     return {
@@ -16,12 +17,12 @@ export default {
 </script>
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top">
-    <b-navbar-brand href="#">
-      <home-icon></home-icon>
+    <b-navbar-brand to="/">
+      <icon-home></icon-home>
     </b-navbar-brand>
     <b-navbar-nav id="user">
       <b-nav-item href="#" v-if="!isLogedIn">
-        <user-icon></user-icon>
+        <icon-user></icon-user>
       </b-nav-item>
       <b-nav-item href="#" v-if="isLogedIn">
         <b-button>Logout</b-button>
@@ -31,9 +32,9 @@ export default {
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item href="#">Unsere Zimmer</b-nav-item>
-        <b-nav-item href="#">Anreise & Kontakt</b-nav-item>
-        <b-nav-item href="#">Über Uns</b-nav-item>
-        <b-nav-item href="#"> Impressum</b-nav-item>
+        <b-nav-item to="getting-here">Anreise & Kontakt</b-nav-item>
+        <b-nav-item to="about">Über Uns</b-nav-item>
+        <b-nav-item to="impressum"> Impressum</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -46,7 +47,7 @@ export default {
   color: hsla(160, 100%, 37%, 1);
   text-decoration: underline;
 }
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
   #user {
     margin-left:6rem;
   }
