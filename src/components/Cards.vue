@@ -13,7 +13,7 @@ export default {
           text: "Entdecken Sie das Boutique-Hotel Technikum, wo moderner Komfort auf zeitlose Eleganz trifft. Entspannen Sie in stilvollen Zimmern und gemütlichem Ambiente.",
           imageSrc: "/images/About/hotel_outside.webp",
           imageAlternativeText: "Picture of Hotel",
-          hrefButton: "#"
+          hrefButton: "about"
         },
         {
           title: "Unsere Zimmer",
@@ -27,7 +27,7 @@ export default {
           text: "Die Anreise zum Boutique-Hotel Technikum ist einfach. Genießen Sie eine zentrale Lage mit hervorragenden Verkehrsanbindungen für eine stressfreie Ankunft",
           imageSrc: "/images/GettingThere/location_hotel.png",
           imageAlternativeText: "Picture of the Way",
-          hrefButton: "#"
+          RouteButton: "getting-here"
         }
       ]
     }
@@ -52,7 +52,7 @@ export default {
       <b-card-text>
         {{ item.text }}
       </b-card-text>
-      <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
+      <b-button :to="item.RouteButton" variant="primary">Mehr erfahren</b-button>
     </b-card>
   </b-card-group>
 </template>
