@@ -14,5 +14,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(BootstrapVue3)
-
-app.mount('#app')
+router.isReady().then(() => {
+    app.mount('#app');
+    router.push('/home');
+});
