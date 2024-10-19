@@ -3,6 +3,12 @@
 Team: Tamar, Magdalena, David
 
 ---
+# Für das Review:
+Das Dokument befindet sich im Projektordner und heißt "Paperprototyp_Farbe". Der Link für die Clickable Version mit Marvel findet sich hier:
+
+https://marvelapp.com/prototype/1ba45g79/screen/95801092
+
+---
 ## Kontext und Einordnung
 
 Unser Team wurde beauftragt eine Buchungsapp zu entwickeln, die Benutzer auf dem Smartphone und dem Desktop verwenden werden.
