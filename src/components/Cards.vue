@@ -9,54 +9,55 @@ export default {
     return {
       items: [
         {
-          title: "Card 1",
-          text: "This is the description for the first card. It explains something cool!",
-          imageSrc: "https://picsum.photos/600/300/?image=25",
-          imageAlternativeText: "Picture of Bed",
+          title: "Boutique-Hotel Technikum",
+          text: "Entdecken Sie das Boutique-Hotel Technikum, wo moderner Komfort auf zeitlose Eleganz trifft. Entspannen Sie in stilvollen Zimmern und gemütlichem Ambiente.",
+          imageSrc: "/images/hotel_outside.webp",
+          imageAlternativeText: "Picture of Hotel",
           hrefButton: "#"
         },
         {
-          title: "Card 2",
-          text: "This is the second card with another description. More awesome stuff here.",
-          imageSrc: "https://picsum.photos/600/300/?image=36",
-          imageAlternativeText: "Beautiful Landscape",
+          title: "Unsere Zimmer",
+          text: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
+          imageSrc: "/images/2.jpeg",
+          imageAlternativeText: "Picture of a Room",
           hrefButton: "#"
         },
         {
-          title: "Card 3",
-          text: "Third card text with another image. Showing different content dynamically.",
-          imageSrc: "https://picsum.photos/600/300/?image=50",
-          imageAlternativeText: "City Skyline",
+          title: "So finden Sie uns",
+          text: "Die Anreise zum Boutique-Hotel Technikum ist einfach. Genießen Sie eine zentrale Lage mit hervorragenden Verkehrsanbindungen für eine stressfreie Ankunft",
+          imageSrc: "/images/location_hotel.png",
+          imageAlternativeText: "Picture of the Way",
           hrefButton: "#"
         }
       ]
-    };
+    }
   }
 }
 </script>
 
+
 <template>
-  <b-container fluid class>
-    <b-row class="justify-content-center">
-      <b-col lg="6" md="8" sm="12">
-        <b-card
-            v-for="(item, index) in items"
-            :key="index"
-            :title="item.title"
-            :img-src="item.imageSrc"
-            :img-alt="item.imageAlternativeText"
-            img-top
-            tag="article"
-            class="m-3"
-        >
-          <b-card-text>
-            {{ item.text }}
-          </b-card-text>
-          <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
+  <b-card-group deck>
+    <b-card
+        img-top
+        img-width="10px"
+        v-for="(item, index) in items"
+        :key="index"
+        :title="item.title"
+        :img-src="item.imageSrc"
+        :img-alt="item.imageAlternativeText"
+        tag="article"
+        class="card m-5"
+    >
+      <b-card-text>
+        {{ item.text }}
+      </b-card-text>
+      <b-button :href="item.hrefButton" variant="primary">Mehr erfahren</b-button>
+    </b-card>
+  </b-card-group>
 </template>
 <style scoped>
+.card{
+ width: 254px;
+}
 </style>
