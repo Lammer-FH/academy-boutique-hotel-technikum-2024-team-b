@@ -11,7 +11,7 @@ export default {
       <b-col sm="12" md="8" lg="6">
         <h1>Boutique-Hotel Technikum</h1><br><br>
 
-        <b-img src="hotel_lobby.webp" alt="HotelLobby"
+        <b-img src="/images/About/hotel_lobby.webp" alt="HotelLobby"
                class="img-fluid pb-5"></b-img>
 
         <p>Willkommen im <b>Boutique-Hotel Technikum</b>, Ihrem urbanen Rückzugsort im Herzen von Wien!
