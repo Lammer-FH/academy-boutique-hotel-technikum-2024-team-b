@@ -25,7 +25,7 @@ export default {
         {
           title: "So finden Sie uns",
           text: "Die Anreise zum Boutique-Hotel Technikum ist einfach. Genießen Sie eine zentrale Lage mit hervorragenden Verkehrsanbindungen für eine stressfreie Ankunft",
-          imageSrc: "/images/GettingThere/location_hotel.png",
+          imageSrc: "/images/GettingThere/location_stock_photo.jpg",
           imageAlternativeText: "Picture of the Way",
           RouteButton: "getting-here"
         }
@@ -39,8 +39,6 @@ export default {
 <template>
   <b-card-group deck>
     <b-card
-        img-top
-        img-width="10px"
         v-for="(item, index) in items"
         :key="index"
         :title="item.title"
