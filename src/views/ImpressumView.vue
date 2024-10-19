@@ -1,11 +1,13 @@
 <script>
+import Impressum from "@/components/Impressum.vue";
+
 export default {
-name: "ImpressumView"
+  name: "ImpressumView",
+  components: {Impressum}
 }
 </script>
-
 <template>
-  $END$
+  <Impressum></Impressum>
 </template>
 
 <style scoped>
