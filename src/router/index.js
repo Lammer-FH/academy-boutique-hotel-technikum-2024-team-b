@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import LandingpageView from "@/views/LandingpageView.vue";
 import ImpressumView from "@/views/ImpressumView.vue";
-import AboutView from "@/views/ImpressumView.vue";
+import AboutView from "@/views/AboutView.vue";
 import GettingHereView from "@/views/GettingHereView.vue"
 
 
