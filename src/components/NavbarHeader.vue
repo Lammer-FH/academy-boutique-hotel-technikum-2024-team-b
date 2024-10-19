@@ -17,7 +17,7 @@ export default {
 </script>
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top">
-    <b-navbar-brand to="/">
+    <b-navbar-brand to="/home">
       <icon-home></icon-home>
     </b-navbar-brand>
     <b-navbar-nav id="user">
