@@ -37,6 +37,7 @@ export default {
 
 
 <template>
+
   <b-card-group deck>
     <b-card
         v-for="(item, index) in items"
@@ -45,7 +46,7 @@ export default {
         :img-src="item.imageSrc"
         :img-alt="item.imageAlternativeText"
         tag="article"
-        class="card m-5"
+        class="card mb-5 custom-card-image"
     >
       <b-card-text>
         {{ item.text }}
@@ -54,8 +55,17 @@ export default {
     </b-card>
   </b-card-group>
 </template>
+
+
+
 <style scoped>
 .card{
- width: 254px;
+ width: 400px;
+
 }
+.custom-card-image {
+  width: 100%; /* Skaliert das Bild auf 100% der Kartenbreite */
+  height: auto; /* Beibehaltung des Seitenverhältnisses */
+  object-fit: cover;
+}/* Passt das Bild an, damit es nicht verzerrt wird */
 </style>
