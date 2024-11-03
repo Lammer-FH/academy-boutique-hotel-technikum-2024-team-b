@@ -10,7 +10,7 @@ export default {
 
   data() {
     return {
-      isLogedIn: false
+      isLoggedIn: false
     }
   }
 }
@@ -21,10 +21,10 @@ export default {
       <icon-home></icon-home>
     </b-navbar-brand>
     <b-navbar-nav id="user">
-      <b-nav-item href="#" v-if="!isLogedIn">
+      <b-nav-item href="#" v-if="!isLoggedIn">
         <icon-user></icon-user>
       </b-nav-item>
-      <b-nav-item href="#" v-if="isLogedIn">
+      <b-nav-item href="#" v-if="isLoggedIn">
         <b-button>Logout</b-button>
       </b-nav-item>
     </b-navbar-nav>

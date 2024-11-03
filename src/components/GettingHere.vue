@@ -11,7 +11,7 @@ export default {
         <h1>Anreise & Kontakt</h1><br><br>
         <p>Planen Sie Ihre Anreise ganz entspannt – hier finden Sie alle wichtigen Informationen zur Anfahrt sowie
           unsere Kontaktdaten, damit Sie uns jederzeit erreichen können.</p>
-        <b-img src="/public/images/GettingThere/location_hotel.PNG" alt="Karte mit Location-Pin bei der Adresse des Hotels"
+        <b-img src="/images/GettingThere/location_hotel.PNG" alt="Karte mit Location-Pin bei der Adresse des Hotels"
                class="img-fluid max-width: 100% height: 550px pb-5"></b-img>
 
 
@@ -46,6 +46,9 @@ export default {
 
           Unsere Kontaktdaten:<br><br>
 
+          Technikum Hotel<br>
+          Mariahilfer Straße 123 <br>
+          1060 Wien, Österreich<br>
           Telefon: +43 1 234 567 890<br>
           E-Mail: kontakt@technikumhotel.at<br><br>
 
