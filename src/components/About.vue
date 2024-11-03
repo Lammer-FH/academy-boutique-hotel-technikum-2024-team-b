@@ -36,7 +36,7 @@ export default {
         <p>Unser Ziel ist es, Ihren Aufenthalt so angenehm und unvergesslich wie möglich zu gestalten –
           egal ob Sie geschäftlich oder privat in Wien sind. Lassen Sie sich von der lebendigen Atmosphäre und der
           Gastfreundschaft unseres Boutique-Hotels begeistern.</p>
-        <p>Haben Sie noch Fragen? Dann kontaktieren Sie uns unter technikum@boutique-hotel.com.</p>
+        <p>Haben Sie noch Fragen? Dann kontaktieren Sie uns unter kontakt@technikumhotel.at.</p>
         <p>Wir freuen uns darauf, Sie bei uns begrüßen zu dürfen!</p><br>
         <p>Ihr Team vom Boutique-Hotel Technikum</p>
 
