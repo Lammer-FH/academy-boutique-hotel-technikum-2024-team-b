@@ -5,31 +5,42 @@ export default {
   name: "CardsLandingPage",
   components: {BButton, BCard},
 
-  data() {
-    return {
-      items: [
-        {
-          title: "Boutique-Hotel Technikum",
-          text: "Entdecken Sie das Boutique-Hotel Technikum, wo moderner Komfort auf zeitlose Eleganz trifft. Entspannen Sie in stilvollen Zimmern und gemütlichem Ambiente.",
-          imageSrc: "/images/About/hotel_outside.webp",
-          imageAlternativeText: "Picture of Hotel",
-          RouteButton: "about"
-        },
-        {
-          title: "Unsere Zimmer",
-          text: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
-          imageSrc: "/images/Rooms/2.jpeg",
-          imageAlternativeText: "Picture of a Room",
-          RouteButton: "#"
-        },
-        {
-          title: "So finden Sie uns",
-          text: "Die Anreise zum Boutique-Hotel Technikum ist einfach. Genießen Sie eine zentrale Lage mit hervorragenden Verkehrsanbindungen für eine stressfreie Ankunft",
-          imageSrc: "/images/GettingThere/location_stock_photo.jpg",
-          imageAlternativeText: "Picture of the Way",
-          RouteButton: "getting-here"
-        }
-      ]
+  props: {
+    index:{
+      type: Number,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    imageSrc: {
+      type: String,
+      required: true
+    },
+    imageAlternativeText: {
+      type: String,
+      required: true
+    },
+    cardText: {
+      type: String,
+      required: true
+    },
+    primaryButtonRoute: {
+      type: String,
+      required: true
+    },
+    primaryButtonText: {
+      type: String,
+      required: true
+    },
+    secondaryButtonRoute: {
+      type: String,
+      required: false
+    },
+    secondaryButtonText: {
+      type: String,
+      required: false
     }
   }
 }
@@ -38,34 +49,32 @@ export default {
 
 <template>
 
-  <b-card-group deck>
-    <b-card
-        v-for="(item, index) in items"
-        :key="index"
-        :title="item.title"
-        :img-src="item.imageSrc"
-        :img-alt="item.imageAlternativeText"
-        tag="article"
-        class="card mb-5 custom-card-image"
-    >
-      <b-card-text>
-        {{ item.text }}
-      </b-card-text>
-      <b-button :to="item.RouteButton" variant="primary">Mehr erfahren</b-button>
-    </b-card>
-  </b-card-group>
+  <b-card
+      :index="index"
+      :title="title"
+      :img-src="imageSrc"
+      :img-alt="imageAlternativeText"
+      tag="article"
+      class="card mb-5 custom-card-image"
+  >
+    <b-card-text>
+      {{ cardText }}
+    </b-card-text>
+    <b-button :to="primaryButtonRoute" variant="primary">{{ primaryButtonText }}</b-button>
+    <b-button v-if="secondaryButtonRoute !== undefined" :to="secondaryButtonRoute" variant="secondary">{{ secondaryButtonText }}</b-button>
+  </b-card>
 </template>
 
 
-
 <style scoped>
-.card{
- width: 400px;
+.card {
+  width: 400px;
 
 }
+
 .custom-card-image {
-  width: 100%; /* Skaliert das Bild auf 100% der Kartenbreite */
-  height: auto; /* Beibehaltung des Seitenverhältnisses */
+  width: 100%;
+  height: auto;
   object-fit: cover;
-}/* Passt das Bild an, damit es nicht verzerrt wird */
+}
 </style>
