@@ -2,17 +2,20 @@
 import {BButton, BCard} from "bootstrap-vue-3";
 
 export default {
-  name: "CardsLandingPage",
+  name: "Cards",
   components: {BButton, BCard},
 
   props: {
     index:{
       type: Number,
-      required: true
+      required: false
     },
     title: {
       type: String,
       required: true
+    },
+    subtitle: {
+      type: String,
     },
     imageSrc: {
       type: String,
@@ -24,7 +27,7 @@ export default {
     },
     cardText: {
       type: String,
-      required: true
+      required: false
     },
     primaryButtonRoute: {
       type: String,
@@ -57,11 +60,14 @@ export default {
       tag="article"
       class="card mb-5 custom-card-image"
   >
+    <b-card-subtitle>
+      {{ subtitle}}
+    </b-card-subtitle>
     <b-card-text>
       {{ cardText }}
     </b-card-text>
-    <b-button :to="primaryButtonRoute" variant="primary">{{ primaryButtonText }}</b-button>
-    <b-button v-if="secondaryButtonRoute !== undefined" :to="secondaryButtonRoute" variant="secondary">{{ secondaryButtonText }}</b-button>
+    <b-button :to="primaryButtonRoute" variant="primary">{{primaryButtonText }}</b-button>
+    <b-button v-if="secondaryButtonRoute !== undefined" :to="secondaryButtonRoute" variant="secondary">{{secondaryButtonText }}</b-button>
   </b-card>
 </template>
 
