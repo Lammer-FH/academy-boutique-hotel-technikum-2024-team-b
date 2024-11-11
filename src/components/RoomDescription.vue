@@ -21,6 +21,7 @@ export default {
     ausgewählte Details schaffen eine warme Atmosphäre, während hochwertige Betten für erholsamen Schlaf sorgen.
     Genießen Sie moderne Annehmlichkeiten, ein elegantes Badezimmer und einen Blick ins Grüne – der perfekte Rückzugsort
     für Ihren Aufenthalt.</p>
+
   <p v-if="id===3">
     Room 3: Unser stilvolles Boutique-Zimmer vereint Komfort und Charme mit einzigartigem Design. Helle, freundliche Farben und
     ausgewählte Details schaffen eine warme Atmosphäre, während hochwertige Betten für erholsamen Schlaf sorgen.

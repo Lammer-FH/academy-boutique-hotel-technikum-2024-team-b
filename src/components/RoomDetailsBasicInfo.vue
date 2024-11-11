@@ -11,7 +11,7 @@ export default {
   data() {
     return {
 
-      id: 4,
+      id: 3,
       roomsNumber: "102",
       roomName: "Default Double Bedroom",
       beds: 2,
@@ -70,10 +70,11 @@ export default {
 
   <h1>{{ roomName }}</h1><br><br>
   <figure class="mb-5">
-  <b-img :src="imageUrl" alt="Zimmerbild"
-         class="img-fluid max-width: 100% height: 550px mb-2"></b-img><br>
-  <figcaption> <span v-for="index in beds">
-    <img class="left" src='/images/Icons/user.svg' height="20" width="20" alt="dekorativer Icon"></span><span class="right">{{beds}} Personen</span></figcaption>
+    <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
+    <br>
+    <figcaption> <span v-for="index in beds">
+    <img class="left" src='/images/Icons/user.svg' height="20" width="20" alt="dekorativer Icon"></span><span
+        class="right">{{ beds }} Personen</span></figcaption>
   </figure>
 
   <RoomDescription :id="id"/>
@@ -97,7 +98,6 @@ export default {
 
 .left {
   text-align: left;
-  float: left;
 }
 
 </style>
