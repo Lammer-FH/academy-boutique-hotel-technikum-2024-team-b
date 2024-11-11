@@ -56,11 +56,9 @@ export default {
     <b-button :to="primaryButtonRoute" variant="primary">{{ primaryButtonText }}</b-button>
   </b-card>
 </template>
-
-
 <style scoped>
 .card {
-  width: 400px;
+  width: 600px;
 
 }
 
