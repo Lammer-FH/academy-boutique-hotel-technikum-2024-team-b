@@ -1,4 +1,6 @@
 <script>
+import router from "@/router";
+
 export default {
   name: "ModalRoomNotAvailable",
 
@@ -23,10 +25,10 @@ export default {
   },
 
   methods: {
-    handleOk() {
+    handleDifferentRoom() {
       this.modalShow = false;
-      router.push('home');
-    },
+      router.push('impressum');
+    }
   }
 }
 </script>
@@ -34,7 +36,7 @@ export default {
 
 <template>
   <div>
-    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-only ok-title="Jetzt Buchen" @ok="handleOk">{{ message }}
+    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom"> {{ message }}
 
     </b-modal>
   </div>
