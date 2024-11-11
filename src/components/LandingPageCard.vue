@@ -6,16 +6,13 @@ export default {
   components: {BButton, BCard},
 
   props: {
-    index:{
+    index: {
       type: Number,
       required: false
     },
     title: {
       type: String,
       required: true
-    },
-    subtitle: {
-      type: String,
     },
     imageSrc: {
       type: String,
@@ -36,17 +33,10 @@ export default {
     primaryButtonText: {
       type: String,
       required: true
-    },
-    secondaryButtonRoute: {
-      type: String,
-      required: false
-    },
-    secondaryButtonText: {
-      type: String,
-      required: false
     }
   }
 }
+
 </script>
 
 
@@ -60,14 +50,10 @@ export default {
       tag="article"
       class="card mb-5 custom-card-image"
   >
-    <b-card-subtitle>
-      {{ subtitle}}
-    </b-card-subtitle>
     <b-card-text>
       {{ cardText }}
     </b-card-text>
-    <b-button :to="primaryButtonRoute" variant="primary">{{primaryButtonText }}</b-button>
-    <b-button v-if="secondaryButtonRoute !== undefined" :to="secondaryButtonRoute" variant="secondary">{{secondaryButtonText }}</b-button>
+    <b-button :to="primaryButtonRoute" variant="primary">{{ primaryButtonText }}</b-button>
   </b-card>
 </template>
 
