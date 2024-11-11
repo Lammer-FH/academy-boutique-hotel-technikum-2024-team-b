@@ -3,6 +3,7 @@ import LandingpageView from "@/views/LandingpageView.vue";
 import ImpressumView from "@/views/ImpressumView.vue";
 import AboutView from "@/views/AboutView.vue";
 import GettingHereView from "@/views/GettingHereView.vue"
+import RoomDetailAndAvailabilityView from "@/views/RoomDetailAndAvailabilityView.vue";
 
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
             path: '/getting-here',
             name: 'gettingHere',
             component: GettingHereView
+        },
+        {
+            path: '/room-detail',
+            name: 'roomDetail',
+            component: RoomDetailAndAvailabilityView
         },
 
     ]
