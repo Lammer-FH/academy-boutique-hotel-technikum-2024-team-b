@@ -3,7 +3,7 @@ import LandingpageView from "@/views/LandingpageView.vue";
 import ImpressumView from "@/views/ImpressumView.vue";
 import AboutView from "@/views/AboutView.vue";
 import GettingHereView from "@/views/GettingHereView.vue"
-import RoomsSummary from "@/views/RoomsSummary.vue";
+import RoomsSummary from "@/views/RoomsCardOverview.vue";
 
 
 const router = createRouter({

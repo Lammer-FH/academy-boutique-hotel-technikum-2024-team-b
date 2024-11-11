@@ -1,38 +1,33 @@
 <script>
 import HeadingRoomsSummary from "@/components/HeadingRoomsSummary.vue";
-import Cards from "@/components/Cards.vue";
-import CardIconsSection from "@/components/CardIconsSection.vue";
+import {BCardGroup} from "bootstrap-vue-3";
+import RoomCard from "@/components/RoomCard.vue";
 
 export default {
   name: "RoomsSummary",
-  components: {CardIconsSection, Cards, HeadingRoomsSummary,},
+  components: {RoomCard, BCardGroup, HeadingRoomsSummary,},
   data() {
     return {
       pictures: [
         {
           "source": "/images/Rooms/1.jpeg",
-          "alternativeText": "foto of a Room"
         },
         {
           "source": "/images/Rooms/2.jpeg",
-          "alternativeText": "foto of a Room"
         },
         {
           "source": "/images/Rooms/3.jpeg",
-          "alternativeText": "foto of a Room"
         },
         {
           "source": "/images/Rooms/4.jpeg",
-          "alternativeText": "foto of a Room"
         },
         {
-          "source": "/images/Rooms/5.jpeg",
-          "alternativeText": "foto of a Room"
+          "source": "/images/Rooms/5.jpg",
         },
         {
-          "source": "/images/Rooms/6.jpeg",
-          "alternativeText": "foto of a Room"
-        }
+          "source": "/images/Rooms/6.jpg",
+        },
+        {"source": "/images/Rooms/7.jpg",}
       ],
 
       rooms: [
@@ -155,26 +150,86 @@ export default {
             "handicapped accessible": 1
           }
         }
-      ]
+      ],
+      currentPage: 1,
+      itemsPerPage: 3,  // Show 3 cards per page
+    };
+  },
+  computed: {
+    paginatedRooms() {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      return this.rooms.slice(startIndex, startIndex + this.itemsPerPage);
+    },
+  },
+  methods: {
+    getImageSource(roomId) {
+      return this.pictures[roomId -1].source;
+    },
+    handlePageChange(page) {
+      this.currentPage = page;
     }
   }
 }
 </script>
 
 <template>
-  <HeadingRoomsSummary></HeadingRoomsSummary>
-  <Cards
-  :title="rooms.roomsName"
-  :primary-button-text="Verfügbarkeit prüfen"
-  :primary-button-route="rooms.id"
-  :image-alternative-text="pictures.imageAlternativeText"
-  :image-src="pictures.path"
-  >
-</Cards>
+  <b-container fluid class="text-center">
+    <b-row class="justify-content-center p-2">
+      <b-col sm="12" md="12" lg="8">
+        <HeadingRoomsSummary/>
+        <b-card-group deck>
+          <RoomCard
+              v-for="room in paginatedRooms"
+              :key="room.id"
+              :roomName="room.roomsName"
+              :beds="room.beds"
+              :pricePerNight="room.pricePerNight"
+              :extras="room.extras"
+              :imageSrc="getImageSource(room.id)"
+              imageAlternativeText="Room image"
+              primaryButtonRoute="/room-detail"
+              primaryButtonText="Mehr erfahren"
+              secondary-button-text="Verfügbarkeit"
+              secondaryButtonRoute=""
+          />
+        </b-card-group>
+        <div class="d-flex justify-content-center my-4">
+          <b-pagination
+              v-model="currentPage"
+              :total-rows="rooms.length"
+              :per-page="itemsPerPage"
+              @change="handlePageChange"
+          />
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
-
 <style scoped>
-.b-card-subtitle {
+.room-card {
+  width: 650px;
+  height: auto;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+}
+.card-deck > .room-card {
+  flex: 0 1 auto;
+}
+
+.b-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>
