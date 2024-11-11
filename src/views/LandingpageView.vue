@@ -1,6 +1,6 @@
 <script>
 import Navbar from "@/components/NavbarHeader.vue";
-import Cards from "@/components/Cards.vue";
+import Cards from "@/components/LandingPageCard.vue";
 import headingLandingpage from "@/components/HeadingLandingpage.vue";
 import {BCardGroup} from "bootstrap-vue-3";
 
@@ -28,7 +28,7 @@ export default {
           cardText: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
           imageSrc: "/images/Rooms/2.jpeg",
           imageAlternativeText: "Picture of a Room",
-          primaryButtonRoute: "#"
+          primaryButtonRoute: "rooms"
         },
         {
           title: "So finden Sie uns",
