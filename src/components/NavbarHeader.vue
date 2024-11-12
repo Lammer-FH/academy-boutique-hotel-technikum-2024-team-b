@@ -31,7 +31,7 @@ export default {
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Unsere Zimmer</b-nav-item>
+        <b-nav-item to="rooms">Unsere Zimmer</b-nav-item>
         <b-nav-item to="getting-here">Anreise & Kontakt</b-nav-item>
         <b-nav-item to="about">Über Uns</b-nav-item>
         <b-nav-item to="impressum"> Impressum</b-nav-item>
