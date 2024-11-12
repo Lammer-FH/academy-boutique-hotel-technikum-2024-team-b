@@ -6,6 +6,7 @@ import BootstrapVue3 from 'bootstrap-vue-3'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+
 import App from './App.vue'
 import router from './router'
 
@@ -16,5 +17,5 @@ app.use(router)
 app.use(BootstrapVue3)
 router.isReady().then(() => {
     app.mount('#app');
-    router.push('/home');
+    //router.push('/home');
 });
