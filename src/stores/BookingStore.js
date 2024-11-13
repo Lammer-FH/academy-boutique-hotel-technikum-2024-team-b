@@ -32,7 +32,7 @@ export const useBookingStore = defineStore('booking', {
             const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`
 
             axios.get(apiUrl).then(response => {
-                this.availability = response.data;
+                this.availability = response.data.available;
                 console.log(this.availability);
             }  )
                 .catch(error => {
@@ -42,7 +42,6 @@ export const useBookingStore = defineStore('booking', {
         }
 
 
-        //Methoden zum Ändern der Daten
-        //Methode zum Ändern der Daten und Axios-calls
+        //Methode zum Ändern der Daten bzw. Speichern der Benutzerdaten und Axios-calls -> speichern Booking
     }
 })
