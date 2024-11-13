@@ -3,6 +3,7 @@
 import AppModal from "@/components/nicht verwendet/AppModal.vue";
 import ModalRoomAvailable from "@/components/ModalRoomAvailable.vue";
 import ModalRoomNotAvailable from "@/components/ModalRoomNotAvailable.vue";
+import {useBookingStore} from "@/stores/BookingStore";
 
 export default {
   name: "CollapseAvailability",
@@ -10,11 +11,13 @@ export default {
 
 
   props: {
-    //available: Boolean
+
   },
 
   data() {
     return {
+      bookingData: useBookingStore(),
+      roomId: 2,
       selected_date: '',
       context: null,
       isCollapsed: false,
@@ -23,10 +26,9 @@ export default {
       errormessage: '',
       validInput: true,
       modalShow: false,
-      availableDummy: true,
+      //availableDummy: true,
       modalMessageAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar',
       modalMessageNotAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt',
-      available: false
     }
   },
   methods: {
@@ -38,10 +40,10 @@ export default {
       this.isCollapsed = !this.isCollapsed;
     },
 
-    checkAvailability() {
+    checkRoomAvailability() {
       if (this.validateInput()) {
-        //ajax-call zum Prüfen
-        console.log(this.arrival_date);
+        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomId)
+        this.bookingData.checkAvailability()
         this.showModal()
       }
     },
@@ -65,7 +67,6 @@ export default {
         return false
       }
 
-
       if (this.departure_date <= this.arrival_date) {
         this.validInput = false;
         this.errormessage = "Abreisedatum muss nach dem Anreisedatum liegen!";
@@ -77,7 +78,6 @@ export default {
       this.modalShow = true
     },
 
-
   }
 }
 
@@ -87,17 +87,12 @@ export default {
 
 <template>
 
-  <div v-if="available">
-    <ModalRoomAvailable v-model="modalShow" />
-  <!--<AppModal v-model="modalShow" title="Verfügbarkeit" ok-only ok-title="Jetzt Buchen" @ok="handleOk" :message="modalMessageAvailable"  />
-   <b-modal title="Verfügbarkeit" ok-only ok-title="Jetzt Buchen" @ok="handleOk" v-model="modalShow">{{ modalMessageAvailable }}
-    </b-modal>-->
+  <div v-if="bookingData.availability">
+    <ModalRoomAvailable v-model="modalShow"/>
   </div>
 
-  <div v-if="!available">
-    <ModalRoomNotAvailable v-model="modalShow" />
-    <!--<b-modal title="Verfügbarkeit" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom" v-model="modalShow">{{ modalMessageNotAvailable }}
-    </b-modal>-->
+  <div v-if="!bookingData.availability">
+    <ModalRoomNotAvailable v-model="modalShow"/>
   </div>
 
 
@@ -106,14 +101,14 @@ export default {
       <b-col sm="12" md="8" lg="6">
         <b-button @click="changeVisibilityCollapse" class="m-5">Verfügbarkeit prüfen</b-button>
         <b-collapse v-model="isCollapsed">
-          <b-card>
-            <b>Bitte wählen Sie ein Datum aus:</b><br>
-            <p class="error" v-if="!validInput">{{ errormessage }}</p>
-            <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
-              Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
-            </p>
-            <b-button variant="primary" v-on:click="checkAvailability">Verfügbarkeit prüfen</b-button>
-          </b-card>
+
+          <b>Bitte wählen Sie ein Datum aus:</b><br>
+          <p class="error" v-if="!validInput">{{ errormessage }}</p>
+          <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
+            Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
+          </p>
+          <b-button variant="primary" v-on:click="checkRoomAvailability">Verfügbarkeit prüfen</b-button>
+
         </b-collapse>
       </b-col>
     </b-row>

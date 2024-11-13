@@ -1,11 +1,11 @@
 <script>
 import CollapseAvailability from "@/components/CollapseAvailability.vue";
 import RoomDetailsBasicInfo from "@/components/RoomDetailsBasicInfo.vue";
-import RoomExtras from "@/components/RoomExtras.vue";
+import RoomExtraItem from "@/components/RoomExtras/RoomExtrasItem.vue";
 
 export default {
   name: "RoomDetailAndAvailabilityView",
-  components: {RoomExtras, RoomDetailsBasicInfo, CollapseAvailability}
+  components: {RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability}
 }
 </script>
 

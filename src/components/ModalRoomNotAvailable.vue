@@ -1,5 +1,6 @@
 <script>
 import router from "@/router";
+import {useBookingStore} from "@/stores/BookingStore";
 
 export default {
   name: "ModalRoomNotAvailable",
@@ -9,7 +10,8 @@ export default {
   },
   data() {
     return {
-      message: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt',
+      bookingData: useBookingStore(),
+      message: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt.',
     }
   },
 
@@ -36,7 +38,7 @@ export default {
 
 <template>
   <div>
-    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom"> {{ message }}
+    <b-modal v-model="isVisible" :title="bookingData.arrivalDate.toString()" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom"> {{ message }}
 
     </b-modal>
   </div>
