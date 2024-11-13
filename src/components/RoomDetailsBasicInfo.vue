@@ -1,10 +1,10 @@
 <script>
-import RoomExtras from "@/components/RoomExtras.vue";
+import RoomExtraItem from "@/components/RoomExtraItem.vue";
 import RoomDescription from "@/components/RoomDescription.vue";
 
 export default {
   name: "RoomDetailsBasicInfo",
-  components: {RoomDescription, RoomExtras},
+  components: {RoomDescription, RoomExtraItem},
 
   props: {},
 
@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     imageUrl() {
-      return `/images/Rooms/${this.id}.jpeg`;
+      return `/images/Rooms/${this.id}.jpg`;
     },
     availableExtras() {
       return this.extras.filter(extra => Object.values(extra)[0] === 1);
@@ -73,15 +73,15 @@ export default {
     <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
     <br>
     <figcaption> <span v-for="index in beds">
-    <img class="left" src='/images/Icons/user.svg' height="20" width="20" alt="dekorativer Icon"></span><span
-        class="right">{{ beds }} Personen</span></figcaption>
+    <img class="left" src='/images/Icons/beds.svg' height="20" width="20" alt="dekorativer Icon"></span><span
+        class="right">{{ beds }} Betten</span></figcaption>
   </figure>
 
   <RoomDescription :id="id"/>
 
   <h5 class="extras">Extras: </h5>
 
-  <RoomExtras
+  <RoomExtraItem
       v-for="extra in availableExtras"
       :name="extraName(extra)" :icon="iconUrl(extra)"
   />
