@@ -18,7 +18,7 @@ export default {
           "bathroom": 1
         },
         {
-          "minibar": 0
+          "minibar": 1
         },
         {
           "television": 1
@@ -47,6 +47,10 @@ export default {
     availableExtras() {
       return this.extras.filter(extra => Object.values(extra)[0] === 1);
     },
+
+    translateExtras() {
+      return this.extras.replace("bathroom", "Badezimmer" && "minibar", "Minibar")
+    }
   },
   methods: {
     extraName(extra) {
@@ -56,6 +60,9 @@ export default {
       const key = Object.keys(extra)[0].split(" ")[0];
       return `/images/Icons/${key}.svg`;
     },
+
+
+
   }
 }
 </script>

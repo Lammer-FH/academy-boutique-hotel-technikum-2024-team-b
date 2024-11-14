@@ -1,5 +1,5 @@
 <script>
-import CollapseAvailability from "@/components/CollapseAvailability.vue";
+import CollapseAvailability from "@/components/Availability/CollapseAvailability.vue";
 import RoomDetailsBasicInfo from "@/components/RoomDetailsBasicInfo.vue";
 import RoomExtraItem from "@/components/RoomExtras/RoomExtrasItem.vue";
 
