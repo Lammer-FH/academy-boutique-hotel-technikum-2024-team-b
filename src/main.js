@@ -17,5 +17,5 @@ app.use(router)
 app.use(BootstrapVue3)
 router.isReady().then(() => {
     app.mount('#app');
-    //router.push('/home');
+    router.push('/home');
 });
