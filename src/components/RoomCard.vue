@@ -29,7 +29,6 @@ export default {
       class="room-card mb-5"
   >
       <div class="roomExtras">
-        <!-- STILL DUMMIES DO NOT FORGET -->
         <div class="justify-content-around">
         <span v-for="index in beds">Bed</span>
         </div>
