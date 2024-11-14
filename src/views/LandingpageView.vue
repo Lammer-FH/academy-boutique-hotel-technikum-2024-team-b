@@ -26,7 +26,7 @@ export default {
         {
           title: "Unsere Zimmer",
           cardText: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
-          imageSrc: "/images/Rooms/2.jpeg",
+          imageSrc: "/images/Rooms/2.jpg",
           imageAlternativeText: "Picture of a Room",
           primaryButtonRoute: "rooms"
         },
