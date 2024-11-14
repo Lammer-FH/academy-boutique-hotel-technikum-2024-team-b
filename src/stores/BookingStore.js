@@ -12,12 +12,12 @@ export const useBookingStore = defineStore('booking', {
         emailAdresse: String,
         arrivalDate: Date,
         departureDate: Date,
-        availability: false,
+        availability: Boolean,
     }),
     getter: {
-        //methode zum Berechen der Nächte
-        numberNights() {
-            return (this.departureDate - this.arrivalDate)
+       numberNights() {
+            return (new Date (this.departureDate) - new Date (this.arrivalDate) / (1000 * 3600 * 24));
+
         }
     },
 
@@ -28,10 +28,11 @@ export const useBookingStore = defineStore('booking', {
             this.roomId = roomId;
         },
 
-        checkAvailability() {
+        async checkAvailability() {
             const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`
 
-            axios.get(apiUrl).then(response => {
+            await axios.get(apiUrl)
+                .then(response => {
                 this.availability = response.data.available;
                 console.log(this.availability);
             }  )
