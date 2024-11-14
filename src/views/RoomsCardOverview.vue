@@ -47,7 +47,10 @@ export default {
     }
   },
   async created() {
-    await useRoomsStore().checkRooms();  // Make sure checkRooms is called here to populate rooms
+    await useRoomsStore().checkRooms();// Make sure checkRooms is called here to populate rooms
+    console.log(useRoomsStore().rooms)
+    console.log(useRoomsStore().roomId);
+
   }
 };
 </script>
@@ -73,7 +76,7 @@ export default {
               primaryButtonText="Mehr erfahren"
               secondary-button-text="Verfügbarkeit"
               secondaryButtonRoute=""
-          />
+              />
         </b-card-group>
         <div class="d-flex justify-content-center my-4">
           <b-pagination

@@ -1,16 +1,19 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from "axios";
 
 export const useRoomsStore = defineStore('rooms', {
     state: () => ({
-        roomId: null,
+        roomId: 6,
         rooms: []
     }),
     getters: {
-        getRoomById: (state) => (id) => {
-            return state.rooms.find(room => room.id === id); // Find room by id
+        getRoomById: (state) => {
+            return () => {
+                return state.rooms.find(room => room.id === state.roomId); // Find room by id
+            }
         }
     },
+
     actions: {
         setRoomId(roomId) {
             this.roomId = roomId;

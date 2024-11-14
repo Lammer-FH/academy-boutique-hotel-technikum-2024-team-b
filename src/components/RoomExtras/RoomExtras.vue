@@ -1,5 +1,6 @@
 <script>
 import RoomExtrasItem from "@/components/RoomExtras/RoomExtrasItem.vue";
+import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "RoomExtras",
@@ -7,50 +8,26 @@ export default {
 
   data() {
     return {
+      roomData: useRoomsStore()
 
-      id: 3,
-      roomsNumber: "102",
-      roomName: "Default Double Bedroom",
-      beds: 2,
-      pricePerNight: 120,
-      extras: [
-        {
-          "bathroom": 1
-        },
-        {
-          "minibar": 1
-        },
-        {
-          "television": 1
-        },
-        {
-          "livingroom": 1
-        },
-        {
-          "aircondition": 1
-        },
-        {
-          "wifi": 1
-        },
-        {
-          "breakfast": 1
-        },
-        {
-          "handicapped accessible": 1
-        }
-      ]
     }
   },
 
 
   computed: {
+    selectedRoom() {
+      return this.roomData.getRoomById();
+    },
+
     availableExtras() {
-      return this.extras.filter(extra => Object.values(extra)[0] === 1);
+      return this.selectedRoom.extras.filter(extra => Object.values(extra)[0] === 1);
     },
 
     translateExtras() {
       return this.extras.replace("bathroom", "Badezimmer" && "minibar", "Minibar")
-    }
+    },
+
+
   },
   methods: {
     extraName(extra) {
@@ -60,7 +37,6 @@ export default {
       const key = Object.keys(extra)[0].split(" ")[0];
       return `/images/Icons/${key}.svg`;
     },
-
 
 
   }

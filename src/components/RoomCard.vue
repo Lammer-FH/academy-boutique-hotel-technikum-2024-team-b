@@ -19,12 +19,22 @@ export default {
     secondaryButtonRoute: {type: String, required: true},
     secondaryButtonText: {type: String, required: true}
   },
-  methods:{
-    setRoomId(){
-      useRoomsStore().setRoomId(this.roomId);
+
+  data() {
+    return {
+      roomsData: useRoomsStore()
+    }
+  },
+  methods: {
+    handlePrimaryButtonClick() {
+      // Room ID speichern, bevor zur Route navigiert wird
+      this.roomsData.setRoomId(this.roomId);
+      this.$router.push(this.primaryButtonRoute);
     }
   }
 }
+
+
 </script>
 
 <template>
@@ -36,15 +46,15 @@ export default {
       tag="article"
       class="room-card mb-5"
   >
-      <div class="roomExtras">
-        <div class="justify-content-around">
+    <div class="roomExtras">
+      <div class="justify-content-around">
         <span v-for="index in beds">Bed</span>
-        </div>
-        <span v-if="extras && extras['handicapped accessible']" class="accessible">Wheelchair</span>
-        <span id="price"> Price: ${{ pricePerNight }}</span>
       </div>
+      <span v-if="extras && extras['handicapped accessible']" class="accessible">Wheelchair</span>
+      <span id="price"> Price: ${{ pricePerNight }}</span>
+    </div>
     <div class="d-flex justify-content-evenly">
-      <b-button :to="primaryButtonRoute" @click="setRoomId" variant="primary">
+      <b-button @click="handlePrimaryButtonClick" variant="primary">
         {{ primaryButtonText }}
       </b-button>
       <b-button :to="secondaryButtonRoute" variant="secondary">
