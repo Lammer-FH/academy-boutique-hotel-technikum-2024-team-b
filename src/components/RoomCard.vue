@@ -1,11 +1,13 @@
 <script>
 import {BButton, BCard, BCardText} from "bootstrap-vue-3";
+import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "RoomCard",
   components: {BButton, BCard, BCardText},
   props: {
     roomName: {type: String, required: true},
+    roomId: {type: Number, required: true},
     beds: {type: Number, required: true},
     pricePerNight: {type: Number, required: true},
     extras: {type: Object, required: false},
@@ -16,6 +18,11 @@ export default {
     primaryButtonText: {type: String, required: true},
     secondaryButtonRoute: {type: String, required: true},
     secondaryButtonText: {type: String, required: true}
+  },
+  methods:{
+    setRoomId(){
+      useRoomsStore().setRoomId(this.roomId);
+    }
   }
 }
 </script>
@@ -25,11 +32,11 @@ export default {
       :title="roomName"
       :img-src="imageSrc"
       :img-alt="imageAlternativeText"
+      :room-id="roomId"
       tag="article"
       class="room-card mb-5"
   >
       <div class="roomExtras">
-        <!-- STILL DUMMIES DO NOT FORGET -->
         <div class="justify-content-around">
         <span v-for="index in beds">Bed</span>
         </div>
@@ -37,7 +44,7 @@ export default {
         <span id="price"> Price: ${{ pricePerNight }}</span>
       </div>
     <div class="d-flex justify-content-evenly">
-      <b-button :to="primaryButtonRoute" variant="primary">
+      <b-button :to="primaryButtonRoute" @click="setRoomId" variant="primary">
         {{ primaryButtonText }}
       </b-button>
       <b-button :to="secondaryButtonRoute" variant="secondary">
