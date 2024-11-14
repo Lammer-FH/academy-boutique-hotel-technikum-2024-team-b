@@ -1,77 +1,61 @@
 <script>
-
-import RoomDescription from "@/components/RoomDescription.vue";
+import { useRoomsStore } from "@/stores/RoomsStore";  // Import the store
+import RoomDescription from "@/components/RoomDescription.vue";  // Import components
 import RoomExtras from "@/components/RoomExtras/RoomExtras.vue";
 
 export default {
   name: "RoomDetailsBasicInfo",
   components: {RoomExtras, RoomDescription},
 
-  props: {},
-
-  data() {
-    return {
-
-      id: 3,
-      roomsNumber: "102",
-      roomName: "Default Double Bedroom",
-      beds: 2,
-      pricePerNight: 120,
-      extras: [
-        {
-          "bathroom": 1
-        },
-        {
-          "minibar": 1
-        },
-        {
-          "television": 1
-        },
-        {
-          "livingroom": 1
-        },
-        {
-          "aircondition": 1
-        },
-        {
-          "wifi": 1
-        },
-        {
-          "breakfast": 1
-        },
-        {
-          "handicapped accessible": 1
-        }
-      ]
-    }
-  },
   computed: {
+    roomId() {
+      return useRoomsStore().selectRoomId;
+    },
+
+    selectedRoom() {
+      // Return the selected room by matching the room ID
+      const room = useRoomsStore().rooms.find(room => room.id === this.roomId);
+      return room || null;  // Ensure we handle null if no room is found
+    },
+
     imageUrl() {
-      return `/images/Rooms/${this.id}.jpg`;
+      // Use the roomId to generate the image URL
+      return this.roomId ? `/images/Rooms/${this.roomId}.jpg` : '';
     },
   },
-}
 
+  async created() {
+    // Fetch the rooms from the store on component creation
+    const store = useRoomsStore();
+    await store.fetchRooms();
+  },
+};
 </script>
 
 <template>
+  <div v-if="selectedRoom">
+    <h1>{{ selectedRoom.roomName }}</h1><br><br>
+    <figure class="mb-5">
+      <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
+      <br/>
+      <figcaption>
+        <span v-for="index in selectedRoom.beds" :key="index">
+          <img class="left" src="/images/Icons/beds.svg" height="20" width="20" alt="dekorativer Icon"/>
+        </span>
+        <span class="right">{{ selectedRoom.beds }} Betten</span>
+      </figcaption>
+    </figure>
 
-  <h1>{{ roomName }}</h1><br><br>
-  <figure class="mb-5">
-    <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
-    <br>
-    <figcaption> <span v-for="index in beds">
-    <img class="left" src='/images/Icons/beds.svg' height="20" width="20" alt="dekorativer Icon"></span><span
-        class="right">{{ beds }} Betten</span></figcaption>
-  </figure>
+    <RoomDescription :id="selectedRoom.id"/>
+    <h5 class="extras">Extras: </h5>
+    <RoomExtras :extras="selectedRoom.extras"/>
+    <br/>
+    <p class="price">Euro: {{ selectedRoom.pricePerNight }} pro Nacht</p>
+  </div>
 
-  <RoomDescription :id="id"/>
-
-  <h5 class="extras">Extras: </h5>
-<RoomExtras />
-  <br>
-  <p class="price">Euro: {{ pricePerNight }} pro Nacht</p>
-
+  <div v-else>
+    <p>Room details not found or room is not selected.</p>
+  </div>
 </template>
 
 <style scoped>
@@ -83,5 +67,4 @@ export default {
 .left {
   text-align: left;
 }
-
 </style>

@@ -2,10 +2,11 @@
 import CollapseAvailability from "@/components/CollapseAvailability.vue";
 import RoomDetailsBasicInfo from "@/components/RoomDetailsBasicInfo.vue";
 import RoomExtraItem from "@/components/RoomExtras/RoomExtrasItem.vue";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "RoomDetailAndAvailabilityView",
-  components: {RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability}
+  components: {BContainer, RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability}
 }
 </script>
 

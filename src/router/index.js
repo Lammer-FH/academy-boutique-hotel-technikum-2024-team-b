@@ -34,9 +34,9 @@ const router = createRouter({
             component: GettingHereView
         },
         {
-            path: '/room-detail',
+            path: '/roomDetails',
             name: 'roomDetail',
-            component: RoomDetailAndAvailabilityView
+            component: RoomDetailAndAvailabilityView,
         },
 
         {

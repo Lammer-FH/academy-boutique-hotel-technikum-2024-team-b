@@ -1,25 +1,34 @@
-import {defineStore} from "pinia";
+// stores/RoomsStore.js
+import { defineStore } from "pinia";
 import axios from "axios";
 
-export const useRoomsStore = defineStore('roomstore', {
+export const useRoomsStore = defineStore("roomstore", {
     state: () => ({
-
-        rooms: []
+        rooms: [],
+        selectRoomId: null, // Stores the selected room ID
+        roomsLoaded: false,  // Flag to track if rooms are already loaded
     }),
-    getter: {},
 
     actions: {
+        async fetchRooms() {
+            if (this.roomsLoaded) return;
+            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/rooms`;
 
-        checkRooms() {
-            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/rooms`
-
-            axios.get(apiUrl).then(response => {
+            try {
+                const response = await axios.get(apiUrl);
                 this.rooms = response.data;
-            })
-                .catch(error => {
-                    //handle error
-                    console.log(error)
-                })
-        }
-    }
-})
+                this.roomsLoaded = true;
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+            }
+        },
+
+        setSelectedRoomId(roomId) {
+            this.selectRoomId = roomId; // Set the selected room ID
+        },
+
+        getSelectedRoomId() {
+            return this.selectRoomId; // Return the current selected room ID
+        },
+    },
+});
