@@ -57,58 +57,31 @@ export default {
 <template>
 
   <h1>{{ roomName }}</h1><br><br>
-  <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
-
-  <div class="room-info">
-    <div class="bed-info">
-      <span v-for="index in beds" :key="index">
-    <img class="bed-icon" src='/images/Icons/beds.svg' height="20" width="20"
-         alt="dekorativer Icon"></span><span>{{ beds }} Betten</span>
-    </div>
-    <p class="price">Preis p.N.: €{{ pricePerNight }}</p>
-  </div>
-  <br>
+  <figure class="mb-5">
+    <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
+    <br>
+    <figcaption> <span v-for="index in beds">
+    <img class="left" src='/images/Icons/beds.svg' height="20" width="20" alt="dekorativer Icon"></span><span
+        class="right">{{ beds }} Betten</span></figcaption>
+  </figure>
 
   <RoomDescription :id="id"/>
-  <br>
 
   <h5 class="extras">Extras: </h5>
-  <RoomExtras/><br>
+<RoomExtras />
+  <br>
+  <p class="price">Euro: {{ pricePerNight }} pro Nacht</p>
+
 </template>
 
 <style scoped>
-p {
-  margin: 0;
-}
-
 .price {
+  text-align: right;
   font-weight: bold;
-  display: flex;
-  align-items: center;
 }
 
-.extras {
+.left {
   text-align: left;
-
-}
-
-.room-info {
-  display: flex;
-  justify-content: space-between; /* Pushes the price to the right */
-  align-items: center;
-  height: 40px
-  /* Ensures the container stretches across the full width */
-
-}
-
-.bed-info {
-  display: inline-flex;
-  align-items: center;
-
-}
-
-.bed-icon {
-  margin-right: 5px;
 }
 
 </style>
