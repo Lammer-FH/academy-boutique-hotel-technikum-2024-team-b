@@ -21,7 +21,7 @@ export default {
         return this.modelValue;
       },
       set(value) {
-        this.$emit('update:modelValue', value); // Sync with parent
+        this.$emit('update:modelValue', value);
       },
     },
   },
@@ -29,7 +29,7 @@ export default {
   methods: {
     handleDifferentRoom() {
       this.modalShow = false;
-      router.push('impressum');
+      router.push('rooms');
     }
   }
 }

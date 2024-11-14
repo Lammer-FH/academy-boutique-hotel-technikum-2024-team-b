@@ -29,6 +29,8 @@ export default {
 
     </b-modal>
   </div>
+  <b-button @click="changeVisibilityCollapse" class="m-5">Verfügbarkeit prüfen</b-button>
+
 </template>
 
 

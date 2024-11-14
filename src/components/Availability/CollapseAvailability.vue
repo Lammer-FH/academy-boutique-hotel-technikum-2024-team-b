@@ -1,24 +1,15 @@
 <script>
-
-import AppModal from "@/components/nicht verwendet/AppModal.vue";
-import ModalRoomAvailable from "@/components/ModalRoomAvailable.vue";
-import ModalRoomNotAvailable from "@/components/ModalRoomNotAvailable.vue";
+import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 
 export default {
   name: "CollapseAvailability",
-  components: {ModalRoomNotAvailable, ModalRoomAvailable, AppModal},
-
-
-  props: {
-
-  },
+  components: {ModalRoomAvailable},
 
   data() {
     return {
       bookingData: useBookingStore(),
       roomId: 2,
-      selected_date: '',
       context: null,
       isCollapsed: false,
       arrival_date: '',
@@ -26,11 +17,9 @@ export default {
       errormessage: '',
       validInput: true,
       modalShow: false,
-      //availableDummy: true,
-      modalMessageAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar',
-      modalMessageNotAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt',
     }
   },
+
   methods: {
 
     changeVisibilityCollapse() {
@@ -40,10 +29,13 @@ export default {
       this.isCollapsed = !this.isCollapsed;
     },
 
-    checkRoomAvailability() {
+    async checkRoomAvailability() {
       if (this.validateInput()) {
         this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomId)
-        this.bookingData.checkAvailability()
+        await this.bookingData.checkAvailability()
+        console.log(this.bookingData.availability)
+        console.log(this.bookingData.numberNights)
+        console.log(typeof this.bookingData.arrivalDate)
         this.showModal()
       }
     },
@@ -76,44 +68,38 @@ export default {
     },
     showModal() {
       this.modalShow = true
+
     },
 
   }
 }
-
 
 </script>
 
 
 <template>
 
-  <div v-if="bookingData.availability">
+  <div>
     <ModalRoomAvailable v-model="modalShow"/>
-  </div>
-
-  <div v-if="!bookingData.availability">
-    <ModalRoomNotAvailable v-model="modalShow"/>
   </div>
 
 
   <b-container fluid class="text-center">
-    <b-row class="justify-content-center">
-      <b-col sm="12" md="8" lg="6">
-        <b-button @click="changeVisibilityCollapse" class="m-5">Verfügbarkeit prüfen</b-button>
-        <b-collapse v-model="isCollapsed">
 
-          <b>Bitte wählen Sie ein Datum aus:</b><br>
-          <p class="error" v-if="!validInput">{{ errormessage }}</p>
-          <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
-            Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
-          </p>
-          <b-button variant="primary" v-on:click="checkRoomAvailability">Verfügbarkeit prüfen</b-button>
+    <a href="#" @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
-        </b-collapse>
-      </b-col>
-    </b-row>
+    <b-collapse v-model="isCollapsed">
+<br>
+      <b>Bitte wählen Sie ein Datum aus:</b><br><br>
+      <p class="error" v-if="!validInput">{{ errormessage }}</p>
+      <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
+        Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
+      </p><br>
+      <b-button variant="primary" v-on:click="checkRoomAvailability">Verfügbarkeit prüfen</b-button>
+
+    </b-collapse>
+
   </b-container>
-
 
 </template>
 
