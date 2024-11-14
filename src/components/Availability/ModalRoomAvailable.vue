@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
-      messageAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar',
+      messageAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar.',
       messageNotAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt.',
     }
   },
@@ -51,7 +51,7 @@ export default {
   </div>
 
   <div v-if="!bookingData.availability">
-    <b-modal v-model="isVisible" :title="bookingData.arrivalDate.toString()" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom"> {{ messageNotAvailable }}
+    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-title="Anderer Zeitraum" cancel-title="Anderes Zimmer" @cancel="handleDifferentRoom"> {{ messageNotAvailable }}
 
     </b-modal>
   </div>

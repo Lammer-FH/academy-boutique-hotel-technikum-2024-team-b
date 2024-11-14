@@ -12,8 +12,6 @@ export default {
   data() {
     return {
       roomData: useRoomsStore(),
-      //roomId: this.roomData.roomId,
-      //rooms: useRoomsStore().rooms
 
     }
   },
@@ -32,7 +30,7 @@ export default {
 </script>
 <template>
 
-  <h1>{{selectedRoom.roomsName}}</h1><br><br>
+  <h1>{{roomData.roomName}}</h1><br><br>
   <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
 
   <div class="room-info">

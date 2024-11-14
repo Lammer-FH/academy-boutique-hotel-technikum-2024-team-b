@@ -27,8 +27,7 @@ export default {
   },
   methods: {
     handlePrimaryButtonClick() {
-      // Room ID speichern, bevor zur Route navigiert wird
-      this.roomsData.setRoomId(this.roomId);
+      this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
       this.$router.push(this.primaryButtonRoute);
     }
   }

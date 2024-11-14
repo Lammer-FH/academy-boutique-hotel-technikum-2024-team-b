@@ -1,6 +1,7 @@
 <script>
 import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 import {useBookingStore} from "@/stores/BookingStore";
+import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "CollapseAvailability",
@@ -9,7 +10,7 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
-      roomId: 2,
+      roomData: useRoomsStore(),
       context: null,
       isCollapsed: false,
       arrival_date: '',
@@ -31,11 +32,11 @@ export default {
 
     async checkRoomAvailability() {
       if (this.validateInput()) {
-        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomId)
+        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomData.roomId, this.roomData.roomName)
         await this.bookingData.checkAvailability()
-        console.log(this.bookingData.availability)
         console.log(this.bookingData.numberNights)
-        console.log(typeof this.bookingData.arrivalDate)
+        console.log(this.bookingData.roomName)
+        console.log(this.bookingData.roomId)
         this.showModal()
       }
     },
