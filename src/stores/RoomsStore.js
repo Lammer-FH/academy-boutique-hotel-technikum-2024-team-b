@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useRoomsStore = defineStore('rooms', {
     state: () => ({
-        roomId: null,
+        roomId: 1,
         roomName: "",
         rooms: []
     }),
@@ -19,6 +19,9 @@ export const useRoomsStore = defineStore('rooms', {
         setRoomIdAndName(roomId, roomName) {
             this.roomId = roomId;
             this.roomName = roomName;
+        },
+        setRoomId(roomId) {
+            this.roomId = roomId;
         },
 
         // Async action to fetch room data from the API

@@ -28,7 +28,10 @@ export default {
   methods: {
     handlePrimaryButtonClick() {
       this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
-      this.$router.push(this.primaryButtonRoute);
+      this.$router.push({
+        name: 'roomDetail',
+        params: {roomId: this.roomId}
+      });
     }
   }
 }
