@@ -7,13 +7,16 @@ export const useBookingStore = defineStore('booking', {
 
         roomId: null,
         roomName: "",
+        pricePerNight: null,
         firstName: "",
         lastName: "",
-        birthDate: null,
+        birthDate: "",
         emailAdresse: "",
         arrivalDate: "",
         departureDate: "",
         availability: false,
+        bookingId: null,
+
     }),
     getters: {
        numberNights(state) {
@@ -23,11 +26,12 @@ export const useBookingStore = defineStore('booking', {
     },
 
     actions: {
-        setBookingDates(arrivalDate, departureDate, roomId, roomName) {
+        setBookingDates(arrivalDate, departureDate, roomId, roomName, pricePerNight) {
             this.arrivalDate = arrivalDate;
             this.departureDate = departureDate;
             this.roomId = roomId;
             this.roomName = roomName
+            this.pricePerNight = pricePerNight
         },
 
         setUserData(firstName, lastName, birthDate, emailAdresse) {
@@ -49,10 +53,26 @@ export const useBookingStore = defineStore('booking', {
                     //handle error
                     console.log(error)
                 })
+        },
+
+        saveBooking() {
+            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`
+
+            axios.post(apiUrl, {
+                firstname: this.firstName,
+                lastname: this.lastName,
+                email: this.emailAdresse,
+                birthdate: this.birthDate
+            })
+                .then((response) => {
+                    this.bookingId = response.data.id;
+                    console.log(response)
+
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
-
-
-        //Methode zum Ändern der Daten bzw. Speichern der Benutzerdaten und Axios-calls -> speichern Booking
-        // du kann als url denselben Link verwenden wie ich. Die RoomId und RoomName wurde auch von mir schon gesetzt. Du musst im Prinzip nur noch deine formulardaten hierreinspeichern und dann den Post-Request machen.
     }
 })

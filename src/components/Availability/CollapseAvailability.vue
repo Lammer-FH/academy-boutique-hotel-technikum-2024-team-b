@@ -18,6 +18,7 @@ export default {
       errormessage: '',
       validInput: true,
       modalShow: false,
+
     }
   },
 
@@ -32,7 +33,7 @@ export default {
 
     async checkRoomAvailability() {
       if (this.validateInput()) {
-        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomData.roomId, this.roomData.roomName)
+        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight)
         await this.bookingData.checkAvailability()
         console.log(this.bookingData.numberNights)
         console.log(this.bookingData.roomName)
@@ -72,6 +73,18 @@ export default {
 
     },
 
+
+
+    scrollToCollapse() {
+      // Nutze scrollIntoView, um den Bereich des Collapses sichtbar zu machen
+      this.$nextTick(() => {
+        const collapseElement = this.collapse;
+        if (collapseElement) {
+          collapseElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    },
+
   }
 }
 
@@ -84,8 +97,7 @@ export default {
     <ModalRoomAvailable v-model="modalShow"/>
   </div>
 
-
-  <b-container fluid class="text-center">
+   <b-container fluid class="text-center">
 
     <a href="#" @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 

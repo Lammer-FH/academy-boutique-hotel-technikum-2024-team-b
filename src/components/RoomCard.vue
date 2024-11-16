@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     handlePrimaryButtonClick() {
-      this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
+      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
       this.$router.push(this.primaryButtonRoute);
     }
   }

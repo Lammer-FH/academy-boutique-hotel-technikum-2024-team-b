@@ -5,6 +5,9 @@ import AboutView from "@/views/AboutView.vue";
 import GettingHereView from "@/views/GettingHereView.vue"
 import RoomDetailAndAvailabilityView from "@/views/RoomDetailAndAvailabilityView.vue";
 import RoomsSummary from "@/views/RoomsCardOverview.vue";
+import RoomBookingView from "@/views/RoomBookingView.vue";
+import ConfirmationView from "@/views/ConfirmationView.vue";
+
 
 
 const router = createRouter({
@@ -43,8 +46,19 @@ const router = createRouter({
             path: '/rooms',
             name: 'rooms',
             component: RoomsSummary
-        }
+        },
 
+        {
+            path: '/room-booking',
+            name: 'room-booking',
+            component: RoomBookingView
+        },
+
+        {
+            path: '/confirmation',
+            name: 'confirmation',
+            component: ConfirmationView
+        },
     ]
 })
 

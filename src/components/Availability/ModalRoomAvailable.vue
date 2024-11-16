@@ -31,7 +31,7 @@ export default {
   methods: {
     handleOk() {
       this.isVisible = false;
-      router.push('home');
+      router.push('room-booking');
     },
 
     handleDifferentRoom() {
@@ -45,7 +45,7 @@ export default {
 
 <template>
   <div v-if="bookingData.availability">
-    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-only ok-title="Jetzt Buchen" @ok="handleOk">{{ messageAvailable }}
+    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-only ok-title="Zur Buchung" @ok="handleOk">{{ messageAvailable }}
 
     </b-modal>
   </div>

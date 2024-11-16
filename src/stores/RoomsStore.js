@@ -5,6 +5,7 @@ export const useRoomsStore = defineStore('rooms', {
     state: () => ({
         roomId: null,
         roomName: "",
+        roomPricePerNight: 0,
         rooms: []
     }),
     getters: {
@@ -16,9 +17,10 @@ export const useRoomsStore = defineStore('rooms', {
     },
 
     actions: {
-        setRoomIdAndName(roomId, roomName) {
+        setRoomIdAndNameAndPrice(roomId, roomName, pricePerNight) {
             this.roomId = roomId;
             this.roomName = roomName;
+            this.roomPricePerNight = pricePerNight
         },
 
         // Async action to fetch room data from the API

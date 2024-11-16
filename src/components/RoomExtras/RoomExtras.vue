@@ -21,26 +21,25 @@ export default {
 
     availableExtras() {
       return this.selectedRoom.extras.filter(extra => Object.values(extra)[0] === 1);
-    },
-
-    translateExtras() {
-      return this.extras.replace("bathroom", "Badezimmer" && "minibar", "Minibar")
-    },
-
-
+    }
   },
+
+
   methods: {
+
     extraName(extra) {
       return Object.keys(extra)[0];
-    },
+    }
+    ,
     iconUrl(extra) {
       const key = Object.keys(extra)[0].split(" ")[0];
       return `/images/Icons/${key}.svg`;
-    },
-
-
+    }
+    ,
   }
 }
+
+
 </script>
 
 <template>
