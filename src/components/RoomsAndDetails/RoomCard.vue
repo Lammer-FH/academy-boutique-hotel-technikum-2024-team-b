@@ -33,14 +33,15 @@ export default {
       return extras.some(extra => extra['handicapped accessible'] === 1);
     },
     handlePrimaryButtonClick() {
-      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
+      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
+      console.log(this.pricePerNight)
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId}
       });
     },
     handleSecondaryButtonClick() {
-      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
+      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId, scrollTo: 'availability'}
