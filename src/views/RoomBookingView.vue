@@ -1,13 +1,15 @@
 <script>
 import Impressum from "@/components/StaticPagesAndNavbar/Impressum.vue";
+import RoomBooking from "@/components/Booking/RoomBooking.vue";
 
 export default {
-  name: "ImpressumView",
-  components: {Impressum}
+  name: "RoomBookingView",
+  components: {RoomBooking, Impressum}
 }
 </script>
+
 <template>
-  <Impressum/>
+  <RoomBooking/>
 </template>
 
 <style scoped>

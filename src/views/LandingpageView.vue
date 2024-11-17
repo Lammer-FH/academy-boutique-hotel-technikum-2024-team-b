@@ -1,7 +1,7 @@
 <script>
-import Navbar from "@/components/NavbarHeader.vue";
-import Cards from "@/components/LandingPageCard.vue";
-import headingLandingpage from "@/components/HeadingLandingpage.vue";
+import Navbar from "@/components/StaticPagesAndNavbar/NavbarHeader.vue";
+import Cards from "@/components/StaticPagesAndNavbar/LandingPageCard.vue";
+import headingLandingpage from "@/components/StaticPagesAndNavbar/HeadingLandingpage.vue";
 import {BCardGroup} from "bootstrap-vue-3";
 
 export default {
@@ -26,7 +26,7 @@ export default {
         {
           title: "Unsere Zimmer",
           cardText: "Unsere Zimmer im Boutique-Hotel Technikum bieten stilvolles Design, modernen Komfort und gemütliche Atmosphäre für einen unvergesslichen Aufenthalt.",
-          imageSrc: "/images/Rooms/2.jpeg",
+          imageSrc: "/images/Rooms/2.jpg",
           imageAlternativeText: "Picture of a Room",
           primaryButtonRoute: "rooms"
         },
@@ -47,7 +47,7 @@ export default {
   <b-container fluid class="text-center">
     <b-row class="justify-content-center">
       <b-col sm="12" md="12" lg="8">
-        <heading-landingpage></heading-landingpage>
+        <heading-landingpage/>
         <b-card-group deck>
           <cards
               primary-button-text="Mehr erfahren"

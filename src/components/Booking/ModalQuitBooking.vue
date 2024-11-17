@@ -1,16 +1,15 @@
 <script>
-import AppModal from "@/components/nicht verwendet/AppModal.vue";
 import router from "@/router";
 
 export default {
-  name: "ModalRoomAvailable",
+  name: "ModalQuitBooking",
 
   props: {
     modelValue: Boolean,
   },
   data() {
     return {
-      message: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar',
+      message: 'Sind Sie sicher, dass Sie den Buchungsprozess abbrechen wollen?',
     }
   },
 
@@ -21,16 +20,17 @@ export default {
         return this.modelValue;
       },
       set(value) {
-        this.$emit('update:modelValue', value); // Sync with parent
+        this.$emit('update:modelValue', value);
       },
     },
   },
 
   methods: {
     handleOk() {
-      this.modalShow = false;
+      this.isVisible = false;
       router.push('home');
     },
+
   }
 }
 </script>
@@ -38,12 +38,12 @@ export default {
 
 <template>
   <div>
-    <b-modal v-model="isVisible" title="Verfügbarkeit" ok-only ok-title="Jetzt Buchen" @ok="handleOk">{{ message }}
+    <b-modal v-model="isVisible" title="Buchung abbrechen" ok-title="Ja" cancel-title="Zurück zur Buchung" @ok="handleOk">{{ message }}
 
     </b-modal>
   </div>
-</template>
 
+ </template>
 
 <style scoped>
 

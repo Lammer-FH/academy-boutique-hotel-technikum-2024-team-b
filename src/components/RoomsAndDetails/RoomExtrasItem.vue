@@ -14,8 +14,8 @@ export default {
 
 <template>
   <div class="extras">
-    <img :src="icon" height="20" width="20" alt="dekorativer Icon"/>
-    {{ name }}</div><br>
+    <img :src="icon" height="20" width="20" alt="Icon für Extra"/>
+    {{ name }}</div>
 </template>
 
 <style scoped>

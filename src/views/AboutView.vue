@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import About from '../components/About.vue';
+import About from '../components/StaticPagesAndNavbar/About.vue';
 
 </script>
 
