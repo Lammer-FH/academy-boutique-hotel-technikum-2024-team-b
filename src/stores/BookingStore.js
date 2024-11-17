@@ -50,7 +50,6 @@ export const useBookingStore = defineStore('booking', {
                 this.availability = response.data.available;
             }  )
                 .catch(error => {
-                    //handle error
                     console.log(error)
                 })
         },
