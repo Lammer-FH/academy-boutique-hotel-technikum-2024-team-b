@@ -1,13 +1,11 @@
 <script>
 export default {
-  name: "Header_Landingpage"
+  name: "HeadingRoomsSummary"
 }
 </script>
 
 <template>
-
-        <h1>Boutique-Hotel Technikum</h1><br><br>
-
+<h1>Unsere Zimmer</h1>
 </template>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup>
-import NavbarHeader from "@/components/NavbarHeader.vue";
+import NavbarHeader from "@/components/StaticPagesAndNavbar/NavbarHeader.vue";
 </script>
 
 <template>
