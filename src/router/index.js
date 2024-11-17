@@ -13,7 +13,7 @@ import ConfirmationView from "@/views/ConfirmationView.vue";
 const router = createRouter({
     scrollBehavior(to, from, savedPosition) {
         if (to.params.scrollTo === 'availability') {
-            return {el: '#availability', offset: 0};
+            return {el: '#availability'};
         }
         return {top: 0, left: 0}
     },
