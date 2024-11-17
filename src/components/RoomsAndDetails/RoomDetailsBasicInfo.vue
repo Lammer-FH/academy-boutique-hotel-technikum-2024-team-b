@@ -1,6 +1,6 @@
 <script>
-import RoomDescription from "@/components/RoomDescription.vue";
-import RoomExtras from "@/components/RoomExtras/RoomExtras.vue";
+import RoomDescription from "@/components/RoomsAndDetails/RoomDescription.vue";
+import RoomExtras from "@/components/RoomsAndDetails/RoomExtras.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {

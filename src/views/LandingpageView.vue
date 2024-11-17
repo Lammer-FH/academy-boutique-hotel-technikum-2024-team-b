@@ -1,7 +1,7 @@
 <script>
-import Navbar from "@/components/NavbarHeader.vue";
-import Cards from "@/components/LandingPageCard.vue";
-import headingLandingpage from "@/components/HeadingLandingpage.vue";
+import Navbar from "@/components/StaticPagesAndNavbar/NavbarHeader.vue";
+import Cards from "@/components/StaticPagesAndNavbar/LandingPageCard.vue";
+import headingLandingpage from "@/components/StaticPagesAndNavbar/HeadingLandingpage.vue";
 import {BCardGroup} from "bootstrap-vue-3";
 
 export default {

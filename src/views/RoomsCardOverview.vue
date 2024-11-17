@@ -1,7 +1,7 @@
 <script>
-import HeadingRoomsSummary from "@/components/HeadingRoomsSummary.vue";
+import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummary.vue";
 import {BCardGroup} from "bootstrap-vue-3";
-import RoomCard from "@/components/RoomCard.vue";
+import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {

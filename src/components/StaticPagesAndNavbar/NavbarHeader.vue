@@ -1,7 +1,7 @@
 <script>
 import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle} from "bootstrap-vue-3";
-import IconUser from "@/components/icons/IconUser.vue";
-import IconHome from "@/components/icons/IconHome.vue";
+import IconUser from "@/components/Icons/IconUser.vue";
+import IconHome from "@/components/Icons/IconHome.vue";
 
 
 export default {

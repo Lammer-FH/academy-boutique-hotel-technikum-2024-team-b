@@ -1,5 +1,5 @@
 <script>
-import Confirmation from "@/components/Confirmation.vue";
+import Confirmation from "@/components/AvailabilityAndConformation/Confirmation.vue";
 
 export default {
   name: "ConfirmationView",

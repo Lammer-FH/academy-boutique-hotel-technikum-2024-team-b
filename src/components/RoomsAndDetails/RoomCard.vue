@@ -64,7 +64,7 @@ export default {
       <span v-if="extras && extras['handicapped accessible']" class="accessible">Wheelchair</span>
       <span id="price"> Price: ${{ pricePerNight }}</span>
     </div>
-    <div class="d-flex justify-content-evenly">
+    <div class="d-flex flex-column flex-sm-row justify-content-evenly gap-2">
       <b-button @click="handlePrimaryButtonClick" variant="primary">
         {{ primaryButtonText }}
       </b-button>
@@ -76,7 +76,6 @@ export default {
 </template>
 
 <style scoped>
-
 .roomExtras {
   font-size: 1em;
   display: flex;
@@ -88,4 +87,18 @@ export default {
   font-weight: bold;
 }
 
+@media (max-width: 576px) {
+  .room-card {
+    padding: 1rem;
+  }
+
+  .roomExtras {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #price {
+    margin-top: 0.5rem;
+  }
+}
 </style>
