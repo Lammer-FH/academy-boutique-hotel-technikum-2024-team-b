@@ -66,7 +66,7 @@ export default {
         <span v-for="index in beds" class="bed-icon"><Beds/></span>
       </div>
       <span v-if="hasHandicappedAccess(extras)"><Handicapped/></span>
-      <span id="price"> Price: ${{ pricePerNight }}</span>
+      <span id="price"> Preis p.N.: €{{ pricePerNight }} </span>
     </div>
     <div class="d-flex flex-column flex-sm-row justify-content-evenly gap-2">
       <b-button @click="handlePrimaryButtonClick" variant="primary">
