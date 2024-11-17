@@ -1,6 +1,7 @@
 <script>
 import router from "@/router";
 import {useBookingStore} from "@/stores/BookingStore";
+import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "ModalRoomAvailable",
@@ -11,6 +12,7 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
+      roomStore: useRoomsStore(),
       messageAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt verfügbar.',
       messageNotAvailable: 'Das Zimmer ist zum ausgewählten Zeitpunkt leider nicht verfügbar. Wählen Sie ein anderes Zimmer oder einen anderen Zeitpunkt.',
     }
@@ -31,12 +33,15 @@ export default {
   methods: {
     handleOk() {
       this.isVisible = false;
-      router.push('room-booking');
+      router.push("/room-booking");
     },
 
     handleDifferentRoom() {
       this.modalShow = false;
-      router.push('rooms');
+      router.push({
+        name: 'roomDetail',
+        params: {roomId: this.roomId}
+      });
     }
   }
 }

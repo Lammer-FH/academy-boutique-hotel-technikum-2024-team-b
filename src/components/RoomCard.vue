@@ -1,6 +1,7 @@
 <script>
 import {BButton, BCard, BCardText} from "bootstrap-vue-3";
 import {useRoomsStore} from "@/stores/RoomsStore";
+import router from "@/router";
 
 export default {
   name: "RoomCard",
@@ -27,15 +28,15 @@ export default {
   },
   methods: {
     handlePrimaryButtonClick() {
-      this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
-      this.$router.push({
+      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
+      router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId}
       });
     },
     handleSecondaryButtonClick() {
-      this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
-      this.$router.push({
+      this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
+      router.push({
         name: 'roomDetail',
         params: { roomId: this.roomId, scrollTo: 'availability' }
       });

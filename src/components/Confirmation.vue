@@ -1,9 +1,11 @@
 <script>
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "Confirmation",
+  components: {BContainer},
 
   data() {
     return {
@@ -24,7 +26,7 @@ export default {
     },
 
     handleChange() {
-      router.push('room-booking')
+      router.push('/room-booking')
     }
   }
 }

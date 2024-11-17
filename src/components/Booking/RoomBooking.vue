@@ -30,11 +30,14 @@ export default {
     },
 
     handleChangeRoom() {
-      router.push('rooms');
+      router.push("/rooms");
     },
 
     handleChangeDates() {
-      router.push('room-detail')
+      router.push({
+        name: 'roomDetail',
+        params: {roomId: this.bookingData.roomId}
+      });
     }
   }
 };
