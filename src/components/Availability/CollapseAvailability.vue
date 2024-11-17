@@ -97,9 +97,10 @@ export default {
     <ModalRoomAvailable v-model="modalShow"/>
   </div>
 
-   <b-container fluid class="text-center">
 
-    <a href="#" @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+  <b-container fluid class="text-center" id="availability">
+
+    <a href="#" @click.prevent="changeVisibilityCollapse" id="availability" class="btn-link">Buchungszeitraum auswählen</a>
 
     <b-collapse v-model="isCollapsed">
 <br>

@@ -1,36 +1,39 @@
 <script>
-
 import RoomDescription from "@/components/RoomDescription.vue";
 import RoomExtras from "@/components/RoomExtras/RoomExtras.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "RoomDetailsBasicInfo",
-  methods: {useRoomsStore},
   components: {RoomExtras, RoomDescription},
 
   data() {
     return {
       roomData: useRoomsStore(),
-
-    }
+    };
   },
   computed: {
-    // Use the getter to fetch the room by its ID
     selectedRoom() {
+      console.log(this.roomData.roomId)
+      console.log(this.selectedRoom);
       return this.roomData.getRoomById();
+
     },
 
     imageUrl() {
       return `/images/Rooms/${this.roomData.roomId}.jpg`;
     },
   },
-}
-
+  async mounted() {
+    await useRoomsStore().checkRooms();
+    parseInt(this.$route.params.roomId, 10);
+    this.roomData.setRoomId(this.roomData.roomId);
+  }
+};
 </script>
 <template>
 
-  <h1>{{roomData.roomName}}</h1><br><br>
+  <h1>{{ roomData.roomName }}</h1><br><br>
   <b-img :src="imageUrl" alt="Zimmerbild" fluid-grow class="mb-2"></b-img>
 
   <div class="room-info">
@@ -70,11 +73,9 @@ p {
 
 .room-info {
   display: flex;
-  justify-content: space-between; /* Pushes the price to the right */
+  justify-content: space-between;
   align-items: center;
   height: 40px
-  /* Ensures the container stretches across the full width */
-
 }
 
 .bed-info {

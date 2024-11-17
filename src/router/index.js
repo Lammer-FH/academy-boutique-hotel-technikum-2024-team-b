@@ -11,7 +11,10 @@ import ConfirmationView from "@/views/ConfirmationView.vue";
 
 
 const router = createRouter({
-    scrollBehavior() {
+    scrollBehavior(to, from, savedPosition) {
+        if (to.params.scrollTo === 'availability') {
+            return {el: '#availability', offset: 0};
+        }
         return {top: 0, left: 0}
     },
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,9 +40,10 @@ const router = createRouter({
             component: GettingHereView
         },
         {
-            path: '/room-detail',
+            path: '/room-detail/:roomId/:scrollTo?',
             name: 'roomDetail',
-            component: RoomDetailAndAvailabilityView
+            component: RoomDetailAndAvailabilityView,
+            props: true
         },
 
         {
