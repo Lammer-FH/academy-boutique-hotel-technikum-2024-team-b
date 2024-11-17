@@ -47,9 +47,7 @@ export default {
     }
   },
   async created() {
-    await useRoomsStore().checkRooms();// Make sure checkRooms is called here to populate rooms
-    console.log(useRoomsStore().rooms)
-    console.log(useRoomsStore().roomId);
+    await useRoomsStore().checkRooms();
 
   }
 };
@@ -91,6 +89,7 @@ export default {
   </b-container>
 </template>
 <style scoped>
+
 .room-card {
   width: 650px;
   height: auto;

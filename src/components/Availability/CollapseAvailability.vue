@@ -85,9 +85,9 @@ export default {
   </div>
 
 
-  <b-container fluid class="text-center">
+  <b-container fluid class="text-center" id="availability">
 
-    <a href="#" @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+    <a href="#" @click.prevent="changeVisibilityCollapse" id="availability" class="btn-link">Buchungszeitraum auswählen</a>
 
     <b-collapse v-model="isCollapsed">
 <br>

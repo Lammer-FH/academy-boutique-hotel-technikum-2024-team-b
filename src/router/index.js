@@ -8,7 +8,10 @@ import RoomsSummary from "@/views/RoomsCardOverview.vue";
 
 
 const router = createRouter({
-    scrollBehavior() {
+    scrollBehavior(to, from, savedPosition) {
+        if (to.params.scrollTo === 'availability') {
+            return {el: '#availability', offset: 0};
+        }
         return {top: 0, left: 0}
     },
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +37,7 @@ const router = createRouter({
             component: GettingHereView
         },
         {
-            path: '/room-detail/:roomId',
+            path: '/room-detail/:roomId/:scrollTo?',
             name: 'roomDetail',
             component: RoomDetailAndAvailabilityView,
             props: true

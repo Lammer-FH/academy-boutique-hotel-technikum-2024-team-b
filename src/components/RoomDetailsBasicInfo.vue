@@ -25,11 +25,9 @@ export default {
     },
   },
   async mounted() {
-    if (this.roomData.roomId === null) {
-      await useRoomsStore().checkRooms();
-      parseInt(this.$route.params.roomId, 10);
-      this.roomData.setRoomId(this.roomData.roomId);
-    }
+    await useRoomsStore().checkRooms();
+    parseInt(this.$route.params.roomId, 10);
+    this.roomData.setRoomId(this.roomData.roomId);
   }
 };
 </script>
@@ -75,11 +73,9 @@ p {
 
 .room-info {
   display: flex;
-  justify-content: space-between; /* Pushes the price to the right */
+  justify-content: space-between;
   align-items: center;
   height: 40px
-  /* Ensures the container stretches across the full width */
-
 }
 
 .bed-info {
@@ -93,35 +89,3 @@ p {
 }
 
 </style>
-
-/*id: 3,
-roomsNumber: "102",
-roomName: "Default Double Bedroom",
-beds: 2,
-pricePerNight: 120,
-extras: [
-{
-"bathroom": 1
-},
-{
-"minibar": 1
-},
-{
-"television": 1
-},
-{
-"livingroom": 1
-},
-{
-"aircondition": 1
-},
-{
-"wifi": 1
-},
-{
-"breakfast": 1
-},
-{
-"handicapped accessible": 1
-}
-]*/

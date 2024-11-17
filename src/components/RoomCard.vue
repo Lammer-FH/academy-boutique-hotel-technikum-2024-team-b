@@ -32,6 +32,14 @@ export default {
         name: 'roomDetail',
         params: {roomId: this.roomId}
       });
+    },
+    handleSecondaryButtonClick() {
+      this.roomsData.setRoomIdAndName(this.roomId, this.roomName);
+      this.$router.push({
+        name: 'roomDetail',
+        params: { roomId: this.roomId, scrollTo: 'availability' }
+      });
+
     }
   }
 }
@@ -59,7 +67,7 @@ export default {
       <b-button @click="handlePrimaryButtonClick" variant="primary">
         {{ primaryButtonText }}
       </b-button>
-      <b-button :to="secondaryButtonRoute" variant="secondary">
+      <b-button @click="handleSecondaryButtonClick" variant="secondary">
         {{ secondaryButtonText }}
       </b-button>
     </div>
