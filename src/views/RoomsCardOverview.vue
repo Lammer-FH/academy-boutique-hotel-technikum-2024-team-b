@@ -3,6 +3,7 @@ import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummar
 import {BCardGroup} from "bootstrap-vue-3";
 import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
+import {nextTick} from "vue";
 
 export default {
   name: "RoomsSummary",
@@ -48,7 +49,6 @@ export default {
   },
   async created() {
     await useRoomsStore().checkRooms();
-
   }
 };
 </script>
@@ -74,7 +74,7 @@ export default {
               primaryButtonText="Mehr erfahren"
               secondary-button-text="Verfügbarkeit"
               secondaryButtonRoute=""
-              />
+          />
         </b-card-group>
         <div class="d-flex justify-content-center my-4">
           <b-pagination
