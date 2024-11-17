@@ -1,11 +1,12 @@
 <script>
-import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
+import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import {useRoomsStore} from "@/stores/RoomsStore";
+import {BButton} from "bootstrap-vue-3";
 
 export default {
   name: "CollapseAvailability",
-  components: {ModalRoomAvailable},
+  components: {BButton, ModalRoomAvailable},
 
   data() {
     return {
@@ -29,6 +30,14 @@ export default {
       this.arrival_date = '';
       this.departure_date = '';
       this.isCollapsed = !this.isCollapsed;
+    },
+
+    // because of OPTIONS API workaround with vanilla JS
+    scrollToCollapse(elementId = 'collapseElement') {
+      this.$nextTick(() => {
+        let scrollToElement = document.getElementById(elementId);
+          scrollToElement.scrollIntoView({ behavior: 'smooth' });
+      });
     },
 
     async checkRoomAvailability() {
@@ -71,20 +80,7 @@ export default {
     showModal() {
       this.modalShow = true
 
-    },
-
-
-
-    scrollToCollapse() {
-      // Nutze scrollIntoView, um den Bereich des Collapses sichtbar zu machen
-      this.$nextTick(() => {
-        const collapseElement = this.collapse;
-        if (collapseElement) {
-          collapseElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    },
-
+    }
   }
 }
 
@@ -100,16 +96,16 @@ export default {
 
   <b-container fluid class="text-center" id="availability">
 
-    <a href="#" @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+    <a @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
-    <b-collapse v-model="isCollapsed">
-<br>
+    <b-collapse v-model="isCollapsed" @shown="scrollToCollapse" id="collapseElement">
+      <br>
       <b>Bitte wählen Sie ein Datum aus:</b><br><br>
       <p class="error" v-if="!validInput">{{ errormessage }}</p>
       <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
         Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
       </p><br>
-      <b-button variant="primary" v-on:click="checkRoomAvailability">Verfügbarkeit prüfen</b-button>
+      <b-button variant="primary" v-on:click="checkRoomAvailability"  >Verfügbarkeit prüfen</b-button>
 
     </b-collapse>
 
