@@ -47,7 +47,7 @@ export default {
   <b-container fluid class="text-center">
     <b-row class="justify-content-center">
       <b-col sm="12" md="12" lg="8">
-        <heading-landingpage></heading-landingpage>
+        <heading-landingpage/>
         <b-card-group deck>
           <cards
               primary-button-text="Mehr erfahren"

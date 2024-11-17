@@ -14,8 +14,6 @@ export default {
   },
   computed: {
     selectedRoom() {
-      console.log(this.roomData.roomId)
-      console.log(this.selectedRoom);
       return this.roomData.getRoomById();
 
     },

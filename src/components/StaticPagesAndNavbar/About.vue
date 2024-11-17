@@ -1,7 +1,10 @@
 <script>
 
+import {BContainer} from "bootstrap-vue-3";
+
 export default {
-  name: "About"
+  name: "About",
+  components: {BContainer}
 }
 </script>
 

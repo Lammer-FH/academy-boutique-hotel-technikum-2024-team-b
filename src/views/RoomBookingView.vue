@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <RoomBooking></RoomBooking>
+  <RoomBooking/>
 </template>
 
 <style scoped>

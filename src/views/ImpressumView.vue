@@ -7,7 +7,7 @@ export default {
 }
 </script>
 <template>
-  <Impressum></Impressum>
+  <Impressum/>
 </template>
 
 <style scoped>

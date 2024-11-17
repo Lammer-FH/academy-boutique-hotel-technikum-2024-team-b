@@ -44,9 +44,6 @@ export default {
       if (this.validateInput()) {
         this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight)
         await this.bookingData.checkAvailability()
-        console.log(this.bookingData.numberNights)
-        console.log(this.bookingData.roomName)
-        console.log(this.bookingData.roomId)
         this.showModal()
       }
     },

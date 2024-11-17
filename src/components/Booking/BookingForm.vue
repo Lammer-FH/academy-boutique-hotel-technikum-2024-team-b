@@ -2,9 +2,11 @@
 
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
+import {BForm} from "bootstrap-vue-3";
 
 export default {
   name: "BookingForm",
+  components: {BForm},
 
   data() {
     return {
@@ -26,7 +28,6 @@ export default {
     saveInput() {
       if (this.validateInput()) {
         this.bookingData.setUserData(this.form.firstName, this.form.lastName, this.form.birthDate, this.form.email);
-        console.log(this.bookingData.firstName, this.bookingData.lastName, this.form.birthDate, this.form.email);
         router.push('confirmation')
       }
     },
@@ -55,7 +56,7 @@ export default {
         <b-form-input
             id="firstname"
             v-model="form.firstName"
-            required
+            required=""
         ></b-form-input>
       </b-form-group>
 

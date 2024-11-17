@@ -3,11 +3,10 @@ import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummar
 import {BCardGroup} from "bootstrap-vue-3";
 import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-import {nextTick} from "vue";
 
 export default {
-  name: "RoomsSummary",
-  components: {RoomCard, BCardGroup, HeadingRoomsSummary},
+  name: "RoomCards",
+  components: {RoomCard, BCardGroup},
 
   data() {
     return {
@@ -53,12 +52,7 @@ export default {
 };
 </script>
 
-
 <template>
-  <b-container fluid class="text-center">
-    <b-row class="justify-content-center p-2">
-      <b-col sm="12" md="12" lg="8">
-        <HeadingRoomsSummary/>
         <b-card-group deck>
           <RoomCard
               v-for="room in paginatedRooms"
@@ -84,9 +78,6 @@ export default {
               @change="handlePageChange"
           />
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
 </template>
 <style scoped>
 

@@ -1,6 +1,9 @@
 <script>
+import {BContainer} from "bootstrap-vue-3";
+
 export default {
-  name: "Impressum"
+  name: "Impressum",
+  components: {BContainer}
 }
 </script>
 

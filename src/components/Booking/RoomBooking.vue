@@ -4,10 +4,12 @@ import BookingForm from "@/components/Booking/BookingForm.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import ModalQuitBooking from "@/components/Booking/ModalQuitBooking.vue";
 import router from "@/router";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "RoomBooking",
   components: {
+    BContainer,
     ModalQuitBooking,
     BookingForm
   },
