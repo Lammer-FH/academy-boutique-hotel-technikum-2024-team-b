@@ -10,7 +10,7 @@ export default {
   components: {BContainer, RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability},
 
   async created() {
-    await useRoomsStore().checkRooms();  // Make sure checkRooms is called here to populate rooms
+    await useRoomsStore().checkRooms();
   }
 }
 </script>

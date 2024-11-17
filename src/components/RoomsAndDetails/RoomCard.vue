@@ -2,10 +2,12 @@
 import {BButton, BCard, BCardText} from "bootstrap-vue-3";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import router from "@/router";
+import Beds from "@/components/Icons/Beds.vue";
+import Handicapped from "@/components/Icons/Handicapped.vue";
 
 export default {
   name: "RoomCard",
-  components: {BButton, BCard, BCardText},
+  components: {Handicapped, Beds, BButton, BCard, BCardText},
   props: {
     roomName: {type: String, required: true},
     roomId: {type: Number, required: true},
@@ -27,6 +29,9 @@ export default {
     }
   },
   methods: {
+    hasHandicappedAccess(extras) {
+      return extras.some(extra => extra['handicapped accessible'] === 1);
+    },
     handlePrimaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
       router.push({
@@ -38,9 +43,8 @@ export default {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.roomsData.roomPricePerNight);
       router.push({
         name: 'roomDetail',
-        params: { roomId: this.roomId, scrollTo: 'availability' }
+        params: {roomId: this.roomId, scrollTo: 'availability'}
       });
-
     }
   }
 }
@@ -59,9 +63,9 @@ export default {
   >
     <div class="roomExtras">
       <div class="justify-content-around">
-        <span v-for="index in beds">Bed</span>
+        <span v-for="index in beds" class="bed-icon"><Beds/></span>
       </div>
-      <span v-if="extras && extras['handicapped accessible']" class="accessible">Wheelchair</span>
+      <span v-if="hasHandicappedAccess(extras)"><Handicapped/></span>
       <span id="price"> Price: ${{ pricePerNight }}</span>
     </div>
     <div class="d-flex flex-column flex-sm-row justify-content-evenly gap-2">
@@ -76,6 +80,10 @@ export default {
 </template>
 
 <style scoped>
+.bed-icon {
+  margin-right: 5px;
+}
+
 .roomExtras {
   font-size: 1em;
   display: flex;
