@@ -6,7 +6,9 @@ export const useRoomsStore = defineStore('rooms', {
         roomId: 1,
         roomName: "",
         roomPricePerNight: 0,
-        rooms: []
+        rooms: [],
+        isLoaded: true,
+
     }),
     getters: {
         getRoomById: (state) => {
@@ -26,20 +28,14 @@ export const useRoomsStore = defineStore('rooms', {
             this.roomId = roomId;
         },
 
-        // Async action to fetch room data from the API
-        async checkRooms() {
+        async fetchRooms() {
             const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/rooms`;
-
             try {
-                const response = await axios.get(apiUrl);
-                // Assuming the response is an array directly, otherwise, adjust based on your API response structure
-                if (Array.isArray(response.data)) {
-                    this.rooms = response.data; // Assign the response data to rooms
-                } else {
-                    console.error("API response is not in the expected format.");
-                }
+                let response = await axios.get(apiUrl);
+                this.rooms = response.data;
+
             } catch (error) {
-                console.error("Error fetching rooms: ", error);
+                this.isLoaded = false;
             }
         }
     }
