@@ -34,7 +34,6 @@ export default {
     },
     handlePrimaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
-      console.log(this.pricePerNight)
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId}

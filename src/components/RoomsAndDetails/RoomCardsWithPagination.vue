@@ -47,7 +47,7 @@ export default {
     }
   },
   async created() {
-    await useRoomsStore().checkRooms();
+    await useRoomsStore().fetchRooms();
   }
 };
 </script>

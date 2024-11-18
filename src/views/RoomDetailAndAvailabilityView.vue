@@ -4,13 +4,16 @@ import RoomDetailsBasicInfo from "@/components/RoomsAndDetails/RoomDetailsBasicI
 import RoomExtraItem from "@/components/RoomsAndDetails/RoomExtrasItem.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import {BContainer} from "bootstrap-vue-3";
+import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";
 
 export default {
   name: "RoomDetailAndAvailabilityView",
-  components: {BContainer, RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability},
+  components: {Error, BContainer, RoomExtraItem, RoomDetailsBasicInfo, CollapseAvailability},
 
-  async created() {
-    await useRoomsStore().checkRooms();
+  data() {
+    return {
+      roomData: useRoomsStore()
+    }
   }
 }
 </script>
@@ -21,6 +24,7 @@ export default {
       <b-col sm="12" md="8" lg="6">
         <RoomDetailsBasicInfo/>
         <CollapseAvailability/>
+        <Error v-if="roomData.isLoaded === false"/>
       </b-col>
     </b-row>
   </b-container>

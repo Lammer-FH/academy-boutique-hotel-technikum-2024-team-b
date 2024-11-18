@@ -1,10 +1,15 @@
 <script>
-import Impressum from "@/components/StaticPagesAndNavbar/Impressum.vue";
 import RoomBooking from "@/components/Booking/RoomBooking.vue";
+import {useBookingStore} from "@/stores/BookingStore";
 
 export default {
   name: "RoomBookingView",
-  components: {RoomBooking, Impressum}
+  components: {RoomBooking},
+  data() {
+    return {
+      bookingData: useBookingStore()
+    }
+  }
 }
 </script>
 

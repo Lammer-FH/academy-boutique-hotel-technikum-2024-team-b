@@ -23,7 +23,7 @@ export default {
     },
   },
   async mounted() {
-    await useRoomsStore().checkRooms();
+    await useRoomsStore().fetchRooms();
     parseInt(this.$route.params.roomId, 10);
     this.roomData.setRoomId(this.roomData.roomId);
   }

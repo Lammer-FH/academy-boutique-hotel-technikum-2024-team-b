@@ -16,11 +16,13 @@ export const useBookingStore = defineStore('booking', {
         departureDate: "",
         availability: false,
         bookingId: null,
+        isLoading: true,
+        isSentToBackend: true,
 
     }),
     getters: {
-       numberNights(state) {
-            return (new Date(state.departureDate) - new Date(state.arrivalDate))/(1000 * 3600 * 24);
+        numberNights(state) {
+            return (new Date(state.departureDate) - new Date(state.arrivalDate)) / (1000 * 3600 * 24);
 
         }
     },
@@ -43,35 +45,30 @@ export const useBookingStore = defineStore('booking', {
 
 
         async checkAvailability() {
-            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`
-
-            await axios.get(apiUrl)
-                .then(response => {
+            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`;
+            try {
+                const response = await axios.get(apiUrl);
                 this.availability = response.data.available;
-            }  )
-                .catch(error => {
-                    console.log(error)
-                })
+            } catch (error) {
+                this.isLoaded = false;
+            }
         },
 
-        saveBooking() {
-            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`
+        async saveBooking() {
+            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`;
 
-            axios.post(apiUrl, {
-                firstname: this.firstName,
-                lastname: this.lastName,
-                email: this.emailAdresse,
-                birthdate: this.birthDate
-            })
-                .then((response) => {
-                    this.bookingId = response.data.id;
-                    console.log(response)
-
-
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+            try {
+                const response = await axios.post(apiUrl, {
+                    firstname: this.firstName,
+                    lastname: this.lastName,
+                    email: this.emailAdresse,
+                    birthdate: this.birthDate
+                });
+                this.bookingId = response.data.id;
+                alert("Buchung eingegangen")
+            } catch (error) {
+                this.isSentToBackend = false;
+            }
         }
     }
-})
+});

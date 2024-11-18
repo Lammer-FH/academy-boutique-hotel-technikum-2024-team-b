@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-<p>Oops, something went wrong. Try to Reaload the page</p>
+<p>Oops, es ist etwas schief gegangen. Versuchen Sie die Seite neu zu laden.</p>
 </template>
 
 <style scoped>
