@@ -1,6 +1,10 @@
-<script setup lang="ts">
-import About from '../components/StaticPagesAndNavbar/About.vue';
+<script>
+import About from "@/components/StaticPagesAndNavbar/About.vue";
 
+export default {
+name: "AboutView",
+  components: {About}
+}
 </script>
 
 <template>
@@ -9,9 +13,6 @@ import About from '../components/StaticPagesAndNavbar/About.vue';
   </main>
 </template>
 
+<style scoped>
 
-<style>
-@media (min-width: 1024px) {
-
-}
 </style>
