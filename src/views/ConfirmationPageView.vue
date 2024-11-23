@@ -18,6 +18,12 @@ export default {
     handleBook() {
       this.bookingData.saveBooking();
       router.push('/confirmation');
+    },
+    handlePrint() {
+      window.print();
+    },
+    goToHomepage() {
+      router.push('/home');
     }
   }
 };
@@ -29,9 +35,10 @@ export default {
       <b-col sm="12" md="8" lg="6">
         <div>
           <h1>Ihre Buchung war erfolgreich!</h1>
-          <p>Folgendes Zimmer wurde für den Zeitraum {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }} gebucht:</p>
+          <p>Folgendes Zimmer wurde für den Zeitraum {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}
+            gebucht:</p>
 
-          <RoomDetailsBasicInfo />
+          <RoomDetailsBasicInfo/>
 
           <h5>Ihre persönlichen Daten:</h5>
           <p>
@@ -40,7 +47,12 @@ export default {
           </p>
 
           <h5>Wie kommen Sie zu uns:</h5>
-          <GettingHere />
+          <GettingHere/>
+
+          <div class="button-container mt-4">
+            <b-button size="lg" variant="primary" @click="handlePrint">Drucken</b-button>
+            <b-button size="lg" variant="secondary" @click="goToHomepage" class="ms-3">Startseite</b-button>
+          </div>
         </div>
       </b-col>
     </b-row>
@@ -50,5 +62,9 @@ export default {
 <style scoped>
 .highlight {
   font-weight: bold;
+}
+
+.button-container {
+  text-align: center;
 }
 </style>
