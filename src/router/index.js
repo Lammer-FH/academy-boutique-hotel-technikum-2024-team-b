@@ -7,6 +7,7 @@ import RoomDetailAndAvailabilityView from "@/views/RoomDetailAndAvailabilityView
 import RoomsSummary from "@/views/RoomsCardsView.vue";
 import RoomBookingView from "@/views/RoomBookingView.vue";
 import ConfirmationView from "@/views/ConfirmationView.vue";
+import ConfirmationPageView from "@/views/ConfirmationPageView.vue";
 
 
 
@@ -62,6 +63,12 @@ const router = createRouter({
             path: '/confirmation',
             name: 'confirmation',
             component: ConfirmationView
+        },
+
+        {
+            path: '/confirmationPage',
+            name: 'ConfirmationPageView',
+            component: ConfirmationPageView
         },
     ]
 })

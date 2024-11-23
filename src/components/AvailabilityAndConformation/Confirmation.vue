@@ -10,25 +10,32 @@ export default {
   data() {
     return {
       bookingData: useBookingStore()
-    }
+    };
   },
 
   computed: {
     totalPrice() {
-      return this.bookingData.numberNights * this.bookingData.pricePerNight
+      return this.bookingData.numberNights * this.bookingData.pricePerNight;
     }
   },
 
   methods: {
-    handleBook() {
-      this.bookingData.saveBooking()
+    async handleBook() {
+      await this.bookingData.saveBooking();
+
+      // Only redirect if booking is successfully sent to backend
+      if (this.bookingData.isSentToBackend) {
+        await router.push('/confirmationPage');
+      } else {
+        alert("Es gab ein Problem bei der Buchung. Bitte versuchen Sie es erneut.");
+      }
     },
 
     handleChange() {
-      router.push('/room-booking')
+      router.push('/room-booking');
     }
   }
-}
+};
 </script>
 
 <template>
@@ -40,11 +47,7 @@ export default {
 
         <p>
           <span class="highlight">Zimmer:</span> {{ bookingData.roomName }}<br>
-
-          <span class="highlight">Buchungszeitraum:</span> {{ bookingData.arrivalDate }} - {{
-            bookingData.departureDate
-          }}<br>
-
+          <span class="highlight">Buchungszeitraum:</span> {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}<br>
           <span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>
           Frühstück ist inkludiert.
         </p><br>
