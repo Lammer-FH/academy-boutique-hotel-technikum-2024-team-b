@@ -1,9 +1,12 @@
 <script>
 
 import router from "@/router";
+import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
+import ModalRegistrationSuccessful from "@/components/Useractions/ModalRegistrationSuccessful.vue";
 
 export default {
   name: "Registration",
+  components: {ModalRegistrationSuccessful, ModalRoomAvailable},
   data() {
     return {
       //userData: useUserStore(),
@@ -19,7 +22,8 @@ export default {
 
       validInput: true,
       errormessage: '',
-      show: true
+      show: true,
+      modalShow: false,
 
     }
   },
@@ -29,7 +33,7 @@ export default {
     saveInput() {
       if (this.validateInput()) {
         this.userData.registerUser(this.form.firstName, this.form.lastName, this.form.email, this.form.birthDate, this.form.userName, this.form.password);
-        router.push('home')
+        this.showModal()
       }
     },
 
@@ -41,6 +45,10 @@ export default {
         return false
       }
       return true
+    },
+    showModal() {
+      this.modalShow = true
+
     }
   },
 }
@@ -48,6 +56,11 @@ export default {
 </script>
 
 <template>
+
+  <div>
+    <ModalRegistrationSuccessful v-model="modalShow"/>
+  </div>
+
   <b-container fluid>
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
