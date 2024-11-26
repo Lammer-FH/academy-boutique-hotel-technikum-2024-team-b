@@ -7,6 +7,7 @@ export const useLoggedInStore = defineStore('LoggedIn', {
         lastname: "",
         birthDate: "",
         emailAdresse: "",
+        token: localStorage.getItem("token"),
     }),
 
     actions: {
@@ -19,10 +20,9 @@ export const useLoggedInStore = defineStore('LoggedIn', {
                 const response = await axios.get(apiUrl, {
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        Accept: "application/json",
                     },
                 });
-
-                console.log("Response received:", response.data);
 
                 let { firstname, lastname, birthDate, emailAdresse } = response.data;
                 this.firstname = firstname;

@@ -1,22 +1,21 @@
 <script>
-
-import router from "@/router";
 import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
 import ModalRegistrationSuccessful from "@/components/Useractions/ModalRegistrationSuccessful.vue";
+import {useUserStore} from "@/stores/UserStore";
 
 export default {
   name: "Registration",
   components: {ModalRegistrationSuccessful, ModalRoomAvailable},
   data() {
     return {
-      //userData: useUserStore(),
+      userData: useUserStore(),
       form: {
         firstName: '',
         lastName: '',
         birthDate: '',
         email: '',
         userName: '',
-        passwort: '',
+        password: '',
         passwordConfirmation: ''
       },
 
@@ -135,11 +134,11 @@ export default {
               </b-form>
 
 
-              <b-button type="submit" variant="primary">Konto erstellen</b-button>
+              <b-button type="submit" variant="primary" @click="saveInput ">Konto erstellen</b-button>
             </b-form><br><br>
 
             <p>Haben Sie schon eine Account?<br>
-              <a href="/login">Zum Login</a>
+              <a to="/login">Zum Login</a>
             </p>
           </div>
         </div>

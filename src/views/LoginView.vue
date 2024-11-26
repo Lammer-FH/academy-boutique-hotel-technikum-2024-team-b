@@ -1,14 +1,15 @@
 <script>
 import Registration from "@/components/Useractions/Registration.vue";
+import Login from "@/components/Useractions/Login.vue";
 
 export default {
   name: "LoginView",
-  components: {Registration}
+  components: {Login, Registration}
 }
 </script>
 
 <template>
-  <Registration />
+  <login></login>
 </template>
 
 <style scoped>

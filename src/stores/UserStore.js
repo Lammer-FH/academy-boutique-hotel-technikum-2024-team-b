@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 import axios from "axios";
 
 
-export const useUserStore = defineStore('user', {
+export const useUserStore = defineStore('userStore', {
     state: () => ({
         wasSuccess: false,
     }),
@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', {
     actions: {
 
         async registerUser(firstName, lastName, birthDate, emailAdresse, username, password) {
-            const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/register';
+            const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/v1/register';
             try {
                 const response = await axios.post(apiUrl, {
                     firstname: firstName,
@@ -22,6 +22,7 @@ export const useUserStore = defineStore('user', {
                     password: password,
                 });
                 this.wasSuccess = true;
+                localStorage.setItem("token", response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -35,7 +36,7 @@ export const useUserStore = defineStore('user', {
                     clientID: clientID,
                     clientSecret: clientSecret,
                 });
-                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('token', response.data);
             } catch (error) {
                 console.log(error);
             }
