@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useRoomsStore = defineStore('rooms', {
     state: () => ({
-        roomId: 1,
+        roomId: null,
         roomName: "",
         roomPricePerNight: 0,
         rooms: [],

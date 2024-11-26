@@ -39,9 +39,8 @@ export default {
     handleDifferentRoom() {
       this.modalShow = false;
       router.push({
-        name: 'roomDetail',
-        params: {roomId: this.roomId}
-      });
+        name: '/rooms',}
+      );
     }
   }
 }

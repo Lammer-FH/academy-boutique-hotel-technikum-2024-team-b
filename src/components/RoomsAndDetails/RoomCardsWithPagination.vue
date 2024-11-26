@@ -3,7 +3,7 @@ import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummar
 import {BCardGroup} from "bootstrap-vue-3";
 import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-
+import router from "@/router";
 export default {
   name: "RoomCards",
   components: {RoomCard, BCardGroup},
