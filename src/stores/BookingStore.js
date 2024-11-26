@@ -64,8 +64,8 @@ export const useBookingStore = defineStore('booking', {
                     email: this.emailAdresse,
                     birthdate: this.birthDate
                 });
+                this.isSentToBackend = true;
                 this.bookingId = response.data.id;
-                alert("Buchung eingegangen")
             } catch (error) {
                 this.isSentToBackend = false;
             }

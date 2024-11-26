@@ -19,8 +19,7 @@ export default {
   <b-container fluid class="text-center">
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
-        <confirmation v-if="bookingData.isSentToBackend === true"/>
-        <ErrorPost v-if="bookingData.isSentToBackend === false"/>
+        <confirmation/>
       </b-col>
     </b-row>
   </b-container>
