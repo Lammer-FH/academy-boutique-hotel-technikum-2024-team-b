@@ -26,7 +26,7 @@ export const useRoomsStore = defineStore('rooms', {
         },
         setRoomId(roomId) {
             this.roomId = roomId;
-        },
+                    },
 
         async fetchRooms() {
             const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/rooms`;
