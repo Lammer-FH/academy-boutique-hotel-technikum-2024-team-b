@@ -35,21 +35,24 @@ export default {
         <b-nav-item to="/getting-here">Anreise & Kontakt</b-nav-item>
         <b-nav-item to="/about">Über Uns</b-nav-item>
         <b-nav-item to="/impressum"> Impressum</b-nav-item>
+        <b-nav-item to="/login"> Login</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 <style scoped>
-#nav-collapse{
+#nav-collapse {
   justify-content: right;
 }
+
 .b-nav-item a:hover {
   color: hsla(160, 100%, 37%, 1);
   text-decoration: underline;
 }
+
 @media (max-width: 576px) {
   #user {
-    margin-left:6rem;
+    margin-left: 6rem;
   }
 }
 

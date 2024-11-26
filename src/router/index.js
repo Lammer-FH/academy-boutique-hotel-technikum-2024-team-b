@@ -8,6 +8,8 @@ import RoomsSummary from "@/views/RoomsCardsView.vue";
 import RoomBookingView from "@/views/RoomBookingView.vue";
 import ConfirmationView from "@/views/ConfirmationView.vue";
 import ConfirmationPageView from "@/views/ConfirmationPageView.vue";
+import RegistrationView from "@/views/RegistrationView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 
 
@@ -69,6 +71,19 @@ const router = createRouter({
             path: '/confirmationPage',
             name: 'ConfirmationPageView',
             component: ConfirmationPageView
+        },
+
+        {
+            path: '/registration',
+            name: 'registration',
+            component: RegistrationView
+        },
+
+        {
+            path: '/login',
+            name: 'login',
+            component: LoginView
+
         },
     ]
 })
