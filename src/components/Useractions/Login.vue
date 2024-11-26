@@ -1,6 +1,5 @@
 <script>
 
-import router from "@/router";
 import {BForm} from "bootstrap-vue-3";
 export default {
   name: "Login",
