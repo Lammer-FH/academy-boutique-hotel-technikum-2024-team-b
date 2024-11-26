@@ -17,31 +17,6 @@ export default {
       errormessage: '',
     };
   },
-
-  methods: {
-    methods: {
-      async handleLogin() {
-        if (!this.validateInput()) {
-          return;
-        }
-
-        try {
-          await axios.post("https://boutique-hotel.helmuth-lammer.at/api/v1/login", {
-            clientId: this.form.email,
-            secret: this.form.password
-          });
-
-          router.push('/home');
-        } catch (error) {
-          this.validInput = false;
-          this.errormessage = "Ungültige E-Mail-Adresse oder Passwort.";
-        }
-      },
-
-      validateInput() {
-        this.validInput = true;
-
-
 }
 
 </script>
