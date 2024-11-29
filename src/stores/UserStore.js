@@ -20,7 +20,7 @@ export const useUserStore = defineStore('userStore', {
                     password: password,
                 });
                 this.wasSuccess = true;
-                localStorage.setItem("token", response.data); // Verify if the token is here or within response.data.token
+                localStorage.setItem("token", response.data);
             } catch (error) {
                 console.error('Error during registration:', error.response ? error.response.data : error.message);
             }
@@ -44,7 +44,6 @@ export const useUserStore = defineStore('userStore', {
             } catch (error) {
                 console.error('Error during login:', error.response ? error.response.data : error.message);
                 this.wasSuccess = false;
-                throw error; // Rethrow the error so that the calling component can handle it
             }
         }
     },

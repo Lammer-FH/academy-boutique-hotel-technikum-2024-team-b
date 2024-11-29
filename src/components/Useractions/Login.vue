@@ -1,6 +1,6 @@
 <script>
-import { BForm, BFormGroup, BFormInput, BButton } from "bootstrap-vue-3";
-import { useUserStore } from "@/stores/UserStore"; // Importing the Pinia store
+import {BForm, BFormGroup, BFormInput, BButton} from "bootstrap-vue-3";
+import {useUserStore} from "@/stores/UserStore"; // Importing the Pinia store
 
 export default {
   name: "Login",
@@ -32,11 +32,10 @@ export default {
       const userStore = useUserStore();
 
       try {
-        // Attempt to log in using the store's handleLogin function
         await userStore.handleLogin(this.form.email, this.form.password);
 
         if (localStorage.getItem("token")) {
-          this.$router.push('/');
+          this.$router.push('/home');
         } else {
           this.validInput = false;
           this.errormessage = "Login fehlgeschlagen. Überprüfen Sie Ihre Zugangsdaten.";
@@ -45,7 +44,6 @@ export default {
         console.error('Login error:', error);
         this.validInput = false;
 
-        // Display an error message
         this.errormessage = error.response && error.response.data
             ? error.response.data.message
             : "Fehler bei der Anmeldung. Bitte versuchen Sie es später noch einmal.";
@@ -85,9 +83,9 @@ export default {
       <b-button type="submit" variant="primary">Login</b-button>
     </b-form>
 
-    <!-- Link to Registration Page -->
     <p class="mt-3">
-      Noch kein Account? <router-link to="/register">Zur Anmeldung</router-link>
+      Noch kein Account?
+      <router-link to="/register">Zur Anmeldung</router-link>
     </p>
   </div>
 </template>
