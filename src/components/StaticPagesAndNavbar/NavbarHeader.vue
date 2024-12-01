@@ -50,11 +50,16 @@ export default {
   text-decoration: underline;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 567px) {
   #user {
-    margin-left: 6rem;
+    margin-left: 40vw;
   }
 }
 
+@media (min-width: 600px) and (max-width: 820px) {
+  #user {
+    margin-left: 65vw;
+  }
+}
 </style>
 
