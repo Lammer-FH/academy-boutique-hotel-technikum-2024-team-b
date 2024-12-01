@@ -4,6 +4,7 @@ import axios from "axios";
 export const useUserStore = defineStore('userStore', {
     state: () => ({
         wasSuccess: false,
+        token: localStorage.getItem("token"),
     }),
     getters: {},
 
@@ -20,9 +21,10 @@ export const useUserStore = defineStore('userStore', {
                     password: password,
                 });
                 this.wasSuccess = true;
+                //we are getting back a token from the backend so we take it, to not have to login again
                 localStorage.setItem("token", response.data);
             } catch (error) {
-               //catchBlock error
+               //catchBlock error TODO
             }
         },
         async handleLogin(clientId, secret) {
