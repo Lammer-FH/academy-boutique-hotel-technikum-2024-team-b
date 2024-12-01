@@ -2,10 +2,11 @@
 import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
 import ModalRegistrationSuccessful from "@/components/Useractions/ModalRegistrationSuccessful.vue";
 import { useUserStore } from "@/stores/UserStore";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "Registration",
-  components: { ModalRegistrationSuccessful, ModalRoomAvailable },
+  components: {BContainer, ModalRegistrationSuccessful, ModalRoomAvailable },
   data() {
     return {
       userData: useUserStore(),

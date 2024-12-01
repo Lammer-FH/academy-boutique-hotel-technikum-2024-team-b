@@ -12,7 +12,7 @@ export const useUserStore = defineStore('userStore', {
             const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/v1/register';
             try {
                 const response = await axios.post(apiUrl, {
-                    firstname: firstName,  // lowercase to match backend expectations
+                    firstname: firstName,
                     lastname: lastName,
                     email: emailAdresse,
                     birthdate: birthDate,
@@ -22,7 +22,7 @@ export const useUserStore = defineStore('userStore', {
                 this.wasSuccess = true;
                 localStorage.setItem("token", response.data);
             } catch (error) {
-                console.error('Error during registration:', error.response ? error.response.data : error.message);
+               //catchBlock error
             }
         },
         async handleLogin(clientId, secret) {
@@ -38,11 +38,9 @@ export const useUserStore = defineStore('userStore', {
                     localStorage.setItem("token", response.data);
                     this.wasSuccess = true;
                 } else {
-                    console.error("No token found in response:", response);
                     this.wasSuccess = false;
                 }
             } catch (error) {
-                console.error('Error during login:', error.response ? error.response.data : error.message);
                 this.wasSuccess = false;
             }
         }
