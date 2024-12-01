@@ -16,18 +16,21 @@ export default {
 }
 </script>
 <template>
-  <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top">
+  <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top" id="navbar">
     <b-navbar-brand to="/home">
       <icon-home></icon-home>
     </b-navbar-brand>
-    <b-navbar-nav id="user">
-      <b-nav-item href="#" v-if="!isLoggedIn">
-        <icon-user></icon-user>
-      </b-nav-item>
-      <b-nav-item href="#" v-if="isLoggedIn">
-        <b-button>Logout</b-button>
-      </b-nav-item>
-    </b-navbar-nav>
+    <b-dropdown variant="link" right id="user">
+      <template #button-content id="dropdown">
+        <icon-user/>
+      </template>
+      <b-dropdown-item v-if="!isLoggedIn">
+        <b-button variant="link" to="/login">Login</b-button>
+      </b-dropdown-item>
+      <b-dropdown-item>
+        <b-button variant="link" to="/registration">Registrieren</b-button>
+      </b-dropdown-item>
+    </b-dropdown>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
@@ -48,18 +51,10 @@ export default {
 .b-nav-item a:hover {
   color: hsla(160, 100%, 37%, 1);
   text-decoration: underline;
-}
 
-@media (max-width: 567px) {
-  #user {
-    margin-left: 40vw;
-  }
 }
-
-@media (min-width: 600px) and (max-width: 820px) {
-  #user {
-    margin-left: 65vw;
-  }
+#user{
+  margin-left: 200rem !important;
 }
 </style>
 
