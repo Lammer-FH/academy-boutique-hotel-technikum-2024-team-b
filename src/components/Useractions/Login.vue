@@ -57,8 +57,6 @@ export default {
   <div>
     <h1>Login</h1>
     <p class="error" v-if="!validInput">{{ errormessage }}</p>
-
-    <!-- Login Form -->
     <b-form @submit.prevent="handleLogin">
       <b-form-group id="email" label="E-Mailadresse:" label-for="emailInput">
         <b-form-input
@@ -85,7 +83,7 @@ export default {
 
     <p class="mt-3">
       Noch kein Account?
-      <router-link to="/register">Zur Anmeldung</router-link>
+      <router-link to="/registration">Zur Anmeldung</router-link>
     </p>
   </div>
 </template>

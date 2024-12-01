@@ -33,7 +33,7 @@ export default {
   methods: {
     handleOk() {
       this.isVisible = false;
-      router.push("/room-booking");
+      router.push("/rooms");
     },
   }
 }

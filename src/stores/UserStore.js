@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from "axios";
 
 export const useUserStore = defineStore('userStore', {
@@ -24,7 +24,7 @@ export const useUserStore = defineStore('userStore', {
                 //we are getting back a token from the backend so we take it, to not have to login again
                 localStorage.setItem("token", response.data);
             } catch (error) {
-               //catchBlock error TODO
+                //catchBlock error TODO
             }
         },
         async handleLogin(clientId, secret) {
@@ -45,6 +45,10 @@ export const useUserStore = defineStore('userStore', {
             } catch (error) {
                 this.wasSuccess = false;
             }
+        },
+        logout(){
+            localStorage.setItem("token", null);
+            localStorage.removeItem("token");
         }
-    },
+    }
 });

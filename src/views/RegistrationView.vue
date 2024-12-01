@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-<Registration />
+<Registration/>
 </template>
 
 <style scoped>

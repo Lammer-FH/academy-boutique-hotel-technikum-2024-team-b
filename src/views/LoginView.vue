@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <login></login>
+  <login/>
 </template>
 
 <style scoped>

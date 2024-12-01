@@ -59,12 +59,13 @@ export default {
 </script>
 
 <template>
-  <div>
-    <ModalRegistrationSuccessful v-model="modalShow" />
-  </div>
+
   <b-container fluid>
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
+        <div>
+          <ModalRegistrationSuccessful v-model="modalShow" />
+        </div>
         <div>
           <h1>Registrierung</h1>
           <div>
@@ -101,9 +102,8 @@ export default {
 
               <b-button type="submit" variant="primary">Konto erstellen</b-button>
             </b-form><br><br>
-
-            <p>Haben Sie schon einen Account?<br>
-              <a to="/login">Zum Login</a>
+            <p>
+              <router-link to="/login">Haben Sie schon einen Account?</router-link>
             </p>
           </div>
         </div>
