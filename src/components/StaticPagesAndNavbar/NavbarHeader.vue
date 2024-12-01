@@ -30,10 +30,11 @@ export default {
     <b-navbar-brand to="/home">
       <icon-home></icon-home>
     </b-navbar-brand>
-    <b-dropdown variant="link" class="ms-auto" id="dropdown" right>
+    <b-dropdown variant="link" class="ms-auto" right>
       <template #button-content>
         <icon-user/>
       </template>
+      <div class="d-flex flex-column align-items-center">
       <b-dropdown-item v-if="!isLoggedIn">
         <b-button variant="outline-info" to="/login">Login</b-button>
       </b-dropdown-item>
@@ -43,6 +44,7 @@ export default {
       <b-dropdown-item>
         <b-button variant="outline-info" to="/registration">Registrieren</b-button>
       </b-dropdown-item>
+      </div>
     </b-dropdown>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
