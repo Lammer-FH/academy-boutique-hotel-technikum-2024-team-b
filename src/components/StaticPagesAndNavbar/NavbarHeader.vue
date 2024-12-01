@@ -30,8 +30,8 @@ export default {
     <b-navbar-brand to="/home">
       <icon-home></icon-home>
     </b-navbar-brand>
-    <b-dropdown variant="link" right>
-      <template #button-content id="dropdown">
+    <b-dropdown variant="link" class="ms-auto" id="dropdown" right>
+      <template #button-content>
         <icon-user/>
       </template>
       <b-dropdown-item v-if="!isLoggedIn">
@@ -64,10 +64,6 @@ export default {
   color: hsla(160, 100%, 37%, 1);
   text-decoration: underline;
 
-}
-
-#dropdown {
-  margin-left: 200rem !important;
 }
 </style>
 
