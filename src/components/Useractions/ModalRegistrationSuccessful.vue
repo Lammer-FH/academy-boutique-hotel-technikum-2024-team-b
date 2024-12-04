@@ -1,5 +1,6 @@
 <script>
 import router from "@/router";
+import {useUserStore} from "@/stores/UserStore";
 
 export default {
   name: "ModalRegistrationSuccessful",
@@ -10,7 +11,7 @@ export default {
 
   data() {
     return {
-      //userData: useUserStore(),
+      userData: useUserStore(),
       messageSuccessful: 'Die Registrierung war erfolgreich. Sie können jetzt eingeloggt weitersuchen.',
       messageFailed: 'Ups, da ist leider was schief gegangen. Bitte registrieren Sie sich nochmal.',
     }
