@@ -37,7 +37,7 @@ export default {
           <h1>Ihre Buchung war erfolgreich!</h1>
           <p>Folgendes Zimmer wurde für den Zeitraum {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}
             gebucht:</p>
-
+          <br>
           <RoomDetailsBasicInfo/>
 
           <h5>Ihre persönlichen Daten:</h5>
@@ -45,10 +45,8 @@ export default {
             <span class="highlight">Name:</span> {{ bookingData.firstName }} {{ bookingData.lastName }}<br>
             <span class="highlight">Email:</span> {{ bookingData.emailAdresse }}
           </p>
-
-          <h5>Wie kommen Sie zu uns:</h5>
+          <br>
           <GettingHere/>
-
           <div class="button-container mt-4">
             <b-button size="lg" variant="primary" @click="handlePrint">Drucken</b-button>
             <b-button size="lg" variant="secondary" @click="goToHomepage" class="ms-3">Startseite</b-button>
