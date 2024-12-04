@@ -1,10 +1,10 @@
 <script>
-import {BContainer} from "bootstrap-vue-3";
+import { BContainer } from "bootstrap-vue-3";
 
 export default {
   name: "Impressum",
-  components: {BContainer}
-}
+  components: { BContainer },
+};
 </script>
 
 <template>
@@ -15,31 +15,31 @@ export default {
           <h1 class="display-4 mb-4">Impressum</h1>
           <p class="lead">Angaben gemäß § 5 TMG:</p>
           <p class="mb-2">
-            <strong>Technikum Hotel</strong><br />
+            <span class="bold">Technikum Hotel</span><br />
             Mariahilfer Straße 123<br />
             1060 Wien, Österreich
           </p>
           <p class="mb-2">
-            <strong>Vertreten durch:</strong><br />
+            <span class="bold">Vertreten durch:</span><br />
             Franz Müller
           </p>
           <p class="mb-2">
-            <strong>Kontakt:</strong><br />
+            <span class="bold">Kontakt:</span><br />
             Telefon: <a href="tel:+431234567890">+43 1 234 567 890</a><br />
             E-Mail: <a href="mailto:kontakt@technikumhotel.at">kontakt@technikumhotel.at</a>
           </p>
           <p class="mb-2">
-            <strong>Registereintrag:</strong><br />
+            <span class="bold">Registereintrag:</span><br />
             Eintragung im Handelsregister.<br />
             Registernummer: HRB 987654<br />
             Registergericht: Handelsgericht Wien
           </p>
           <p class="mb-2">
-            <strong>Umsatzsteuer-ID:</strong><br />
+            <span class="bold">Umsatzsteuer-ID:</span><br />
             Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: ATU12345678
           </p>
           <p>
-            <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br />
+            <span class="bold">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</span><br />
             Franz Müller<br />
             Mariahilfer Straße 123<br />
             1060 Wien, Österreich
@@ -51,5 +51,7 @@ export default {
 </template>
 
 <style scoped>
-
+.bold {
+  font-weight: bold;
+}
 </style>
