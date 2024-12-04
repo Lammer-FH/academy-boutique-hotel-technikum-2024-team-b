@@ -3,28 +3,45 @@ import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarTogg
 import IconUser from "@/components/Icons/IconUser.vue";
 import IconHome from "@/components/Icons/IconHome.vue";
 import {useUserStore} from "@/stores/UserStore";
-
+import {mapState} from "pinia";
 
 export default {
   name: "navigation",
-  components: {IconUser, IconHome, BCollapse, BNavbar, BDropdownItem, BNavbarToggle, BNavbarNav, BNavbarBrand},
+  components: {
+    IconUser,
+    IconHome,
+    BCollapse,
+    BNavbar,
+    BDropdownItem,
+    BNavbarToggle,
+    BNavbarNav,
+    BNavbarBrand,
+  },
 
+  data() {
+    return {
+      userStore: useUserStore(),
+    };
+  },
 
   computed: {
-    isLoggedIn() {
-      return useUserStore().token !== null;
+    // Using Pinia's mapState to make store properties reactive
+    ...mapState(useUserStore, ["token"]),
 
-    }
+    isLoggedIn() {
+      return this.token !== null;
+    },
   },
+
   methods: {
     logout() {
-      const userStore = useUserStore()
-      userStore.logout()
-      this.$router.push("/home")
-    }
-  }
-}
+      this.userStore.logout();
+      this.$router.push("/home");
+    },
+  },
+};
 </script>
+
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top" id="navbar">
     <b-navbar-brand to="/home">
@@ -35,15 +52,15 @@ export default {
         <icon-user/>
       </template>
       <div class="d-flex flex-column align-items-center">
-      <b-dropdown-item v-if="!isLoggedIn">
-        <b-button variant="outline-info" to="/login">Login</b-button>
-      </b-dropdown-item>
-      <b-dropdown-item v-if="isLoggedIn">
-        <b-button variant="outline-danger" @click="logout">Logout</b-button>
-      </b-dropdown-item>
-      <b-dropdown-item>
-        <b-button variant="outline-info" to="/registration">Registrieren</b-button>
-      </b-dropdown-item>
+        <b-dropdown-item v-if="!isLoggedIn">
+          <b-button variant="outline-info" to="/login">Login</b-button>
+        </b-dropdown-item>
+        <b-dropdown-item v-if="isLoggedIn">
+          <b-button variant="outline-danger" @click="logout">Logout</b-button>
+        </b-dropdown-item>
+        <b-dropdown-item>
+          <b-button variant="outline-info" to="/registration">Registrieren</b-button>
+        </b-dropdown-item>
       </div>
     </b-dropdown>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -52,11 +69,12 @@ export default {
         <b-nav-item to="/rooms">Unsere Zimmer</b-nav-item>
         <b-nav-item to="/getting-here">Anreise & Kontakt</b-nav-item>
         <b-nav-item to="/about">Über Uns</b-nav-item>
-        <b-nav-item to="/impressum"> Impressum</b-nav-item>
+        <b-nav-item to="/impressum">Impressum</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
+
 <style scoped>
 #nav-collapse {
   justify-content: right;
@@ -65,7 +83,5 @@ export default {
 .b-nav-item a:hover {
   color: hsla(160, 100%, 37%, 1);
   text-decoration: underline;
-
 }
 </style>
-

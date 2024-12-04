@@ -1,10 +1,10 @@
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useUserStore = defineStore('userStore', {
     state: () => ({
         wasSuccess: false,
-        token: localStorage.getItem("token"),
+        token: null,
     }),
     getters: {},
 
@@ -20,15 +20,19 @@ export const useUserStore = defineStore('userStore', {
                     username: username,
                     password: password,
                 });
+
                 this.wasSuccess = true;
-                //we are getting back a token from the backend so we take it, to not have to login again
-                localStorage.setItem("token", response.data);
+
+                let token = response.data;
+                localStorage.setItem("token", token);
+                token = token;
+
             } catch (error) {
-                //catchBlock error TODO
+                this.wasSuccess = false;
             }
         },
         async handleLogin(clientId, secret) {
-            const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/login`;
+            const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/v1/login';
 
             try {
                 const response = await axios.post(apiUrl, {
@@ -37,7 +41,11 @@ export const useUserStore = defineStore('userStore', {
                 });
 
                 if (response.data !== undefined) {
-                    localStorage.setItem("token", response.data);
+                    let token = response.data;
+
+                    localStorage.setItem("token", token);
+                    this.token = token;
+
                     this.wasSuccess = true;
                 } else {
                     this.wasSuccess = false;
@@ -46,9 +54,9 @@ export const useUserStore = defineStore('userStore', {
                 this.wasSuccess = false;
             }
         },
-        logout(){
-            localStorage.setItem("token", null);
+        logout() {
             localStorage.removeItem("token");
+            this.token = null;
         }
     }
 });
