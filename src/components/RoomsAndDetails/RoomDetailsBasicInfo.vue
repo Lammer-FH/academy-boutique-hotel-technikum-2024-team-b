@@ -22,7 +22,7 @@ export default {
       return `/images/Rooms/${this.roomData.roomId}.jpg`;
     },
   },
-  async mounted() {
+  async beforeMount() {
     await useRoomsStore().fetchRooms();
     parseInt(this.$route.params.roomId, 10);
     this.roomData.setRoomId(this.roomData.roomId);
