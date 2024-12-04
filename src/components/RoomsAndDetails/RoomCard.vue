@@ -17,9 +17,9 @@ export default {
     imageSrc: {type: String, required: true},
     imageAlternativeText: {type: String, required: true},
     description: {type: String, required: false},
-    primaryButtonRoute: {type: String, required: true},
+    primaryButtonRoute: {type: String, required: false},
     primaryButtonText: {type: String, required: true},
-    secondaryButtonRoute: {type: String, required: true},
+    secondaryButtonRoute: {type: String, required: false},
     secondaryButtonText: {type: String, required: true}
   },
 
