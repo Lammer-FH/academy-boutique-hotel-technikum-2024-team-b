@@ -8,10 +8,7 @@ export default {
 </script>
 
 <template>
-  <main>
     <GettingHere/>
-  </main>
-
 </template>
 
 

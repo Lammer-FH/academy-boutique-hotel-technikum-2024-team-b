@@ -8,9 +8,7 @@ name: "AboutView",
 </script>
 
 <template>
-  <main>
     <About/>
-  </main>
 </template>
 
 <style scoped>
