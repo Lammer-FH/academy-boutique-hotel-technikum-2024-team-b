@@ -1,4 +1,4 @@
-<script xmlns="http://www.w3.org/1999/html">
+<script>
 
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";

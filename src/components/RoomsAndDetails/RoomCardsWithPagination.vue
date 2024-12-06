@@ -2,7 +2,6 @@
 import {BCardGroup} from "bootstrap-vue-3";
 import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-import {nextTick} from "vue";
 
 export default {
   name: "RoomCards",
