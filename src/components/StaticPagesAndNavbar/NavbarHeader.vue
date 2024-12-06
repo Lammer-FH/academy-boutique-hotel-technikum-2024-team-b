@@ -3,7 +3,6 @@ import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarTogg
 import IconUser from "@/components/Icons/IconUser.vue";
 import IconHome from "@/components/Icons/IconHome.vue";
 import {useUserStore} from "@/stores/UserStore";
-import {mapState} from "pinia";
 
 export default {
   name: "navigation",
@@ -25,8 +24,9 @@ export default {
   },
 
   computed: {
-    // Using Pinia's mapState to make store properties reactive
-    ...mapState(useUserStore, ["token"]),
+    token() {
+      return useUserStore().token;
+    },
 
     isLoggedIn() {
       return this.token !== null;
