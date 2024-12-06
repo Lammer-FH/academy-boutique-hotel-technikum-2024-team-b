@@ -24,7 +24,7 @@ export default {
       await this.bookingData.saveBooking();
 
       // Only redirect if booking is successfully sent to backend
-      if (this.bookingData.isSentToBackend) {
+      if (this.bookingData.bookingSubmissionSuccess) {
         await router.push('/booking-conformation');
       } else {
         alert("Es gab ein Problem bei der Buchung. Bitte versuchen Sie es erneut.");

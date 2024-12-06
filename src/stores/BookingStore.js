@@ -17,7 +17,7 @@ export const useBookingStore = defineStore('booking', {
         availability: false,
         bookingId: null,
         isLoading: true,
-        isSentToBackend: true,
+        bookingSubmissionSuccess: true,
 
     }),
     getters: {
@@ -64,10 +64,9 @@ export const useBookingStore = defineStore('booking', {
                     email: this.emailAdresse,
                     birthdate: this.birthDate
                 });
-                this.isSentToBackend = true;
                 this.bookingId = response.data.id;
             } catch (error) {
-                this.isSentToBackend = false;
+                this.bookingSubmissionSuccess = false;
             }
         }
     }
