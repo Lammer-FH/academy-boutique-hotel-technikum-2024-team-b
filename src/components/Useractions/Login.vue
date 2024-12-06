@@ -27,10 +27,7 @@ export default {
         this.errormessage = "Bitte geben Sie sowohl eine E-Mail-Adresse als auch ein Passwort ein.";
         return;
       }
-
-      // Access the user store
       const userStore = useUserStore();
-
       try {
         await userStore.handleLogin(this.form.email, this.form.password);
 
@@ -67,7 +64,6 @@ export default {
             required
         ></b-form-input>
       </b-form-group>
-
       <b-form-group id="password" label="Passwort:" label-for="passwordInput">
         <b-form-input
             id="passwordInput"
@@ -77,10 +73,8 @@ export default {
             required
         ></b-form-input>
       </b-form-group>
-
       <b-button type="submit" variant="primary">Login</b-button>
     </b-form>
-
     <p class="mt-3">
       Noch kein Account?
       <router-link to="/registration">Zur Anmeldung</router-link>

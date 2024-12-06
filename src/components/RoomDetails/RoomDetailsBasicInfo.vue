@@ -2,10 +2,11 @@
 import RoomDescription from "@/components/RoomDetails/RoomDescription.vue";
 import RoomExtras from "@/components/RoomDetails/RoomExtras.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
+import {BImg} from "bootstrap-vue-3";
 
 export default {
   name: "RoomDetailsBasicInfo",
-  components: {RoomExtras, RoomDescription},
+  components: {BImg, RoomExtras, RoomDescription},
 
   data() {
     return {

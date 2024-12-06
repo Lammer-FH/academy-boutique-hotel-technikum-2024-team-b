@@ -1,9 +1,11 @@
 <script>
 import router from "@/router";
 import {useUserStore} from "@/stores/UserStore";
+import {BModal} from "bootstrap-vue-3";
 
 export default {
   name: "ModalRegistrationSuccessful",
+  components: {BModal},
 
   props: {
     modelValue: Boolean,

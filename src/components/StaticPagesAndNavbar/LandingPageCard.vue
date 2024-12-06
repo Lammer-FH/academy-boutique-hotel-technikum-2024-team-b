@@ -36,12 +36,8 @@ export default {
     }
   }
 }
-
 </script>
-
-
 <template>
-
   <b-card
       :index="index"
       :title="title"
