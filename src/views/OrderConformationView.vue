@@ -1,12 +1,12 @@
 <script>
-import Confirmation from "@/components/AvailabilityAndConformation/Confirmation.vue";
 import ErrorPost from "@/components/StaticPagesAndNavbar/ErrorPost.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import {BContainer} from "bootstrap-vue-3";
+import OrderConformation from "@/components/Booking/OrderConformation.vue";
 
 export default {
-  name: "ConfirmationView",
-  components: {BContainer, ErrorPost, Confirmation},
+  name: "OrderConformationView",
+  components: {OrderConformation, BContainer, ErrorPost},
   data() {
     return {
       bookingData: useBookingStore()
@@ -19,7 +19,7 @@ export default {
   <b-container fluid class="text-center">
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
-        <confirmation/>
+        <OrderConformation/>
       </b-col>
     </b-row>
   </b-container>

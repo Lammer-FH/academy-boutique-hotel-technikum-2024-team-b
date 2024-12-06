@@ -1,5 +1,5 @@
 <script>
-import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
+import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 import ModalRegistrationSuccessful from "@/components/Useractions/ModalRegistrationSuccessful.vue";
 import { useUserStore } from "@/stores/UserStore";
 import {BContainer} from "bootstrap-vue-3";

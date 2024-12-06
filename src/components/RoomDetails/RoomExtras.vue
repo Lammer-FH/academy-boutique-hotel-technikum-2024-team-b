@@ -1,5 +1,5 @@
 <script>
-import RoomExtrasItem from "@/components/RoomsAndDetails/RoomExtrasItem.vue";
+import RoomExtrasItem from "@/components/RoomDetails/RoomExtrasItem.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {

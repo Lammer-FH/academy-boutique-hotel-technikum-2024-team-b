@@ -1,7 +1,7 @@
 <script>
-import CollapseAvailability from "@/components/AvailabilityAndConformation/CollapseAvailability.vue";
-import RoomDetailsBasicInfo from "@/components/RoomsAndDetails/RoomDetailsBasicInfo.vue";
-import RoomExtraItem from "@/components/RoomsAndDetails/RoomExtrasItem.vue";
+import CollapseAvailability from "@/components/Availability/CollapseAvailability.vue";
+import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.vue";
+import RoomExtraItem from "@/components/RoomDetails/RoomExtrasItem.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import {BContainer} from "bootstrap-vue-3";
 import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";

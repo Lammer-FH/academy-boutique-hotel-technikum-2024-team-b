@@ -1,5 +1,5 @@
 <script>
-import ModalRoomAvailable from "@/components/AvailabilityAndConformation/ModalRoomAvailable.vue";
+import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import {BButton} from "bootstrap-vue-3";

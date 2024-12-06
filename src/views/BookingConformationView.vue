@@ -1,12 +1,12 @@
 <script>
-import RoomDetailsBasicInfo from "@/components/RoomsAndDetails/RoomDetailsBasicInfo.vue";
+import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import GettingHere from "@/components/StaticPagesAndNavbar/GettingHere.vue";
 import {BContainer} from "bootstrap-vue-3";
 import router from "@/router";
 
 export default {
-  name: "ConfirmationPageView",
+  name: "BookingConformationView",
   components: {BContainer, RoomDetailsBasicInfo, GettingHere},
 
   data() {
@@ -15,10 +15,7 @@ export default {
     };
   },
   methods: {
-    handleBook() {
-      this.bookingData.saveBooking();
-      router.push('/confirmation');
-    },
+
     handlePrint() {
       window.print();
     },

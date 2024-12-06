@@ -4,7 +4,7 @@ import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
 
 export default {
-  name: "Confirmation",
+  name: "OrderConformation",
   components: {BContainer},
 
   data() {
@@ -25,7 +25,7 @@ export default {
 
       // Only redirect if booking is successfully sent to backend
       if (this.bookingData.isSentToBackend) {
-        await router.push('/confirmationPage');
+        await router.push('/booking-conformation');
       } else {
         alert("Es gab ein Problem bei der Buchung. Bitte versuchen Sie es erneut.");
       }

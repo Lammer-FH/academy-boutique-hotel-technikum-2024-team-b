@@ -28,7 +28,7 @@ export default {
     saveInput() {
       if (this.validateInput()) {
         this.bookingData.setUserData(this.form.firstName, this.form.lastName, this.form.birthDate, this.form.email);
-        router.push('confirmation')
+        router.push('booking-conformation')
       }
     },
 

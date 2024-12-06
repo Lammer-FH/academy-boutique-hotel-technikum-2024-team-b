@@ -1,6 +1,6 @@
 <script>
 import {BCardGroup} from "bootstrap-vue-3";
-import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
+import RoomCard from "@/components/Rooms/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {

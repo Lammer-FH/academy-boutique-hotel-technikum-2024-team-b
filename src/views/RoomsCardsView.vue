@@ -1,9 +1,9 @@
 <script>
-import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummary.vue";
+import HeadingRoomsSummary from "@/components/Rooms/HeadingRoomsSummary.vue";
 import {BCardGroup} from "bootstrap-vue-3";
-import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
+import RoomCard from "@/components/Rooms/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-import RoomCards from "@/components/RoomsAndDetails/RoomCardsWithPagination.vue";
+import RoomCards from "@/components/Rooms/RoomCardsWithPagination.vue";
 import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";
 
 export default {
