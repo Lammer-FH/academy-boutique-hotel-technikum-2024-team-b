@@ -3,10 +3,12 @@ import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue
 import {useBookingStore} from "@/stores/BookingStore";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import {BButton} from "bootstrap-vue-3";
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
   name: "CollapseAvailability",
-  components: {BButton, ModalRoomAvailable},
+  components: {BButton, ModalRoomAvailable, VueDatePicker},
 
   data() {
     return {
@@ -14,21 +16,27 @@ export default {
       roomData: useRoomsStore(),
       context: null,
       isCollapsed: false,
-      arrival_date: '',
-      departure_date: '',
-      errormessage: '',
       validInput: true,
       modalShow: false,
+      dateRange: null,
+      format: "dd.MM.yyyy",
+    }
+  },
 
+  computed: {
+    arrivalDate() {
+      return this.dateRange[0].toISOString().slice(0, 10);
+    },
+
+    departureDate() {
+      return this.dateRange[1].toISOString().slice(0, 10);
     }
   },
 
   methods: {
 
     changeVisibilityCollapse() {
-      this.errormessage = '';
-      this.arrival_date = '';
-      this.departure_date = '';
+      this.dateRange = [];
       this.isCollapsed = !this.isCollapsed;
     },
 
@@ -36,44 +44,17 @@ export default {
     scrollToCollapse(elementId = 'collapseElement') {
       this.$nextTick(() => {
         let scrollToElement = document.getElementById(elementId);
-          scrollToElement.scrollIntoView({ behavior: 'smooth' });
+        scrollToElement.scrollIntoView({behavior: 'smooth'});
       });
     },
 
     async checkRoomAvailability() {
-      if (this.validateInput()) {
-        this.bookingData.setBookingDates(this.arrival_date, this.departure_date, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight)
-        await this.bookingData.checkAvailability()
-        this.showModal()
-      }
+      this.bookingData.setBookingDates(this.arrivalDate, this.departureDate, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight)
+      await this.bookingData.checkAvailability()
+      this.showModal()
+
     },
 
-    validateInput() {
-      const currentDate = new Date();
-      const formattedDate = currentDate.toISOString().slice(0, 10);
-      this.validInput = true;
-      this.errormessage = '';
-
-
-      if (this.arrival_date === '' || this.departure_date === '') {
-        this.validInput = false;
-        this.errormessage = "Bitte geben Sie ein Datum ein.";
-        return false
-      }
-
-      if (this.arrival_date < formattedDate) {
-        this.validInput = false;
-        this.errormessage = "Das Datum kann nicht in der Vergangenheit liegen."
-        return false
-      }
-
-      if (this.departure_date <= this.arrival_date) {
-        this.validInput = false;
-        this.errormessage = "Abreisedatum muss nach dem Anreisedatum liegen!";
-        return false
-      }
-      return true
-    },
     showModal() {
       this.modalShow = true
 
@@ -97,12 +78,20 @@ export default {
 
     <b-collapse v-model="isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
-      <b>Bitte wählen Sie ein Datum aus:</b><br><br>
-      <p class="error" v-if="!validInput">{{ errormessage }}</p>
-      <p>Anreise: <input class="m-2" type="date" v-model="arrival_date"/><br>
-        Abreise: <input class="m-2" type="date" v-model="departure_date"/><br>
-      </p><br>
-      <b-button variant="primary" v-on:click="checkRoomAvailability"  >Verfügbarkeit prüfen</b-button>
+      <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
+       <VueDatePicker v-model="dateRange" required
+                     :range="{ partialRange: false, minRange: 1 }"
+                     :min-date="new Date()"
+                     :format="format"
+                     locale="de"
+                     :enable-time-picker="false"
+                     placeholder="Wählen Sie einen Zeitraum aus."
+
+
+      ></VueDatePicker>
+      <br><br>
+
+      <b-button variant="primary" v-on:click="checkRoomAvailability">Verfügbarkeit prüfen</b-button>
 
     </b-collapse>
 
@@ -112,7 +101,5 @@ export default {
 
 
 <style scoped>
-.error {
-  color: red;
-}
+
 </style>
