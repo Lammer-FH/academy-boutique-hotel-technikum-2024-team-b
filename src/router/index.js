@@ -65,7 +65,7 @@ const router = createRouter({
 
         {
             path: '/order-confirmation',
-            name: 'order-conformation',
+            name: 'order-confirmation',
             component: OrderConformationView
         },
 

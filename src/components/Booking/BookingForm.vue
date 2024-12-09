@@ -3,10 +3,12 @@
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
 import {BForm} from "bootstrap-vue-3";
+import ModalQuitBooking from "@/components/Booking/ModalQuitBooking.vue";
+import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 
 export default {
   name: "BookingForm",
-  components: {BForm},
+  components: {ModalRoomAvailable, ModalQuitBooking, BForm},
 
   data() {
     return {
@@ -20,7 +22,8 @@ export default {
       },
       validInput: true,
       errormessage: '',
-      show: true
+      show: true,
+      modalCancelShow: false
 
     }
   },
@@ -28,25 +31,50 @@ export default {
     saveInput() {
       if (this.validateInput()) {
         this.bookingData.setUserData(this.form.firstName, this.form.lastName, this.form.birthDate, this.form.email);
-        router.push('booking-conformation')
+        router.push('order-confirmation')
       }
     },
 
     validateInput() {
       this.validInput = true
+      let currentDate = new Date();
+      let currentYear = currentDate.getFullYear();
+      const minimumAgeDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 18));
+      let minimumAge = minimumAgeDate.toISOString().slice(0, 10);
+      let birthYear = this.form.birthDate.split("-")[0];
+
       if (this.form.email !== this.form.emailConfirmation) {
         this.validInput = false;
         this.errormessage = "Die Email-Adressen stimmen nicht überein."
         return false
       }
+      if(this.form.birthDate > minimumAge) {
+        this.validInput = false;
+        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
+        return false
+      }
+
+      if(birthYear <= "1900" || birthYear >= currentYear) {
+        this.validInput = false;
+        this.errormessage = "Bitte geben Sie ein gültiges Geburtsjahr ein."
+        return false
+      }
+      console.log(minimumAge)
       return true
-    }
+    },
+
+    cancelBooking() {
+      this.modalCancelShow = true
+    },
+
   }
 }
 
 </script>
 
 <template>
+  <ModalQuitBooking v-model="modalCancelShow"/>
+
   <div>
     <p class="error" v-if="!validInput">{{ errormessage }}</p>
 
@@ -99,8 +127,10 @@ export default {
         ></b-form-input>
       </b-form-group>
 
-
-      <b-button type="submit" variant="primary">Daten überprüfen</b-button>
+      <div class="button-container">
+        <b-button variant="secondary" v-on:click="cancelBooking">Buchung abbrechen</b-button>
+        <b-button type="submit" variant="primary">Daten überprüfen</b-button>
+      </div>
     </b-form>
   </div>
 </template>
@@ -108,5 +138,10 @@ export default {
 <style scoped>
 .error {
   color: red;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
