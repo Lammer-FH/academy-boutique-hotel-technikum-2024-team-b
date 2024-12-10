@@ -5,6 +5,7 @@ import {useBookingStore} from "@/stores/BookingStore";
 import ModalQuitBooking from "@/components/Booking/ModalQuitBooking.vue";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
+import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
 
 export default {
   name: "RoomBooking",
@@ -16,6 +17,7 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
+      roomDetailView: useRoomDetailViewStore(),
       modalBookingShow: false,
 
     };
@@ -46,6 +48,7 @@ export default {
     },
 
     handleChangeDates() {
+      this.roomDetailView.setCollapseTrue();
       router.push({
         name: 'roomDetail',
         params: {roomId: this.bookingData.roomId, scrollTo: 'availability'}
