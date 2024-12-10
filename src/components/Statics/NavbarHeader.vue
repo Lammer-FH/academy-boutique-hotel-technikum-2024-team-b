@@ -3,10 +3,12 @@ import {BCollapse, BDropdownItem, BNavbar, BNavbarBrand, BNavbarNav, BNavbarTogg
 import IconUser from "@/components/Icons/IconUser.vue";
 import IconHome from "@/components/Icons/IconHome.vue";
 import {useUserStore} from "@/stores/UserStore";
+import IconLogIn from "@/components/Icons/IconLogIn.vue";
 
 export default {
   name: "navigation",
   components: {
+    IconLogIn,
     IconUser,
     IconHome,
     BCollapse,
@@ -49,7 +51,12 @@ export default {
     </b-navbar-brand>
     <b-dropdown variant="link" class="ms-auto" right>
       <template #button-content>
+        <div v-if="isLoggedIn">
         <icon-user/>
+        </div>
+        <div v-if="!isLoggedIn">
+          <icon-log-in/>
+        </div>
       </template>
       <div class="d-flex flex-column align-items-center">
         <b-dropdown-item v-if="!isLoggedIn">
@@ -59,7 +66,7 @@ export default {
           <b-button variant="outline-danger" @click="logout">Logout</b-button>
         </b-dropdown-item>
         <b-dropdown-item>
-          <b-button variant="outline-info" to="/registration">Registrieren</b-button>
+          <b-button v-if="!isLoggedIn" variant="outline-info" to="/registration">Registrieren</b-button>
         </b-dropdown-item>
       </div>
     </b-dropdown>

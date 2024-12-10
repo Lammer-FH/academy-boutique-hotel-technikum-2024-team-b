@@ -25,7 +25,7 @@ export const useUserStore = defineStore('userStore', {
 
                 let token = response.data;
                 localStorage.setItem("token", token);
-                token = token;
+                this.token = token;
 
             } catch (error) {
                 this.wasSuccess = false;
