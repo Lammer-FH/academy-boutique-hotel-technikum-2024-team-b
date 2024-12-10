@@ -74,8 +74,8 @@ export default {
   border-radius: 0.25rem;
 }
 
-b-card-text {
+.card-text {
   flex-grow: 1;
-  margin-top: 1rem;
+  margin-top: 5vh;
 }
 </style>

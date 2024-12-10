@@ -74,6 +74,7 @@ export default {
   <div class="d-flex justify-content-center my-4">
     <b-pagination
         v-model="currentPage"
+        pills
         :total-rows="useRoomsStore().rooms.length"
         :per-page="itemsPerPage"
         @change="handlePageChange"

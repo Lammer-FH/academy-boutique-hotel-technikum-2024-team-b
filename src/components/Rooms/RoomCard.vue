@@ -55,12 +55,15 @@ export default {
 <template>
   <b-card
       :title="roomName"
-      :img-src="imageSrc"
-      :img-alt="imageAlternativeText"
       :room-id="roomId"
       tag="article"
       class="room-card mb-5"
   >
+    <img
+        :src="imageSrc"
+        :alt="imageAlternativeText"
+        class="card-img"
+    />
     <div class="roomExtras">
       <div class="justify-content-around">
         <span v-for="index in beds" class="bed-icon"><Beds/></span>
@@ -80,6 +83,15 @@ export default {
 </template>
 
 <style scoped>
+.card-text{
+  flex-grow: 1;
+}
+.card-img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
 .bed-icon {
   margin-right: 5px;
 }
