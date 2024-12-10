@@ -44,11 +44,13 @@ export default {
       tag="article"
       class="card mb-5 custom-card"
   >
-    <img
+    <b-container class="image-container">
+    <b-img
         :src="imageSrc"
         :alt="imageAlternativeText"
         class="card-img"
     />
+      </b-container>
     <b-card-text>
       {{ cardText }}
     </b-card-text>
@@ -57,6 +59,24 @@ export default {
 </template>
 
 <style scoped>
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .custom-card {
   width: 100%;
@@ -64,14 +84,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-
-.card-img {
-  width: 100%;
-  height: 30vh;
-  object-fit: cover;
-  border-radius: 0.25rem;
 }
 
 .card-text {
