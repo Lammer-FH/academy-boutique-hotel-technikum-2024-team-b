@@ -4,7 +4,7 @@ import {BCardGroup} from "bootstrap-vue-3";
 import RoomCard from "@/components/Rooms/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import RoomCards from "@/components/Rooms/RoomCardsWithPagination.vue";
-import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";
+import Error from "@/components/Statics/ErrorGet.vue";
 
 export default {
   name: "RoomsSummary",

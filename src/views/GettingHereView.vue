@@ -1,5 +1,5 @@
 <script>
-import GettingHere from "@/components/StaticPagesAndNavbar/GettingHere.vue";
+import GettingHere from "@/components/Statics/GettingHere.vue";
 
 export default {
   name: "GettingHereView",

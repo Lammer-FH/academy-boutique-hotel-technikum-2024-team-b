@@ -1,7 +1,7 @@
 <script>
 import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.vue";
 import {useBookingStore} from "@/stores/BookingStore";
-import GettingHere from "@/components/StaticPagesAndNavbar/GettingHere.vue";
+import GettingHere from "@/components/Statics/GettingHere.vue";
 import {BContainer} from "bootstrap-vue-3";
 import router from "@/router";
 

@@ -4,7 +4,7 @@ import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.
 import RoomExtraItem from "@/components/RoomDetails/RoomExtrasItem.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 import {BContainer} from "bootstrap-vue-3";
-import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";
+import Error from "@/components/Statics/ErrorGet.vue";
 
 export default {
   name: "RoomDetailAndAvailabilityView",
