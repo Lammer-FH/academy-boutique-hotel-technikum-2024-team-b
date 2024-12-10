@@ -4,6 +4,7 @@ import {useRoomsStore} from "@/stores/RoomsStore";
 import router from "@/router";
 import Beds from "@/components/Icons/Beds.vue";
 import Handicapped from "@/components/Icons/Handicapped.vue";
+import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
 
 export default {
   name: "RoomCard",
@@ -25,7 +26,8 @@ export default {
 
   data() {
     return {
-      roomsData: useRoomsStore()
+      roomsData: useRoomsStore(),
+      roomDetailView: useRoomDetailViewStore(),
     }
   },
   methods: {
@@ -41,6 +43,7 @@ export default {
     },
     handleSecondaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
+      this.roomDetailView.setCollapseTrue();
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId, scrollTo: 'availability'}

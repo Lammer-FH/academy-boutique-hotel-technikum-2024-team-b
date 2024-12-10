@@ -1,12 +1,12 @@
 <script>
 import ModalRoomAvailable from "@/components/Availability/ModalRoomAvailable.vue";
 import ModalRegistrationSuccessful from "@/components/Useractions/ModalRegistrationSuccessful.vue";
-import { useUserStore } from "@/stores/UserStore";
+import {useUserStore} from "@/stores/UserStore";
 import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "Registration",
-  components: {BContainer, ModalRegistrationSuccessful, ModalRoomAvailable },
+  components: {BContainer, ModalRegistrationSuccessful, ModalRoomAvailable},
   data() {
     return {
       userData: useUserStore(),
@@ -44,11 +44,32 @@ export default {
     },
     validateInput() {
       this.validInput = true;
+      let currentDate = new Date();
+      let currentYear = currentDate.getFullYear();
+      const minimumAgeDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 18));
+      let minimumAge = minimumAgeDate.toISOString().slice(0, 10);
+      let birthYear = this.form.birthDate.split("-")[0];
+
       if (this.form.password !== this.form.passwordConfirmation) {
         this.validInput = false;
         this.errormessage = "Die Passwörter stimmen nicht überein.";
         return false;
       }
+
+      if (birthYear <= "1900" || birthYear >= currentYear) {
+        this.validInput = false;
+        this.errormessage = "Bitte geben Sie ein gültiges Geburtsjahr ein."
+        return false
+      }
+
+      if (this.form.birthDate > minimumAge) {
+        this.validInput = false;
+        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um sich bei uns registrieren zu können."
+        return false
+      }
+
+
+      console.log(currentYear)
       return true;
     },
     showModal() {
@@ -64,7 +85,7 @@ export default {
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
         <div>
-          <ModalRegistrationSuccessful v-model="modalShow" />
+          <ModalRegistrationSuccessful v-model="modalShow"/>
         </div>
         <div>
           <h1>Registrierung</h1>
@@ -97,11 +118,13 @@ export default {
               </b-form-group>
 
               <b-form-group id="passwordConfirmation" label="Password bestätigen:" label-for="passwordConfirmation">
-                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password" required></b-form-input>
+                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password"
+                              required></b-form-input>
               </b-form-group>
 
               <b-button type="submit" variant="primary">Konto erstellen</b-button>
-            </b-form><br><br>
+            </b-form>
+            <br><br>
             <p>
               <router-link to="/login">Haben Sie schon einen Account?</router-link>
             </p>
@@ -111,3 +134,10 @@ export default {
     </b-row>
   </b-container>
 </template>
+
+<style>
+.error {
+  color: darkred;
+}
+
+</style>

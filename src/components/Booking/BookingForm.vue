@@ -48,18 +48,20 @@ export default {
         this.errormessage = "Die Email-Adressen stimmen nicht überein."
         return false
       }
-      if(this.form.birthDate > minimumAge) {
-        this.validInput = false;
-        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
-        return false
-      }
 
       if(birthYear <= "1900" || birthYear >= currentYear) {
         this.validInput = false;
         this.errormessage = "Bitte geben Sie ein gültiges Geburtsjahr ein."
         return false
       }
-      console.log(minimumAge)
+
+      if(this.form.birthDate > minimumAge) {
+        this.validInput = false;
+        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
+        return false
+      }
+
+
       return true
     },
 

@@ -5,6 +5,7 @@ import {useRoomsStore} from "@/stores/RoomsStore";
 import {BButton} from "bootstrap-vue-3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
 
 export default {
   name: "CollapseAvailability",
@@ -14,8 +15,9 @@ export default {
     return {
       bookingData: useBookingStore(),
       roomData: useRoomsStore(),
+      roomDetailView: useRoomDetailViewStore(),
       context: null,
-      isCollapsed: false,
+      //isCollapsed: false,
       validInput: true,
       modalShow: false,
       dateRange: null,
@@ -35,10 +37,10 @@ export default {
 
   methods: {
 
-    changeVisibilityCollapse() {
+    /*changeVisibilityCollapse() {
       this.dateRange = [];
       this.isCollapsed = !this.isCollapsed;
-    },
+    },*/
 
     // because of OPTIONS API workaround with vanilla JS
     scrollToCollapse(elementId = 'collapseElement') {
@@ -74,9 +76,9 @@ export default {
 
   <b-container fluid class="text-center small-container" id="availability">
 
-    <a @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+    <a @click.prevent="roomDetailView.changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
-    <b-collapse v-model="isCollapsed" @shown="scrollToCollapse" id="collapseElement">
+    <b-collapse v-model="roomDetailView.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
       <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
       <VueDatePicker v-model="dateRange" required

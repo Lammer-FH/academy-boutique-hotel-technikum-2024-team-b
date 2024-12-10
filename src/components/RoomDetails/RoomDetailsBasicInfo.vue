@@ -47,7 +47,7 @@ export default {
             </span>
             <span>{{ selectedRoom.beds }} Betten</span>
           </div>
-          <p class="price">Preis p.N.: €{{ selectedRoom.pricePerNight }}</p>
+          <p class="price">Preis: €{{ selectedRoom.pricePerNight }} pro Nacht</p>
         </div>
         <br>
 
