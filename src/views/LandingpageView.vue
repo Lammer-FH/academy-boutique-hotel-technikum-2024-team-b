@@ -48,6 +48,7 @@ export default {
     <b-row class="justify-content-center">
       <b-col sm="12" md="12" lg="8">
         <heading-landingpage/>
+        <br>
         <b-card-group deck>
           <cards
               primary-button-text="Mehr erfahren"

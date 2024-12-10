@@ -23,6 +23,7 @@ export default {
     <b-row class="justify-content-center p-2">
       <b-col sm="12" md="12" lg="8">
         <HeadingRoomsSummary/>
+        <br>
         <RoomCards v-if="roomData.isLoaded"></RoomCards>
         <Error v-if="roomData.isLoaded === false"></Error>
       </b-col>
