@@ -4,7 +4,7 @@ import {useRoomsStore} from "@/stores/RoomsStore";
 import router from "@/router";
 import Beds from "@/components/Icons/Beds.vue";
 import Handicapped from "@/components/Icons/Handicapped.vue";
-import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
+import {useCollapseStore} from "@/stores/CollapseStore";
 
 export default {
   name: "RoomCard",
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       roomsData: useRoomsStore(),
-      roomDetailView: useRoomDetailViewStore(),
+      roomDetailView: useCollapseStore(),
     }
   },
   methods: {
