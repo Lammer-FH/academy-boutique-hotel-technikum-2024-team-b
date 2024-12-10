@@ -2,7 +2,6 @@
 import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import {BContainer} from "bootstrap-vue-3";
-import router from "@/router";
 
 export default {
   name: "BookingConfirmation",
@@ -34,10 +33,7 @@ export default {
 </script>
 
 <template>
-  <b-container fluid>
-    <b-row class="justify-content-center">
-      <b-col sm="12" md="8" lg="6">
-        <div>
+          <div>
           <h1>Ihre Buchung war erfolgreich!</h1>
           <p>Folgendes Zimmer wurde für den Zeitraum {{formattedArrivalDate}} - {{formattedDepartureDate}}
             gebucht:</p>
@@ -52,9 +48,7 @@ export default {
           <br>
 
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+
 </template>
 
 <style scoped>
