@@ -72,20 +72,20 @@ export default {
   </div>
 
 
-  <b-container fluid class="text-center" id="availability">
+  <b-container fluid class="text-center small-container" id="availability">
 
     <a @click.prevent="changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
     <b-collapse v-model="isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
       <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
-       <VueDatePicker v-model="dateRange" required
+      <VueDatePicker v-model="dateRange" required
                      :range="{ partialRange: false, minRange: 1 }"
                      :min-date="new Date()"
                      :format="format"
                      locale="de"
                      :enable-time-picker="false"
-                     placeholder="Wählen Sie einen Zeitraum aus."
+                     placeholder="Wählen Sie einen Zeitraum."
 
 
       ></VueDatePicker>
@@ -101,5 +101,7 @@ export default {
 
 
 <style scoped>
-
+.small-container {
+  max-width: 600px;
+}
 </style>
