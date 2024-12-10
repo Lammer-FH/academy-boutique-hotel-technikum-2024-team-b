@@ -32,7 +32,7 @@ export default {
         await userStore.handleLogin(this.form.email, this.form.password);
 
         if (localStorage.getItem("token")) {
-          this.$router.push('/home');
+          this.$router.push('/');
         } else {
           this.validInput = false;
           this.errormessage = "Login fehlgeschlagen. Überprüfen Sie Ihre Zugangsdaten.";
