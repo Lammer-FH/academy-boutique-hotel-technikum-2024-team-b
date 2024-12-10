@@ -2,10 +2,11 @@
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
+import ErrorPost from "@/components/Statics/ErrorPost.vue";
 
 export default {
   name: "OrderConformation",
-  components: {BContainer},
+  components: {ErrorPost, BContainer},
 
   data() {
     return {
@@ -16,18 +17,29 @@ export default {
   computed: {
     totalPrice() {
       return this.bookingData.numberNights * this.bookingData.pricePerNight;
+    },
+    bookingSuccess() {
+      return this.bookingData.bookingSubmissionSuccess;
+    },
+    formattedArrivalDate() {
+      return this.formatDate(this.bookingData.arrivalDate);
+    },
+    formattedDepartureDate() {
+      return this.formatDate(this.bookingData.departureDate);
     }
   },
 
   methods: {
+    formatDate(date) {
+      const [year, month, day] = date.split("-");
+      return day + "." + month + "." + year;
+    },
     async handleBook() {
       await this.bookingData.saveBooking();
 
       // Only redirect if booking is successfully sent to backend
       if (this.bookingData.bookingSubmissionSuccess) {
         await router.push('/booking-conformation');
-      } else {
-        alert("Es gab ein Problem bei der Buchung. Bitte versuchen Sie es erneut.");
       }
     },
 
@@ -39,7 +51,8 @@ export default {
 </script>
 
 <template>
-  <b-container fluid>
+  <ErrorPost v-if="bookingSuccess===false"/>
+  <b-container fluid v-if="bookingSuccess === true">
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
         <h1>Zimmer Buchen</h1><br/>
@@ -47,7 +60,9 @@ export default {
 
         <p>
           <span class="highlight">Zimmer:</span> {{ bookingData.roomName }}<br>
-          <span class="highlight">Buchungszeitraum:</span> {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}<br>
+          <span class="highlight">Buchungszeitraum:</span> {{ formattedArrivalDate }} - {{
+           formattedDepartureDate
+          }}<br>
           <span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>
           Frühstück ist inkludiert.
         </p><br>

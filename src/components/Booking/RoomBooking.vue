@@ -5,7 +5,7 @@ import {useBookingStore} from "@/stores/BookingStore";
 import ModalQuitBooking from "@/components/Booking/ModalQuitBooking.vue";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
-import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
+import {useCollapseStore} from "@/stores/CollapseStore";
 
 export default {
   name: "RoomBooking",
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
-      roomDetailView: useRoomDetailViewStore(),
+      roomDetailView: useCollapseStore(),
       modalBookingShow: false,
 
     };
@@ -77,7 +77,6 @@ export default {
             Frühstück ist inkludiert.</p><br><br>
 
           <h5>Bitte geben Sie ihre Daten ein:</h5>
-
           <BookingForm/>
         </div>
       </b-col>
