@@ -10,7 +10,7 @@ export default {
 <template>
   <b-container fluid class="text-center py-5">
     <b-row class="justify-content-center">
-      <b-col sm="12" md="10" lg="8">
+      <b-col sm="12" md="8" lg="6">
         <div class="impressum-container border rounded p-4 shadow">
           <h1 class="display-4 mb-4">Impressum</h1>
           <p class="lead">Angaben gemäß § 5 TMG:</p>

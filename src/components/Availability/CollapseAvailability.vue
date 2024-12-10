@@ -17,7 +17,6 @@ export default {
       roomData: useRoomsStore(),
       collapseStore: useCollapseStore(),
       context: null,
-      //isCollapsed: false,
       validInput: true,
       modalShow: false,
       dateRange: null,
@@ -37,12 +36,7 @@ export default {
 
   methods: {
 
-    /*changeVisibilityCollapse() {
-      this.dateRange = [];
-      this.isCollapsed = !this.isCollapsed;
-    },*/
-
-    // because of OPTIONS API workaround with vanilla JS
+     // because of OPTIONS API workaround with vanilla JS
     scrollToCollapse(elementId = 'collapseElement') {
       this.$nextTick(() => {
         let scrollToElement = document.getElementById(elementId);
@@ -74,7 +68,7 @@ export default {
   </div>
 
 
-  <b-container fluid class="text-center small-container" id="availability">
+  <b-container fluid class="text-center small-container availability" id="availability">
 
     <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
