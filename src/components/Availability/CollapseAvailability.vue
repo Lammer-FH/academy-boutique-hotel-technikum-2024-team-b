@@ -68,9 +68,9 @@ export default {
   </div>
 
 
-  <b-container fluid class="text-center small-container availability" id="availability">
+  <b-container fluid class="text-center small-container" id="availability">
 
-    <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+    <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link availability">Buchungszeitraum auswählen</a>
 
     <b-collapse v-model="collapseStore.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
@@ -100,4 +100,10 @@ export default {
 .small-container {
   max-width: 600px;
 }
+
+.availability {
+  font-weight: bold;
+
+}
+
 </style>

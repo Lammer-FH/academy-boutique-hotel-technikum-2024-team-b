@@ -22,10 +22,7 @@ export default {
 </script>
 
 <template>
-  <b-container fluid>
-    <b-row class="justify-content-center">
-      <b-col sm="12" md="8" lg="6">
-        <div>
+          <div>
           <h1>Ihre Buchung war erfolgreich!</h1>
           <p>Folgendes Zimmer wurde für den Zeitraum {{ formatDate(bookingData.arrivalDate) }} -
             {{ formatDate(bookingData.departureDate) }}
@@ -39,9 +36,7 @@ export default {
           </p>
           <br>
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+
 </template>
 
 <style scoped>

@@ -32,13 +32,12 @@ export default {
 <template>
   <b-container>
     <b-row>
-      <b-col sm="12" md="10" lg="8">
-        <h1>{{ roomData.roomName }}</h1><br><br>
+        <h1 class="mb-5">{{ roomData.roomName }}</h1><br><br>
         <b-container class="image-container">
           <b-img :src="imageUrl" alt="Zimmerbild" class="room-img"></b-img>
         </b-container>
 
-        <div class="room-info">
+        <div class="room-info mb-5">
           <div class="bed-info">
             <span v-for="index in selectedRoom.beds" :key="index">
               <img class="bed-icon" src='/images/Icons/beds.svg' height="20" width="20"
@@ -52,13 +51,16 @@ export default {
 
         <RoomDescription :id="selectedRoom.id"/>
         <br>
+      <br>
+      <br>
 
         <h5 class="extras">Extras: </h5>
         <RoomExtras/>
-        <br>
-      </b-col>
+        <br >
+
     </b-row>
   </b-container>
+  <br><br>
 </template>
 
 <style scoped>
