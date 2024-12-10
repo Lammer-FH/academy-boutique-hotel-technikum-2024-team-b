@@ -5,7 +5,7 @@ import {useRoomsStore} from "@/stores/RoomsStore";
 import {BButton} from "bootstrap-vue-3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
-import {useRoomDetailViewStore} from "@/stores/RoomDetailViewStore";
+import {useCollapseStore} from "@/stores/CollapseStore";
 
 export default {
   name: "CollapseAvailability",
@@ -15,7 +15,7 @@ export default {
     return {
       bookingData: useBookingStore(),
       roomData: useRoomsStore(),
-      roomDetailView: useRoomDetailViewStore(),
+      collapseStore: useCollapseStore(),
       context: null,
       //isCollapsed: false,
       validInput: true,
@@ -76,9 +76,9 @@ export default {
 
   <b-container fluid class="text-center small-container" id="availability">
 
-    <a @click.prevent="roomDetailView.changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
+    <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link">Buchungszeitraum auswählen</a>
 
-    <b-collapse v-model="roomDetailView.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
+    <b-collapse v-model="collapseStore.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
       <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
       <VueDatePicker v-model="dateRange" required

@@ -42,7 +42,7 @@ export default {
   <b-card
       :title="title"
       tag="article"
-      class="custom-card"
+      class="custom-card mb-5"
   >
     <b-container class="image-container">
     <b-img
