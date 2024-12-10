@@ -24,9 +24,8 @@ export default {
     },
   },
   async beforeMount() {
-    await useRoomsStore().fetchRooms();
-    parseInt(this.$route.params.roomId, 10);
-    this.roomData.setRoomId(this.roomData.roomId);
+    let roomid = parseInt(this.$route.params.roomId, 10);
+    this.roomData.setRoomId(roomid);
   }
 };
 </script>

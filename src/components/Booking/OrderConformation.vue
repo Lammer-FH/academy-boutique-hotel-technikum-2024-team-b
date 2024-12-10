@@ -20,18 +20,12 @@ export default {
     },
     bookingSuccess() {
       return this.bookingData.bookingSubmissionSuccess;
-    },
-    formattedArrivalDate() {
-      return this.formatDate(this.bookingData.arrivalDate);
-    },
-    formattedDepartureDate() {
-      return this.formatDate(this.bookingData.departureDate);
     }
   },
 
   methods: {
     formatDate(date) {
-      const [year, month, day] = date.split("-");
+      let [year, month, day] = date.split("-");
       return day + "." + month + "." + year;
     },
     async handleBook() {
@@ -60,9 +54,8 @@ export default {
 
         <p>
           <span class="highlight">Zimmer:</span> {{ bookingData.roomName }}<br>
-          <span class="highlight">Buchungszeitraum:</span> {{ formattedArrivalDate }} - {{
-           formattedDepartureDate
-          }}<br>
+          <span class="highlight">Buchungszeitraum:</span> {{ formatDate(bookingData.arrivalDate) }} -
+          {{formatDate(bookingData.departureDate)}}<br>
           <span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>
           Frühstück ist inkludiert.
         </p><br>
@@ -71,7 +64,7 @@ export default {
           <span class="highlight">Ihre persönlichen Daten:</span><br>
           Vorname: {{ bookingData.firstName }}<br>
           Nachname: {{ bookingData.lastName }}<br>
-          Geburtsdatum: {{ bookingData.birthDate }}<br>
+          Geburtsdatum: {{formatDate(bookingData.birthDate)}}<br>
           Email-Adresse: {{ bookingData.emailAdresse }}<br><br>
 
           <b-button size="sm" @click="handleChange" variant="secondary">Daten ändern</b-button>

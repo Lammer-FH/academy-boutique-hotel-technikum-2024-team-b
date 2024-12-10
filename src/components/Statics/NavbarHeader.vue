@@ -38,7 +38,7 @@ export default {
   methods: {
     logout() {
       this.userStore.logout();
-      this.$router.push("/home");
+      this.$router.push("/");
     },
   },
 };
@@ -46,7 +46,7 @@ export default {
 
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="fixed-top" id="navbar">
-    <b-navbar-brand to="/home">
+    <b-navbar-brand to="/">
       <icon-home></icon-home>
     </b-navbar-brand>
     <b-dropdown variant="link" class="ms-auto" right>
