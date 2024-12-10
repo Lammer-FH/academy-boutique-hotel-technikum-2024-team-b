@@ -23,10 +23,20 @@ export default {
   computed: {
     totalPrice() {
       return this.bookingData.numberNights * this.bookingData.pricePerNight
+    },
+    formattedArrivalDate() {
+      return this.formatDate(this.bookingData.arrivalDate);
+    },
+    formattedDepartureDate() {
+      return this.formatDate(this.bookingData.departureDate);
     }
   },
 
   methods: {
+    formatDate(date) {
+      const [year, month, day] = date.split("-");
+      return day + "." + month + "." + year;
+    },
     showModalBooking() {
       this.modalBookingShow = true;
     },
@@ -56,8 +66,8 @@ export default {
           <p><span class="highlight">Zimmer:</span> {{ bookingData.roomName }}
             <b-button size="sm" @click="handleChangeRoom" class="change-button">Ändern</b-button>
           </p>
-          <p><span class="highlight">Buchungszeitraum:</span> {{ bookingData.arrivalDate }} -
-            {{ bookingData.departureDate }}
+          <p><span class="highlight">Buchungszeitraum:</span> {{ formattedArrivalDate }} -
+            {{ formattedDepartureDate }}
             <b-button size="sm" @click="handleChangeDates" class="change-button">Ändern</b-button>
           </p>
           <p><span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>

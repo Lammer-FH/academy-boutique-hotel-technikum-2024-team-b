@@ -14,7 +14,21 @@ export default {
       bookingData: useBookingStore()
     };
   },
+
+  computed:{
+    formattedArrivalDate() {
+      return this.formatDate(this.bookingData.arrivalDate);
+    },
+    formattedDepartureDate() {
+      return this.formatDate(this.bookingData.departureDate);
+    }
+  },
   methods: {
+
+    formatDate(date) {
+      const [year, month, day] = date.split("-");
+      return day + "." + month + "." + year;
+    },
 
     handlePrint() {
       window.print();
@@ -32,7 +46,7 @@ export default {
       <b-col sm="12" md="8" lg="6">
         <div>
           <h1>Ihre Buchung war erfolgreich!</h1>
-          <p>Folgendes Zimmer wurde für den Zeitraum {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}
+          <p>Folgendes Zimmer wurde für den Zeitraum {{formattedArrivalDate}} - {{formattedDepartureDate}}
             gebucht:</p>
           <br>
           <RoomDetailsBasicInfo/>
