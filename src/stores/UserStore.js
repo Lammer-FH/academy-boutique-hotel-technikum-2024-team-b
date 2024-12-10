@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-
 export const useUserStore = defineStore('userStore', {
     state: () => ({
         wasSuccess: false,
@@ -25,7 +24,7 @@ export const useUserStore = defineStore('userStore', {
 
                 let token = response.data;
                 localStorage.setItem("token", token);
-                token = token;
+                this.token = token;
 
             } catch (error) {
                 this.wasSuccess = false;
