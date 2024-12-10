@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 
 
-export const useRoomDetailViewStore = defineStore('roomDetailView', {
+export const useCollapseStore = defineStore('roomDetailView', {
         state: () => ({
             isCollapsed: false,
         }),
