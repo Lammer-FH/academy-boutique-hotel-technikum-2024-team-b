@@ -9,7 +9,7 @@ export default {
 
   data() {
     return {
-      bookingData: useBookingStore()
+      bookingData: useBookingStore(),
     };
   },
   methods: {
@@ -17,10 +17,9 @@ export default {
       let [year, month, day] = date.split("-");
       return day + "." + month + "." + year;
     },
-  }
+  },
 };
 </script>
-
 <template>
           <div>
           <h1>Ihre Buchung war erfolgreich!</h1>

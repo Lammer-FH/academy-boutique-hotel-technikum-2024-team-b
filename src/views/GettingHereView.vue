@@ -1,9 +1,10 @@
 <script>
 import GettingHere from "@/components/Statics/GettingHere.vue";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "GettingHereView",
-  components: {GettingHere}
+  components: {BContainer, GettingHere}
 }
 </script>
 

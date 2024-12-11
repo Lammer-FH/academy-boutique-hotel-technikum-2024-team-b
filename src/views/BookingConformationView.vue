@@ -3,10 +3,11 @@
 import GettingHere from "@/components/Statics/GettingHere.vue";
 import BookingConfirmation from "@/components/Booking/BookingConfirmation.vue";
 import router from "@/router";
+import {BContainer} from "bootstrap-vue-3";
 
 export default {
   name: "BookingConformationView",
-  components: {GettingHere, BookingConfirmation},
+  components: {BContainer, GettingHere, BookingConfirmation},
 methods: {
 
   handlePrint() {
@@ -16,7 +17,6 @@ methods: {
     router.push('/home');
   }
 }
-
 }
 </script>
 

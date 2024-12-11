@@ -24,39 +24,42 @@ export default {
     },
   },
   async beforeMount() {
-    let roomid = parseInt(this.$route.params.roomId, 10);
-    this.roomData.setRoomId(roomid);
+    this.roomData.setRoomId(this.roomData.roomId)
+    if (this.roomData.roomId === null) {
+      this.roomData.roomId = parseInt(this.$route.params.roomId, 10);
+      this.roomData.setRoomId(this.roomData.roomId)
+    }
   }
 };
 </script>
 <template>
   <b-container>
     <b-row>
-        <h1 class="mb-5">{{ roomData.roomName }}</h1><br><br>
-        <b-container class="image-container">
-          <b-img :src="imageUrl" alt="Zimmerbild" class="room-img"></b-img>
-        </b-container>
+      <h1 class="mb-5">{{ roomData.roomName }}</h1><br><br>
+      <b-container class="image-container">
+        <b-img :src="imageUrl" alt="Zimmerbild" class="room-img"></b-img>
+      </b-container>
 
-        <div class="room-info mb-5">
-          <div class="bed-info">
+      <div class="room-info mb-5">
+        <div class="bed-info">
             <span v-for="index in selectedRoom.beds" :key="index">
               <img class="bed-icon" src='/images/Icons/beds.svg' height="20" width="20"
                    alt="dekorativer Icon">
             </span>
-            <span>{{ selectedRoom.beds }} Betten</span>
-          </div>
-          <p class="price">Preis: €{{ selectedRoom.pricePerNight }} pro Nacht</p>
+          <span>{{ selectedRoom.beds }} Betten</span>
         </div>
-        <br>
-
-        <RoomDescription :id="selectedRoom.id"/>
-        <br>
-      <br>
+        <p class="price">Preis: €{{ selectedRoom.pricePerNight }} pro Nacht</p>
+      </div>
       <br>
 
-        <h5 class="extras">Extras: </h5>
-        <RoomExtras/>
-        <br >
+      <RoomDescription :id="selectedRoom.id"/>
+      <br>
+      <br>
+      <br>
+
+      <h5 class="extras">Extras: </h5>
+      <RoomExtras/>
+      <br>
 
     </b-row>
   </b-container>
@@ -80,6 +83,7 @@ export default {
   height: 100%;
   object-fit: cover;
 }
+
 p {
   margin: 0;
 }
