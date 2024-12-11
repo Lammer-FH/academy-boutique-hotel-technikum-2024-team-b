@@ -24,7 +24,7 @@ export default {
     },
   },
   async beforeMount() {
-    this.roomData.setRoomId(this.roomData.roomId)
+    //in case of reload in RoomDetails
     if (this.roomData.roomId === null) {
       this.roomData.roomId = parseInt(this.$route.params.roomId, 10);
       this.roomData.setRoomId(this.roomData.roomId)
