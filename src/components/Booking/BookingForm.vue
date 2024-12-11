@@ -49,13 +49,13 @@ export default {
         return false
       }
 
-      if(birthYear <= "1900" || birthYear >= currentYear) {
+      if (birthYear <= "1900" || birthYear >= currentYear) {
         this.validInput = false;
         this.errormessage = "Bitte geben Sie ein gültiges Geburtsjahr ein."
         return false
       }
 
-      if(this.form.birthDate > minimumAge) {
+      if (this.form.birthDate > minimumAge) {
         this.validInput = false;
         this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
         return false
@@ -73,77 +73,84 @@ export default {
 }
 
 </script>
-
 <template>
-  <ModalQuitBooking v-model="modalCancelShow"/>
+  <b-container fluid>
+    <b-row class="justify-content">
+      <b-col sm="12" md="8" lg="6">
+        <ModalQuitBooking v-model="modalCancelShow"/>
+        <p class="error" v-if="!validInput">{{ errormessage }}</p>
 
-  <div>
-    <p class="error" v-if="!validInput">{{ errormessage }}</p>
+        <b-form v-if="show" @submit.prevent="saveInput">
+          <b-form-group id="firstName" label="Vorname:" label-for="firstname">
+            <b-form-input id="firstname" v-model="form.firstName" required/>
+          </b-form-group>
 
-    <b-form v-if="show" @submit.prevent="saveInput">
+          <b-form-group id="lastName" label="Nachname:" label-for="lastname">
+            <b-form-input id="lastname" v-model="form.lastName" required/>
+          </b-form-group>
 
-      <b-form-group id="firstName" label="Vorname:" label-for="firstname">
-        <b-form-input
-            id="firstname"
-            v-model="form.firstName"
-            required=""
-        ></b-form-input>
-      </b-form-group>
+          <b-form-group id="birthDate" label="Geburtsdatum:" label-for="birthdate">
+            <b-form-input
+                id="birthdate"
+                v-model="form.birthDate"
+                type="date"
+                required
+            />
+          </b-form-group>
 
-      <b-form-group id="lastName" label="Nachname:" label-for="lastname">
-        <b-form-input
-            id="lastname"
-            v-model="form.lastName"
-            placeholder=""
-            required
-        ></b-form-input>
-      </b-form-group>
+          <b-form-group id="email" label="E-Mailadresse:" label-for="mailadresse">
+            <b-form-input
+                id="mailadresse"
+                v-model="form.email"
+                type="email"
+                required
+            />
+          </b-form-group>
 
-      <b-form-group id="birthDate" label="Geburtsdatum:" label-for="birthdate">
-        <b-form-input
-            id="birthdate"
-            v-model="form.birthDate"
-            type="date"
-            placeholder=""
-            required
-        ></b-form-input>
-      </b-form-group>
+          <b-form-group
+              id="emailconfirm"
+              label="E-Mailadresse bestätigen:"
+              label-for="mailadresseConfirm"
+          >
+            <b-form-input
+                id="mailadresseConfirm"
+                v-model="form.emailConfirmation"
+                type="email"
+                required
+            />
+          </b-form-group>
 
-      <b-form-group id="email" label="E-Mailadresse:" label-for="mailadresse">
-        <b-form-input
-            id="mailadresse"
-            v-model="form.email"
-            type="email"
-            placeholder=""
-            required
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="emailconfirm" label="E-Mailadresse bestätigen:" label-for="mailadresseConfirm">
-        <b-form-input
-            id="mailadresseConfirm"
-            v-model="form.emailConfirmation"
-            type="email"
-            placeholder=""
-            required
-        ></b-form-input>
-      </b-form-group>
-
-      <div class="button-container">
-        <b-button variant="secondary" v-on:click="cancelBooking">Buchung abbrechen</b-button>
-        <b-button type="submit" variant="primary">Daten überprüfen</b-button>
-      </div>
-    </b-form>
-  </div>
+          <b-row class="button-container">
+            <b-col sm="auto">
+              <b-button class="buttons" type="submit" variant="primary">Daten überprüfen</b-button>
+            </b-col>
+            <b-col sm="auto">
+              <b-button variant="secondary" class="buttons"  @click="cancelBooking">
+                Buchung abbrechen
+              </b-button>
+            </b-col>
+          </b-row>
+        </b-form>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <style scoped>
 .error {
   color: red;
 }
-
-.button-container {
-  display: flex;
+.button-container{
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .buttons{
+    width: 100%;
+  }
 }
 </style>
