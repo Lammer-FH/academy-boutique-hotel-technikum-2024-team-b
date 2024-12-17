@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <img src="images/Logos/logo-technikum-wien-academy-1.png" height="40" width="80" alt="Hotel Logo"></template>
+  <img src="images/Logos/Logo_BHT.png" height="40" width="80" alt="Hotel Logo"></template>
 <style scoped>
 
 </style>

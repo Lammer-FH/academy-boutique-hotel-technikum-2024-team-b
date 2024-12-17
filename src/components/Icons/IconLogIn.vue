@@ -6,7 +6,7 @@ export default {
 
 <template>
 
-  <img src="/images/Icons/LogIn.JPG" height="40" width="40" alt="LogIn Icon"/></template>
+  <img src="/images/Icons/LogIn.png" height="30" alt="LogIn Icon"/></template>
 
 <style scoped>
 
