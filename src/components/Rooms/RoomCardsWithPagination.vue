@@ -49,9 +49,9 @@ export default {
       });
     }
   },
-  async created() {
+  /*async created() {
     await useRoomsStore().fetchRooms();
-  }
+  }*/
 };
 </script>
 

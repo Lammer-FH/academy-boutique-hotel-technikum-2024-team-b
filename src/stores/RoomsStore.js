@@ -13,7 +13,7 @@ export const useRoomsStore = defineStore('rooms', {
     getters: {
         getRoomById: (state) => {
             return () => {
-                return state.rooms.find(room => room.id === state.roomId); // Find room by id
+                return state.rooms.find(room => room.id === state.roomId); //// Find room by id
             }
         }
     },

@@ -1,19 +1,15 @@
 <script>
 import RoomBooking from "@/components/Booking/RoomBooking.vue";
-import {useBookingStore} from "@/stores/BookingStore";
 
 export default {
   name: "RoomBookingView",
   components: {RoomBooking},
-  data() {
-    return {
-      bookingData: useBookingStore()
-    }
-  }
 }
+
 </script>
 
 <template>
+  <b-breadcrumb :items="breadcrumpItems" class="mt-5"></b-breadcrumb>
   <RoomBooking/>
 </template>
 

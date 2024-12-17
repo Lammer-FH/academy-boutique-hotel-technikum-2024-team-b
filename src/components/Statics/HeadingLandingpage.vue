@@ -9,5 +9,7 @@ export default {
 </template>
 
 <style scoped>
-
+h1 {
+  font-family: Garamond, serif;
+}
 </style>

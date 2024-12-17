@@ -3,7 +3,6 @@ import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
 import ErrorPost from "@/components/Statics/ErrorPost.vue";
-import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
   name: "OrderConformation",
@@ -12,6 +11,20 @@ export default {
   data() {
     return {
       bookingData: useBookingStore(),
+
+      breadcrumpItems: [{
+        text: 'Unsere Zimmer',
+        href: "/rooms"
+      }, {
+        text: 'Zimmerdetails',
+        href: "/roomDetail"
+      }, {
+        text: 'Zimmer buchen',
+        href: "#room-booking"
+      }, {
+        text: 'Buchung bestätigen',
+        active: true
+      }]
     };
   },
 
@@ -49,6 +62,7 @@ export default {
   <b-container fluid v-if="bookingSuccess === true">
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
+        <b-breadcrumb :items="breadcrumpItems" class="mt-5"></b-breadcrumb>
         <h1>Zimmer Buchen</h1><br/>
         <h5>Bitte überprüfen Sie Ihre Daten: </h5>
 

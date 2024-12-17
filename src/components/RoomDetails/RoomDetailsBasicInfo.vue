@@ -35,7 +35,7 @@ export default {
 <template>
   <b-container>
     <b-row>
-      <h1 class="mb-5">{{ roomData.roomName }}</h1><br><br>
+      <h1 class="mb-5">{{ selectedRoom.roomsName }}</h1><br><br>
       <b-container class="image-container">
         <b-img :src="imageUrl" alt="Zimmerbild" class="room-img"></b-img>
       </b-container>
@@ -59,7 +59,7 @@ export default {
 
       <h5 class="extras">Extras: </h5>
       <RoomExtras/>
-      <br>
+
 
     </b-row>
   </b-container>
