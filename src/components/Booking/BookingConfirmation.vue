@@ -2,10 +2,11 @@
 import RoomDetailsBasicInfo from "@/components/RoomDetails/RoomDetailsBasicInfo.vue";
 import {useBookingStore} from "@/stores/BookingStore";
 import {BContainer} from "bootstrap-vue-3";
+import Stepper from "@/components/Booking/Stepper.vue";
 
 export default {
   name: "BookingConfirmation",
-  components: {BContainer, RoomDetailsBasicInfo},
+  components: {Stepper, BContainer, RoomDetailsBasicInfo},
 
   data() {
     return {
@@ -21,11 +22,12 @@ export default {
 };
 </script>
 <template>
-          <div>
-          <h1>Ihre Buchung war erfolgreich!</h1>
-          <p>Folgendes Zimmer wurde für den Zeitraum {{ formatDate(bookingData.arrivalDate) }} -
+  <Stepper :current-step="2" /><br>
+  <div>
+          <h2>Ihre Buchung war erfolgreich!</h2><br>
+          <h6>Folgendes Zimmer wurde für den Zeitraum {{ formatDate(bookingData.arrivalDate) }} -
             {{ formatDate(bookingData.departureDate) }}
-            gebucht:</p>
+            gebucht:</h6>
           <br>
           <RoomDetailsBasicInfo/>
           <h5>Ihre persönlichen Daten:</h5>

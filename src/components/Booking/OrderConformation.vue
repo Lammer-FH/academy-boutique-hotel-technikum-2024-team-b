@@ -3,15 +3,29 @@ import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
 import ErrorPost from "@/components/Statics/ErrorPost.vue";
-import {useRoomsStore} from "@/stores/RoomsStore";
+import Stepper from "@/components/Booking/Stepper.vue";
 
 export default {
   name: "OrderConformation",
-  components: {ErrorPost, BContainer},
+  components: {Stepper, ErrorPost, BContainer},
 
   data() {
     return {
       bookingData: useBookingStore(),
+
+      breadcrumpItems: [{
+        text: 'Unsere Zimmer',
+        href: "/rooms"
+      }, {
+        text: 'Zimmerdetails',
+        href: "/roomDetail"
+      }, {
+        text: 'Zimmer buchen',
+        href: "#room-booking"
+      }, {
+        text: 'Buchung bestätigen',
+        active: true
+      }]
     };
   },
 
@@ -46,9 +60,11 @@ export default {
 </script>
 
 <template>
+
   <b-container fluid v-if="bookingSuccess === true">
-    <b-row class="justify-content-center">
+     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
+        <Stepper :current-step="1" /><br>
         <h1>Zimmer Buchen</h1><br/>
         <h5>Bitte überprüfen Sie Ihre Daten: </h5>
 

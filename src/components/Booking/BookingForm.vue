@@ -57,7 +57,7 @@ export default {
 
       if (this.form.birthDate > minimumAge) {
         this.validInput = false;
-        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
+        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können."
         return false
       }
 
@@ -74,19 +74,16 @@ export default {
 
 </script>
 <template>
-  <b-container fluid>
-    <b-row class="justify-content">
-      <b-col sm="12" md="8" lg="6">
         <ModalQuitBooking v-model="modalCancelShow"/>
         <p class="error" v-if="!validInput">{{ errormessage }}</p>
 
         <b-form v-if="show" @submit.prevent="saveInput">
           <b-form-group id="firstName" label="Vorname:" label-for="firstname">
-            <b-form-input id="firstname" v-model="form.firstName" required/>
+            <b-form-input id="firstname" v-model="form.firstName" required="true"/>
           </b-form-group>
 
           <b-form-group id="lastName" label="Nachname:" label-for="lastname">
-            <b-form-input id="lastname" v-model="form.lastName" required/>
+            <b-form-input id="lastname" v-model="form.lastName" required="true"/>
           </b-form-group>
 
           <b-form-group id="birthDate" label="Geburtsdatum:" label-for="birthdate">
@@ -94,7 +91,7 @@ export default {
                 id="birthdate"
                 v-model="form.birthDate"
                 type="date"
-                required
+                required="true"
             />
           </b-form-group>
 
@@ -103,7 +100,7 @@ export default {
                 id="mailadresse"
                 v-model="form.email"
                 type="email"
-                required
+                required="true"
             />
           </b-form-group>
 
@@ -116,7 +113,7 @@ export default {
                 id="mailadresseConfirm"
                 v-model="form.emailConfirmation"
                 type="email"
-                required
+                required="true"
             />
           </b-form-group>
 
@@ -131,10 +128,7 @@ export default {
             </b-col>
           </b-row>
         </b-form>
-      </b-col>
-    </b-row>
-  </b-container>
-</template>
+  </template>
 
 <style scoped>
 .error {
