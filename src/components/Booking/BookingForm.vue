@@ -57,7 +57,7 @@ export default {
 
       if (this.form.birthDate > minimumAge) {
         this.validInput = false;
-        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können"
+        this.errormessage = "Sie müssen mindestens 18 Jahre alt sein, um ein Zimmer buchen zu können."
         return false
       }
 
@@ -74,9 +74,6 @@ export default {
 
 </script>
 <template>
-  <b-container fluid>
-    <b-row class="justify-content">
-      <b-col sm="12" md="8" lg="6">
         <ModalQuitBooking v-model="modalCancelShow"/>
         <p class="error" v-if="!validInput">{{ errormessage }}</p>
 
@@ -131,10 +128,7 @@ export default {
             </b-col>
           </b-row>
         </b-form>
-      </b-col>
-    </b-row>
-  </b-container>
-</template>
+  </template>
 
 <style scoped>
 .error {

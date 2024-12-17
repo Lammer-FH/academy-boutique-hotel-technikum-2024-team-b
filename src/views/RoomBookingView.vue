@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <b-breadcrumb :items="breadcrumpItems" class="mt-5"></b-breadcrumb>
+
   <RoomBooking/>
 </template>
 
