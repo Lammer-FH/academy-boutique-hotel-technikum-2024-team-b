@@ -110,15 +110,15 @@ export default {
               </b-form-group>
 
               <b-form-group id="userName" label="Username:" label-for="username">
-                <b-form-input id="username" v-model="form.userName" required></b-form-input>
+                <b-form-input id="username" v-model="form.userName" autocomplete="username" required></b-form-input>
               </b-form-group>
 
               <b-form-group id="password" label="Password:" label-for="password">
-                <b-form-input id="password" v-model="form.password" type="password" required></b-form-input>
+                <b-form-input id="password" v-model="form.password" type="password" autocomplete="new-password" required></b-form-input>
               </b-form-group>
 
               <b-form-group id="passwordConfirmation" label="Password bestätigen:" label-for="passwordConfirmation">
-                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password"
+                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password" autocomplete="new-password"
                               required></b-form-input>
               </b-form-group>
 

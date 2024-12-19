@@ -61,6 +61,7 @@ export default {
             v-model="form.email"
             type="email"
             placeholder="Geben Sie Ihre E-Mail-Adresse ein"
+            autocomplete="username"
             required
         ></b-form-input>
       </b-form-group>
@@ -70,6 +71,7 @@ export default {
             v-model="form.password"
             type="password"
             placeholder="Geben Sie Ihr Passwort ein"
+            autocomplete="current-password"
             required
         ></b-form-input>
       </b-form-group>
@@ -77,7 +79,7 @@ export default {
     </b-form>
     <p class="mt-3">
       Noch kein Account?
-      <router-link to="/registration">Zur Anmeldung</router-link>
+      <router-link to="/registration">Zur Registrierung</router-link>
     </p>
   </div>
 </template>
