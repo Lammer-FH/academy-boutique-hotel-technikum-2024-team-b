@@ -37,9 +37,7 @@ export default {
             this.form.password
         );
 
-        if (this.userData.wasSuccess) {
-          this.showModal();
-        }
+        this.showModal();
       }
     },
     validateInput() {
@@ -80,7 +78,7 @@ export default {
     },
 
     scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
     },
 
     showModal() {

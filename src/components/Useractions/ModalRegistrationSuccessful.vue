@@ -31,11 +31,10 @@ export default {
     },
   },
 
-
   methods: {
     handleOk() {
       this.isVisible = false;
-      router.push("/rooms");
+      router.push("/");
     },
   }
 }
