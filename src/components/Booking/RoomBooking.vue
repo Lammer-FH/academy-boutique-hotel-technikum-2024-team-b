@@ -79,7 +79,7 @@ export default {
             <p><span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>
               Frühstück ist inkludiert.</p><br><br>
 
-            <h5>Bitte geben Sie ihre Daten ein:</h5>
+            <h5>Bitte geben Sie Ihre Daten ein:</h5>
             <BookingForm/>
           </div>
       </b-col>

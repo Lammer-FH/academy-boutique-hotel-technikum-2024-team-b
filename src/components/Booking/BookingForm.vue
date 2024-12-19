@@ -79,11 +79,11 @@ export default {
 
         <b-form v-if="show" @submit.prevent="saveInput">
           <b-form-group id="firstName" label="Vorname:" label-for="firstname">
-            <b-form-input id="firstname" v-model="form.firstName" required="true"/>
+            <b-form-input id="firstname" v-model="form.firstName" required />
           </b-form-group>
 
           <b-form-group id="lastName" label="Nachname:" label-for="lastname">
-            <b-form-input id="lastname" v-model="form.lastName" required="true"/>
+            <b-form-input id="lastname" v-model="form.lastName" required />
           </b-form-group>
 
           <b-form-group id="birthDate" label="Geburtsdatum:" label-for="birthdate">
@@ -91,7 +91,7 @@ export default {
                 id="birthdate"
                 v-model="form.birthDate"
                 type="date"
-                required="true"
+                required
             />
           </b-form-group>
 
@@ -100,7 +100,7 @@ export default {
                 id="mailadresse"
                 v-model="form.email"
                 type="email"
-                required="true"
+                required
             />
           </b-form-group>
 
@@ -113,7 +113,7 @@ export default {
                 id="mailadresseConfirm"
                 v-model="form.emailConfirmation"
                 type="email"
-                required="true"
+                required
             />
           </b-form-group>
 
