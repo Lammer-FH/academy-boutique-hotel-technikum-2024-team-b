@@ -9,7 +9,7 @@ import RoomBookingView from "@/views/RoomBookingView.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
 import LoginView from "@/views/LoginView.vue";
 import BookingConformationView from "@/views/BookingConformationView.vue";
-import OrderConfirmationView from "@/views/OrderConfirmationView.vue";
+import OrderConformationView from "@/views/OrderConformationView.vue";
 
 
 
@@ -64,7 +64,7 @@ const router = createRouter({
         {
             path: '/order-confirmation',
             name: 'order-confirmation',
-            component: OrderConfirmationView
+            component: OrderConformationView
         },
 
         {

@@ -16,7 +16,7 @@ export const useBookingStore = defineStore('booking', {
         departureDate: "",
         availability: false,
         bookingId: null,
-        isLoading: true,
+        isLoaded: true,
         bookingSubmissionSuccess: true,
 
     }),

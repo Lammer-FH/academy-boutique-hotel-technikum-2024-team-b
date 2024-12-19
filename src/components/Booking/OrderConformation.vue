@@ -37,7 +37,8 @@ export default {
       if (this.bookingData.bookingSubmissionSuccess) {
         await router.push('/booking-conformation');
       }
-    },
+
+      },
 
     handleChange() {
       router.push('/room-booking');
@@ -48,10 +49,11 @@ export default {
 
 <template>
 
-  <b-container fluid v-if="bookingSuccess === true">
-     <b-row class="justify-content-center">
+  <b-container fluid v-if="bookingSuccess">
+    <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
-        <Stepper :current-step="1" /><br>
+        <Stepper :current-step="1"/>
+        <br>
 
         <h5>Bitte überprüfen Sie Ihre Daten: </h5><br>
 
@@ -77,6 +79,7 @@ export default {
       </b-col>
     </b-row>
   </b-container>
+
 </template>
 
 <style scoped>

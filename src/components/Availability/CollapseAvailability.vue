@@ -6,10 +6,11 @@ import {BButton} from "bootstrap-vue-3";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import {useCollapseStore} from "@/stores/CollapseStore";
+import Error from "@/components/Statics/ErrorGet.vue";
 
 export default {
   name: "CollapseAvailability",
-  components: {BButton, ModalRoomAvailable, VueDatePicker},
+  components: {Error, BButton, ModalRoomAvailable, VueDatePicker},
 
   data() {
     return {
@@ -21,7 +22,8 @@ export default {
       modalShow: false,
       dateRange: null,
       format: "dd.MM.yyyy",
-      errormessage: ""
+      errormessage: "",
+      errorGetRequest: false
     }
   },
 
@@ -37,7 +39,7 @@ export default {
 
   methods: {
 
-     // because of OPTIONS API workaround with vanilla JS
+    // because of OPTIONS API workaround with vanilla JS
     scrollToCollapse(elementId = 'collapseElement') {
       this.$nextTick(() => {
         let scrollToElement = document.getElementById(elementId);
@@ -49,7 +51,11 @@ export default {
       if (this.handleEmptyDateRange()) {
         this.bookingData.setBookingDates(this.arrivalDate, this.departureDate, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight);
         await this.bookingData.checkAvailability();
-        this.showModal()
+        if (this.bookingData.isLoaded) {
+          this.showModal()
+        } else {
+          this.errorGetRequest = true;
+        }
       }
     },
 
@@ -80,14 +86,15 @@ export default {
   </div>
 
 
-  <b-container fluid class="text-center small-container" id="availability">
+  <b-container fluid class="text-center small-container" id="availability" v-if="!errorGetRequest">
 
-    <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link availability">Buchungszeitraum auswählen</a>
+    <a @click.prevent="collapseStore.changeVisibilityCollapse" class="btn-link availability">Buchungszeitraum
+      auswählen</a>
 
     <b-collapse v-model="collapseStore.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
       <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
-      <p class="error" v-if="!validInput">{{errormessage}}</p>
+      <p class="error" v-if="!validInput">{{ errormessage }}</p>
       <VueDatePicker v-model="dateRange" required
                      :range="{ partialRange: false, minRange: 1 }"
                      :min-date="new Date()"
@@ -104,6 +111,10 @@ export default {
 
     </b-collapse>
 
+  </b-container>
+
+  <b-container fluid class="text-center small-container" id="availability" v-if="errorGetRequest">
+    <Error/>
   </b-container>
 
 </template>
