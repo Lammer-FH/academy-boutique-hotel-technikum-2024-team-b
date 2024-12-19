@@ -43,7 +43,6 @@ export const useBookingStore = defineStore('booking', {
             this.emailAdresse = emailAdresse;
         },
 
-
         async checkAvailability() {
             const apiUrl = `https://boutique-hotel.helmuth-lammer.at/api/v1/room/${this.roomId}/from/${this.arrivalDate}/to/${this.departureDate}`;
             try {

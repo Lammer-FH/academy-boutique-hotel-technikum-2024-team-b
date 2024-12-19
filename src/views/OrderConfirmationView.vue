@@ -10,7 +10,6 @@ export default {
 
 <template>
 
-
   <OrderConformation/>
 
 </template>

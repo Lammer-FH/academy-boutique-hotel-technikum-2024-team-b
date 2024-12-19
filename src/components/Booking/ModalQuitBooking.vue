@@ -32,7 +32,6 @@ export default {
       this.isVisible = false;
       router.push('home');
     },
-
   }
 }
 </script>

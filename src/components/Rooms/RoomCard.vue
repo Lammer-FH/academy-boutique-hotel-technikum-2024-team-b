@@ -36,6 +36,7 @@ export default {
     },
     handlePrimaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
+      this.roomDetailView.setCollapseFalse();
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId}

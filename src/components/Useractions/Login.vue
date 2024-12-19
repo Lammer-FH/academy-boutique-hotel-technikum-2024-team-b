@@ -1,5 +1,5 @@
 <script>
-import {BForm, BFormGroup, BFormInput, BButton} from "bootstrap-vue-3";
+import {BButton, BForm, BFormGroup, BFormInput} from "bootstrap-vue-3";
 import {useUserStore} from "@/stores/UserStore"; // Importing the Pinia store
 
 export default {
@@ -51,35 +51,43 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>Login</h1>
-    <p class="error" v-if="!validInput">{{ errormessage }}</p>
-    <b-form @submit.prevent="handleLogin">
-      <b-form-group id="email" label="E-Mailadresse:" label-for="emailInput">
-        <b-form-input
-            id="emailInput"
-            v-model="form.email"
-            type="email"
-            placeholder="Geben Sie Ihre E-Mail-Adresse ein"
-            required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group id="password" label="Passwort:" label-for="passwordInput">
-        <b-form-input
-            id="passwordInput"
-            v-model="form.password"
-            type="password"
-            placeholder="Geben Sie Ihr Passwort ein"
-            required
-        ></b-form-input>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Login</b-button>
-    </b-form>
-    <p class="mt-3">
-      Noch kein Account?
-      <router-link to="/registration">Zur Anmeldung</router-link>
-    </p>
-  </div>
+  <b-container fluid>
+    <b-row class="justify-content-center">
+      <b-col sm="12" md="8" lg="6">
+        <div>
+          <h1>Login</h1><br>
+          <p class="error" v-if="!validInput">{{ errormessage }}</p>
+          <b-form @submit.prevent="handleLogin">
+            <b-form-group id="email" label="E-Mailadresse:" label-for="emailInput">
+              <b-form-input
+                  id="emailInput"
+                  v-model="form.email"
+                  type="email"
+                  placeholder="Geben Sie Ihre E-Mail-Adresse ein"
+                  autocomplete="username"
+                  required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group id="password" label="Passwort:" label-for="passwordInput">
+              <b-form-input
+                  id="passwordInput"
+                  v-model="form.password"
+                  type="password"
+                  placeholder="Geben Sie Ihr Passwort ein"
+                  autocomplete="current-password"
+                  required
+              ></b-form-input>
+            </b-form-group>
+            <b-button type="submit" variant="primary">Login</b-button>
+          </b-form>
+          <p class="mt-3">
+            Noch kein Account?
+            <router-link to="/registration">Zur Registrierung</router-link>
+          </p>
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <style scoped>

@@ -39,16 +39,20 @@ export default {
       <b-container class="image-container">
         <b-img :src="imageUrl" alt="Zimmerbild" class="room-img"></b-img>
       </b-container>
-
-      <div class="room-info mb-5">
-        <div class="bed-info">
-            <span v-for="index in selectedRoom.beds" :key="index">
-              <img class="bed-icon" src='/images/Icons/beds.svg' height="20" width="20"
-                   alt="dekorativer Icon">
-            </span>
+      <div class="room-info mb-5 d-flex flex-column flex-md-row align-items-start align-items-md-center">
+        <div class="bed-info mb-1 mt-1 mb-md-0 mt-md-0">
+          <span v-for="index in selectedRoom.beds" :key="index">
+            <img
+                class="bed-icon"
+                src="/images/Icons/beds.svg"
+                height="20"
+                width="20"
+                alt="dekorativer Icon"
+            />
+          </span>
           <span>{{ selectedRoom.beds }} Betten</span>
         </div>
-        <p class="price">Preis: €{{ selectedRoom.pricePerNight }} pro Nacht</p>
+        <p class="price mb-0">Preis: €{{ selectedRoom.pricePerNight }} pro Nacht</p>
       </div>
       <br>
 

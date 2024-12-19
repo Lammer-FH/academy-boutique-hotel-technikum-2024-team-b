@@ -13,6 +13,10 @@ export const useCollapseStore = defineStore('roomDetailView', {
 
             setCollapseTrue() {
                 this.isCollapsed = true;
+            },
+
+            setCollapseFalse() {
+                this.isCollapsed = false;
             }
         }
     }

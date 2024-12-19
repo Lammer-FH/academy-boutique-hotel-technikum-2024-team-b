@@ -21,6 +21,7 @@ export default {
       modalShow: false,
       dateRange: null,
       format: "dd.MM.yyyy",
+      errormessage: ""
     }
   },
 
@@ -45,15 +46,26 @@ export default {
     },
 
     async checkRoomAvailability() {
-      this.bookingData.setBookingDates(this.arrivalDate, this.departureDate, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight)
-      await this.bookingData.checkAvailability()
-      this.showModal()
-
+      if (this.handleEmptyDateRange()) {
+        this.bookingData.setBookingDates(this.arrivalDate, this.departureDate, this.roomData.roomId, this.roomData.roomName, this.roomData.roomPricePerNight);
+        await this.bookingData.checkAvailability();
+        this.showModal()
+      }
     },
 
     showModal() {
       this.modalShow = true
 
+    },
+
+    handleEmptyDateRange() {
+      this.validInput = true;
+      if (this.dateRange == null) {
+        this.validInput = false;
+        this.errormessage = "Bitte wählen Sie ein Datum aus."
+        return false
+      }
+      return true
     }
   }
 }
@@ -75,6 +87,7 @@ export default {
     <b-collapse v-model="collapseStore.isCollapsed" @shown="scrollToCollapse" id="collapseElement">
       <br>
       <b>Bitte wählen Sie ein An- und Abreisedatum aus:</b><br><br>
+      <p class="error" v-if="!validInput">{{errormessage}}</p>
       <VueDatePicker v-model="dateRange" required
                      :range="{ partialRange: false, minRange: 1 }"
                      :min-date="new Date()"
@@ -105,5 +118,6 @@ export default {
   font-weight: bold;
 
 }
+
 
 </style>

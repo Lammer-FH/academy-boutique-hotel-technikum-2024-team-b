@@ -8,7 +8,7 @@ export default {
 
   data() {
     return {
-      steps: ["Buchen", "Bestätigen", "Abgeschlossen"],
+      steps: ["Buchen", "Daten überprüfen", "Abgeschlossen"],
       stepContents: [
         "Schritt 1: Buchungsinformationen eingeben.",
         "Schritt 2: Buchung bestätigen.",

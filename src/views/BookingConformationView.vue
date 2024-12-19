@@ -14,7 +14,7 @@ methods: {
     window.print();
   },
   goToHomepage() {
-    router.push('/home');
+    router.push('/');
   }
 }
 }
