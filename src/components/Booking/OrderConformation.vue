@@ -65,8 +65,8 @@ export default {
      <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
         <Stepper :current-step="1" /><br>
-        <h1>Zimmer Buchen</h1><br/>
-        <h5>Bitte überprüfen Sie Ihre Daten: </h5>
+
+        <h5>Bitte überprüfen Sie Ihre Daten: </h5><br>
 
         <p>
           <span class="highlight">Zimmer:</span> {{ bookingData.roomName }}<br>
