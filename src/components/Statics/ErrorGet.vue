@@ -9,5 +9,7 @@ export default {
 </template>
 
 <style scoped>
-
+p {
+  font-weight: bold;
+ }
 </style>

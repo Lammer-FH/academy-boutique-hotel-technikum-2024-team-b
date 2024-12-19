@@ -149,7 +149,7 @@ export default {
 
 <style>
 .error {
-  color: darkred;
+  color: red;
 }
 
 </style>
