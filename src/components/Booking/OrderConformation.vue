@@ -13,19 +13,6 @@ export default {
     return {
       bookingData: useBookingStore(),
 
-      breadcrumpItems: [{
-        text: 'Unsere Zimmer',
-        href: "/rooms"
-      }, {
-        text: 'Zimmerdetails',
-        href: "/roomDetail"
-      }, {
-        text: 'Zimmer buchen',
-        href: "#room-booking"
-      }, {
-        text: 'Buchung bestätigen',
-        active: true
-      }]
     };
   },
 

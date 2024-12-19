@@ -79,6 +79,10 @@ export default {
       return true;
     },
 
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+
     showModal() {
       this.modalShow = true;
     }
@@ -132,7 +136,7 @@ export default {
                               required></b-form-input>
               </b-form-group>
 
-              <b-button type="submit" variant="primary">Konto erstellen</b-button>
+              <b-button type="submit" @click="scrollToTop" variant="primary">Konto erstellen</b-button>
             </b-form>
             <br><br>
             <p>

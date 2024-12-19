@@ -21,22 +21,24 @@ export default {
   },
 };
 </script>
+
 <template>
-  <Stepper :current-step="2" /><br>
+  <Stepper :current-step="2"/>
+  <br>
   <div>
-          <h2>Ihre Buchung war erfolgreich!</h2><br>
-          <h6>Folgendes Zimmer wurde für den Zeitraum {{ formatDate(bookingData.arrivalDate) }} -
-            {{ formatDate(bookingData.departureDate) }}
-            gebucht:</h6>
-          <br>
-          <RoomDetailsBasicInfo/>
-          <h5>Ihre persönlichen Daten:</h5>
-          <p>
-            <span class="highlight">Name:</span> {{ bookingData.firstName }} {{ bookingData.lastName }}<br>
-            <span class="highlight">Email:</span> {{ bookingData.emailAdresse }}
-          </p>
-          <br>
-        </div>
+    <h2>Ihre Buchung war erfolgreich!</h2><br>
+    <h6>Folgendes Zimmer wurde für den Zeitraum {{ formatDate(bookingData.arrivalDate) }} -
+      {{ formatDate(bookingData.departureDate) }}
+      gebucht:</h6>
+    <br>
+    <RoomDetailsBasicInfo/>
+    <h5>Ihre persönlichen Daten:</h5>
+    <p>
+      <span class="highlight">Name:</span> {{ bookingData.firstName }} {{ bookingData.lastName }}<br>
+      <span class="highlight">Email:</span> {{ bookingData.emailAdresse }}
+    </p>
+    <br>
+  </div>
 
 </template>
 
@@ -44,6 +46,4 @@ export default {
 .highlight {
   font-weight: bold;
 }
-
-
 </style>
