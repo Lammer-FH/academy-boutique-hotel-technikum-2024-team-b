@@ -49,6 +49,7 @@ export default {
       const minimumAgeDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 18));
       let minimumAge = minimumAgeDate.toISOString().slice(0, 10);
       let birthYear = this.form.birthDate.split("-")[0];
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
       if (this.form.password !== this.form.passwordConfirmation) {
         this.validInput = false;
@@ -68,15 +69,22 @@ export default {
         return false
       }
 
+      if (!regex.test(this.form.password)) {
+        this.validInput = false;
+        this.errormessage =
+            "Das Passwort muss mindestens 8 Zeichen lang sein, einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.";
+        return false
+      }
 
-      console.log(currentYear)
       return true;
     },
+
     showModal() {
       this.modalShow = true;
     }
   },
 };
+
 </script>
 
 <template>
@@ -88,7 +96,7 @@ export default {
           <ModalRegistrationSuccessful v-model="modalShow"/>
         </div>
         <div>
-          <h1>Registrierung</h1>
+          <h1>Registrierung</h1><br>
           <div>
             <p class="error" v-if="!validInput">{{ errormessage }}</p>
 
@@ -114,11 +122,13 @@ export default {
               </b-form-group>
 
               <b-form-group id="password" label="Password:" label-for="password">
-                <b-form-input id="password" v-model="form.password" type="password" autocomplete="new-password" required></b-form-input>
+                <b-form-input id="password" v-model="form.password" type="password" autocomplete="new-password"
+                              required></b-form-input>
               </b-form-group>
 
               <b-form-group id="passwordConfirmation" label="Password bestätigen:" label-for="passwordConfirmation">
-                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password" autocomplete="new-password"
+                <b-form-input id="passwordConfirmation" v-model="form.passwordConfirmation" type="password"
+                              autocomplete="new-password"
                               required></b-form-input>
               </b-form-group>
 
