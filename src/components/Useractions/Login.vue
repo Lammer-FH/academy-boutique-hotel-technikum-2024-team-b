@@ -1,6 +1,6 @@
 <script>
 import {BButton, BForm, BFormGroup, BFormInput} from "bootstrap-vue-3";
-import {useUserStore} from "@/stores/UserStore"; // Importing the Pinia store
+import {useUserStore} from "@/stores/UserStore";
 
 export default {
   name: "Login",

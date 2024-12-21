@@ -57,13 +57,13 @@ export default {
       </template>
       <div class="d-flex flex-column align-items-center">
         <b-dropdown-item v-if="!isLoggedIn">
-          <b-button variant="outline-info" to="/login">Login</b-button>
+          <b-button variant="outline-dark" to="/login">Login</b-button>
         </b-dropdown-item>
         <b-dropdown-item v-if="isLoggedIn">
           <b-button variant="outline-danger" @click="logout">Logout</b-button>
         </b-dropdown-item>
         <b-dropdown-item>
-          <b-button v-if="!isLoggedIn" variant="outline-info" to="/registration">Registrieren</b-button>
+          <b-button v-if="!isLoggedIn" variant="outline-dark" to="/registration">Registrieren</b-button>
         </b-dropdown-item>
       </div>
     </b-dropdown>
