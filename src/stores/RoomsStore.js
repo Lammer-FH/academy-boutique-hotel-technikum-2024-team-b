@@ -6,8 +6,8 @@ import {useUserStore} from "@/stores/UserStore";
 function getAuthHeaders() {
     let userStore = useUserStore(); // Access the UserStore
     let headers = {};
-    if (userStore.isAuthenticated) {
-        headers.Authorization = `Bearer ${userStore.token}`;
+    if (userStore.isAuthenticated !== false){
+        headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
     }
     return headers;
 }

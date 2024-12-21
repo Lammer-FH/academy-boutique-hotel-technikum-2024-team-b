@@ -26,12 +26,8 @@ export default {
   },
 
   computed: {
-    token() {
-      return useUserStore().token;
-    },
-
     isLoggedIn() {
-      return this.token !== null;
+      return useUserStore().isAuthenticated
     },
   },
 

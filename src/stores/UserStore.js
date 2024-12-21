@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from "axios";
 
 export const useUserStore = defineStore('userStore', {
@@ -9,6 +9,16 @@ export const useUserStore = defineStore('userStore', {
     getters: {},
 
     actions: {
+
+        initializeAuthentication() {
+            if (localStorage.getItem("token") !== null) {
+                this.token = localStorage.getItem("token");
+                this.isAuthenticated = true;
+            } else {
+                this.isAuthenticated = false;
+                this.token = null;
+            }
+        },
         async registerUser(firstName, lastName, birthDate, emailAdresse, username, password) {
             const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/v1/register';
             try {
@@ -56,6 +66,7 @@ export const useUserStore = defineStore('userStore', {
         logout() {
             localStorage.removeItem("token");
             this.token = null;
+            this.isAuthenticated = false;
         }
     }
 });
