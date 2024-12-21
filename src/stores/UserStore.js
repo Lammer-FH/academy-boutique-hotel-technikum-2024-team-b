@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+
 export const useUserStore = defineStore('userStore', {
     state: () => ({
-        wasSuccess: false,
+        isAuthenticated: false,
         token: null,
     }),
     getters: {},
@@ -20,19 +21,18 @@ export const useUserStore = defineStore('userStore', {
                     password: password,
                 });
 
-                this.wasSuccess = true;
+                this.isAuthenticated = true;
 
                 let token = response.data;
                 localStorage.setItem("token", token);
                 this.token = token;
 
             } catch (error) {
-                this.wasSuccess = false;
+                this.isAuthenticated = false;
             }
         },
         async handleLogin(clientId, secret) {
             const apiUrl = 'https://boutique-hotel.helmuth-lammer.at/api/v1/login';
-
             try {
                 const response = await axios.post(apiUrl, {
                     clientId: clientId,
@@ -45,12 +45,12 @@ export const useUserStore = defineStore('userStore', {
                     localStorage.setItem("token", token);
                     this.token = token;
 
-                    this.wasSuccess = true;
+                    this.isAuthenticated = true;
                 } else {
-                    this.wasSuccess = false;
+                    this.isAuthenticated = false;
                 }
             } catch (error) {
-                this.wasSuccess = false;
+                this.isAuthenticated = false;
             }
         },
         logout() {

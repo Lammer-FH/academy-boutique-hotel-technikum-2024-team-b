@@ -38,6 +38,7 @@ export default {
   methods: {
     logout() {
       this.userStore.logout();
+      alert("You are logged out");
       this.$router.push("/");
     },
   },

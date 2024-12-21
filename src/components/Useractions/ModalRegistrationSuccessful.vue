@@ -42,13 +42,13 @@ export default {
 </script>
 
 <template>
-  <div v-if="userData.wasSuccess">
+  <div v-if="userData.isAuthenticated">
     <b-modal v-model="isVisible" title="Registrierung abgeschlossen" ok-only ok-title="Ok" @ok="handleOk">
       {{ messageSuccessful }}
 
     </b-modal>
   </div>
-  <div v-if="!userData.wasSuccess">
+  <div v-if="!userData.isAuthenticated">
     <b-modal v-model="isVisible" title="Registrierung abgeschlossen" ok-only ok-title="Ok" @ok="handleOk">
       {{ messageFailed }}
 
