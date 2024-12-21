@@ -4,6 +4,7 @@ import {useRoomsStore} from "@/stores/RoomsStore";
 import router from "@/router";
 import Beds from "@/components/Icons/Beds.vue";
 import Handicapped from "@/components/Icons/Handicapped.vue";
+import {useCollapseStore} from "@/stores/CollapseStore";
 
 export default {
   name: "RoomCard",
@@ -17,15 +18,16 @@ export default {
     imageSrc: {type: String, required: true},
     imageAlternativeText: {type: String, required: true},
     description: {type: String, required: false},
-    primaryButtonRoute: {type: String, required: true},
+    primaryButtonRoute: {type: String, required: false},
     primaryButtonText: {type: String, required: true},
-    secondaryButtonRoute: {type: String, required: true},
+    secondaryButtonRoute: {type: String, required: false},
     secondaryButtonText: {type: String, required: true}
   },
 
   data() {
     return {
-      roomsData: useRoomsStore()
+      roomsData: useRoomsStore(),
+      roomDetailView: useCollapseStore(),
     }
   },
   methods: {
@@ -34,6 +36,7 @@ export default {
     },
     handlePrimaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
+      this.roomDetailView.setCollapseFalse();
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId}
@@ -41,6 +44,7 @@ export default {
     },
     handleSecondaryButtonClick() {
       this.roomsData.setRoomIdAndNameAndPrice(this.roomId, this.roomName, this.pricePerNight);
+      this.roomDetailView.setCollapseTrue();
       router.push({
         name: 'roomDetail',
         params: {roomId: this.roomId, scrollTo: 'availability'}
@@ -55,18 +59,23 @@ export default {
 <template>
   <b-card
       :title="roomName"
-      :img-src="imageSrc"
-      :img-alt="imageAlternativeText"
       :room-id="roomId"
       tag="article"
       class="room-card mb-5"
   >
+    <b-container class="image-container">
+    <b-img
+        :src="imageSrc"
+        :alt="imageAlternativeText"
+        class="card-img"
+    />
+    </b-container>
     <div class="roomExtras">
       <div class="justify-content-around">
         <span v-for="index in beds" class="bed-icon"><Beds/></span>
       </div>
       <span v-if="hasHandicappedAccess(extras)"><Handicapped/></span>
-      <span id="price"> Preis p.N.: €{{ pricePerNight }} </span>
+      <span id="price"> Preis: €{{ pricePerNight }} pro Nacht</span>
     </div>
     <div class="d-flex flex-column flex-sm-row justify-content-evenly gap-2">
       <b-button @click="handlePrimaryButtonClick" variant="primary">
@@ -80,6 +89,24 @@ export default {
 </template>
 
 <style scoped>
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .bed-icon {
   margin-right: 5px;
 }

@@ -1,7 +1,7 @@
 <script>
-import Navbar from "@/components/StaticPagesAndNavbar/NavbarHeader.vue";
-import Cards from "@/components/StaticPagesAndNavbar/LandingPageCard.vue";
-import headingLandingpage from "@/components/StaticPagesAndNavbar/HeadingLandingpage.vue";
+import Navbar from "@/components/Statics/NavbarHeader.vue";
+import Cards from "@/components/Statics/LandingPageCard.vue";
+import headingLandingpage from "@/components/Statics/HeadingLandingpage.vue";
 import {BCardGroup} from "bootstrap-vue-3";
 
 export default {
@@ -48,6 +48,7 @@ export default {
     <b-row class="justify-content-center">
       <b-col sm="12" md="12" lg="8">
         <heading-landingpage/>
+        <br>
         <b-card-group deck>
           <cards
               primary-button-text="Mehr erfahren"

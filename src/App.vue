@@ -1,6 +1,5 @@
 <script setup>
-import NavbarHeader from "@/components/StaticPagesAndNavbar/NavbarHeader.vue";
-import {useRoomsStore} from "@/stores/RoomsStore";
+import NavbarHeader from "@/components/Statics/NavbarHeader.vue";
 </script>
 
 <template>

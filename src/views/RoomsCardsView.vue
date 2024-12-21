@@ -1,10 +1,10 @@
 <script>
-import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummary.vue";
+import HeadingRoomsSummary from "@/components/Rooms/HeadingRoomsSummary.vue";
 import {BCardGroup} from "bootstrap-vue-3";
-import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
+import RoomCard from "@/components/Rooms/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-import RoomCards from "@/components/RoomsAndDetails/RoomCardsWithPagination.vue";
-import Error from "@/components/StaticPagesAndNavbar/ErrorGet.vue";
+import RoomCards from "@/components/Rooms/RoomCardsWithPagination.vue";
+import Error from "@/components/Statics/ErrorGet.vue";
 
 export default {
   name: "RoomsSummary",
@@ -23,6 +23,7 @@ export default {
     <b-row class="justify-content-center p-2">
       <b-col sm="12" md="12" lg="8">
         <HeadingRoomsSummary/>
+        <br>
         <RoomCards v-if="roomData.isLoaded"></RoomCards>
         <Error v-if="roomData.isLoaded === false"></Error>
       </b-col>

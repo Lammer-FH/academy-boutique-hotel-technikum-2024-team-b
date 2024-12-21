@@ -1,5 +1,5 @@
 <script>
-import RoomExtrasItem from "@/components/RoomsAndDetails/RoomExtrasItem.vue";
+import RoomExtrasItem from "@/components/RoomDetails/RoomExtrasItem.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
 
 export default {
@@ -9,7 +9,6 @@ export default {
   data() {
     return {
       roomData: useRoomsStore()
-
     }
   },
 
@@ -34,11 +33,9 @@ export default {
     iconUrl(extra) {
       const key = Object.keys(extra)[0].split(" ")[0];
       return `/images/Icons/${key}.svg`;
-    }
-    ,
+    },
   }
 }
-
 
 </script>
 

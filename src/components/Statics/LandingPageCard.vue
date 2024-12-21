@@ -1,9 +1,9 @@
 <script>
-import {BButton, BCard} from "bootstrap-vue-3";
+import { BButton, BCard } from "bootstrap-vue-3";
 
 export default {
   name: "Cards",
-  components: {BButton, BCard},
+  components: { BButton, BCard },
 
   props: {
     index: {
@@ -35,36 +35,53 @@ export default {
       required: true
     }
   }
-}
-
+};
 </script>
 
-
 <template>
-
   <b-card
-      :index="index"
       :title="title"
-      :img-src="imageSrc"
-      :img-alt="imageAlternativeText"
       tag="article"
-      class="card mb-5 custom-card-image"
+      class="custom-card mb-5"
   >
-    <b-card-text>
+    <b-container class="image-container">
+    <b-img
+        :src="imageSrc"
+        :alt="imageAlternativeText"
+        class="card-img"
+    />
+      </b-container>
+    <b-card-text class="card-text">
       {{ cardText }}
     </b-card-text>
     <b-button :to="primaryButtonRoute" variant="primary">{{ primaryButtonText }}</b-button>
   </b-card>
 </template>
-<style scoped>
-.card {
-  width: 600px;
 
+<style scoped>
+.image-container {
+  position: relative;
+  width: 100%;
+  /*for aspect ratio 16:9*/
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
 }
 
-.custom-card-image {
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 </style>

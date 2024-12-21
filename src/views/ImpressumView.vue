@@ -1,5 +1,5 @@
 <script>
-import Impressum from "@/components/StaticPagesAndNavbar/Impressum.vue";
+import Impressum from "@/components/Statics/Impressum.vue";
 
 export default {
   name: "ImpressumView",

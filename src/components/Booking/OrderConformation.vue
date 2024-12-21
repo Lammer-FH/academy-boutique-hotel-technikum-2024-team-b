@@ -2,52 +2,65 @@
 import {useBookingStore} from "@/stores/BookingStore";
 import router from "@/router";
 import {BContainer} from "bootstrap-vue-3";
+import ErrorPost from "@/components/Statics/ErrorPost.vue";
+import Stepper from "@/components/Booking/Stepper.vue";
 
 export default {
-  name: "Confirmation",
-  components: {BContainer},
+  name: "OrderConformation",
+  components: {Stepper, ErrorPost, BContainer},
 
   data() {
     return {
-      bookingData: useBookingStore()
+      bookingData: useBookingStore(),
+
     };
   },
 
   computed: {
     totalPrice() {
       return this.bookingData.numberNights * this.bookingData.pricePerNight;
+    },
+    bookingSuccess() {
+      return this.bookingData.bookingSubmissionSuccess;
     }
   },
 
   methods: {
+    formatDate(date) {
+      let [year, month, day] = date.split("-");
+      return day + "." + month + "." + year;
+    },
     async handleBook() {
       await this.bookingData.saveBooking();
 
       // Only redirect if booking is successfully sent to backend
-      if (this.bookingData.isSentToBackend) {
-        await router.push('/confirmationPage');
-      } else {
-        alert("Es gab ein Problem bei der Buchung. Bitte versuchen Sie es erneut.");
+      if (this.bookingData.bookingSubmissionSuccess) {
+        await router.push('/booking-conformation');
       }
-    },
+
+      },
 
     handleChange() {
       router.push('/room-booking');
     }
-  }
+  },
 };
 </script>
 
 <template>
-  <b-container fluid>
+
+  <b-container fluid v-if="bookingSuccess">
     <b-row class="justify-content-center">
       <b-col sm="12" md="8" lg="6">
-        <h1>Zimmer Buchen</h1><br/>
-        <h5>Bitte überprüfen Sie Ihre Daten: </h5>
+        <Stepper :current-step="1"/>
+        <br>
+
+        <h5>Bitte überprüfen Sie Ihre Daten: </h5><br>
 
         <p>
           <span class="highlight">Zimmer:</span> {{ bookingData.roomName }}<br>
-          <span class="highlight">Buchungszeitraum:</span> {{ bookingData.arrivalDate }} - {{ bookingData.departureDate }}<br>
+          <span class="highlight">Buchungszeitraum:</span> {{ formatDate(bookingData.arrivalDate) }} -
+          {{ formatDate(bookingData.departureDate) }}<br>
           <span class="highlight">Preis gesamt:</span> €{{ totalPrice }}<br>
           Frühstück ist inkludiert.
         </p><br>
@@ -56,7 +69,7 @@ export default {
           <span class="highlight">Ihre persönlichen Daten:</span><br>
           Vorname: {{ bookingData.firstName }}<br>
           Nachname: {{ bookingData.lastName }}<br>
-          Geburtsdatum: {{ bookingData.birthDate }}<br>
+          Geburtsdatum: {{ formatDate(bookingData.birthDate) }}<br>
           Email-Adresse: {{ bookingData.emailAdresse }}<br><br>
 
           <b-button size="sm" @click="handleChange" variant="secondary">Daten ändern</b-button>
@@ -66,6 +79,7 @@ export default {
       </b-col>
     </b-row>
   </b-container>
+
 </template>
 
 <style scoped>

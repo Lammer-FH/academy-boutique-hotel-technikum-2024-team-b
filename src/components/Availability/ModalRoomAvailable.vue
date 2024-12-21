@@ -39,7 +39,7 @@ export default {
     handleDifferentRoom() {
       this.modalShow = false;
       router.push({
-        name: '/rooms',}
+        name: 'rooms',}
       );
     }
   }

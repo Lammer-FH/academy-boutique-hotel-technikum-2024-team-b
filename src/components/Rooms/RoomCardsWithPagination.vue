@@ -1,9 +1,8 @@
 <script>
-import HeadingRoomsSummary from "@/components/RoomsAndDetails/HeadingRoomsSummary.vue";
 import {BCardGroup} from "bootstrap-vue-3";
-import RoomCard from "@/components/RoomsAndDetails/RoomCard.vue";
+import RoomCard from "@/components/Rooms/RoomCard.vue";
 import {useRoomsStore} from "@/stores/RoomsStore";
-import router from "@/router";
+
 export default {
   name: "RoomCards",
   components: {RoomCard, BCardGroup},
@@ -43,41 +42,41 @@ export default {
       return this.pictures[roomId - 1].source;
     },
     handlePageChange(page) {
-      this.currentPage = page;
+      this.$nextTick(() => {
+        let scrollToElement = document.getElementById("roomsHeading");
+        scrollToElement.scrollIntoView();
+        this.currentPage = page;
+      });
     }
   },
-  async created() {
-    await useRoomsStore().fetchRooms();
-  }
 };
 </script>
 
 <template>
-        <b-card-group deck>
-          <RoomCard
-              v-for="room in paginatedRooms"
-              :key="room.id"
-              :room-id="room.id"
-              :roomName="room.roomsName"
-              :beds="room.beds"
-              :pricePerNight="room.pricePerNight"
-              :extras="room.extras"
-              :imageSrc="getImageSource(room.id)"
-              imageAlternativeText="Room image"
-              primaryButtonRoute="/room-detail"
-              primaryButtonText="Mehr erfahren"
-              secondary-button-text="Verfügbarkeit"
-              secondaryButtonRoute=""
-          />
-        </b-card-group>
-        <div class="d-flex justify-content-center my-4">
-          <b-pagination
-              v-model="currentPage"
-              :total-rows="useRoomsStore().rooms.length"
-              :per-page="itemsPerPage"
-              @change="handlePageChange"
-          />
-        </div>
+  <b-card-group deck>
+    <RoomCard
+        v-for="room in paginatedRooms"
+        :key="room.id"
+        :room-id="room.id"
+        :roomName="room.roomsName"
+        :beds="room.beds"
+        :pricePerNight="room.pricePerNight"
+        :extras="room.extras"
+        :imageSrc="getImageSource(room.id)"
+        imageAlternativeText="Room image"
+        primaryButtonText="Mehr erfahren"
+        secondary-button-text="Verfügbarkeit"
+    />
+  </b-card-group>
+  <div class="d-flex justify-content-center my-4">
+    <b-pagination
+        v-model="currentPage"
+        pills
+        :total-rows="useRoomsStore().rooms.length"
+        :per-page="itemsPerPage"
+        @change="handlePageChange"
+    />
+  </div>
 </template>
 <style scoped>
 

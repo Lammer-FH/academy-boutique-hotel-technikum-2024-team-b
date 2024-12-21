@@ -1,8 +1,10 @@
 <script>
 import router from "@/router";
+import {BModal} from "bootstrap-vue-3";
 
 export default {
   name: "ModalQuitBooking",
+  components: {BModal},
 
   props: {
     modelValue: Boolean,
@@ -30,7 +32,6 @@ export default {
       this.isVisible = false;
       router.push('home');
     },
-
   }
 }
 </script>

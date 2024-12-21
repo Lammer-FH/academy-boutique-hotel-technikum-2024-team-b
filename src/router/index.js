@@ -6,8 +6,10 @@ import GettingHereView from "@/views/GettingHereView.vue"
 import RoomDetailAndAvailabilityView from "@/views/RoomDetailAndAvailabilityView.vue";
 import RoomsSummary from "@/views/RoomsCardsView.vue";
 import RoomBookingView from "@/views/RoomBookingView.vue";
-import ConfirmationView from "@/views/ConfirmationView.vue";
-import ConfirmationPageView from "@/views/ConfirmationPageView.vue";
+import RegistrationView from "@/views/RegistrationView.vue";
+import LoginView from "@/views/LoginView.vue";
+import BookingConformationView from "@/views/BookingConformationView.vue";
+import OrderConformationView from "@/views/OrderConformationView.vue";
 
 
 
@@ -21,7 +23,7 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/home',
+            path: '/',
             name: 'home',
             component: LandingpageView
         },
@@ -60,15 +62,28 @@ const router = createRouter({
         },
 
         {
-            path: '/confirmation',
-            name: 'confirmation',
-            component: ConfirmationView
+            path: '/order-confirmation',
+            name: 'order-confirmation',
+            component: OrderConformationView
         },
 
         {
-            path: '/confirmationPage',
-            name: 'ConfirmationPageView',
-            component: ConfirmationPageView
+            path: '/booking-conformation',
+            name: 'booking-conformation',
+            component: BookingConformationView
+        },
+
+        {
+            path: '/registration',
+            name: 'registration',
+            component: RegistrationView
+        },
+
+        {
+            path: '/login',
+            name: 'login',
+            component: LoginView
+
         },
     ]
 })

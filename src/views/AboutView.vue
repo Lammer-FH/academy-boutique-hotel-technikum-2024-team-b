@@ -1,5 +1,5 @@
 <script>
-import About from "@/components/StaticPagesAndNavbar/About.vue";
+import About from "@/components/Statics/About.vue";
 
 export default {
 name: "AboutView",
@@ -8,9 +8,7 @@ name: "AboutView",
 </script>
 
 <template>
-  <main>
     <About/>
-  </main>
 </template>
 
 <style scoped>

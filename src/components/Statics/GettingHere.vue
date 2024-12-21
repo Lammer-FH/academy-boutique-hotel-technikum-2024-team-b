@@ -8,9 +8,7 @@ export default {
 </script>
 
 <template>
-  <b-container fluid class="text-center">
-    <b-row class="justify-content-center">
-      <b-col sm="12" md="8" lg="6">
+
         <h1>Anreise & Kontakt</h1><br><br>
         <p>Planen Sie Ihre Anreise ganz entspannt – hier finden Sie alle wichtigen Informationen zur Anfahrt sowie
           unsere Kontaktdaten, damit Sie uns jederzeit erreichen können.</p>
@@ -58,10 +56,7 @@ export default {
           Wir freuen uns, von Ihnen zu hören!</p>
 
 
-      </b-col>
-    </b-row>
-  </b-container>
-</template>
+  </template>
 
 <style scoped>
 
